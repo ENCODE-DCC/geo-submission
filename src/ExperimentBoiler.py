@@ -230,9 +230,9 @@ attachment_interesting_values = ['md5sum','href']
 construct_interesting_values = ['construct_type','description','url']
 donor_interesting_values = ['accession', 'strain_name', 'strain_background', 'sex', 'life_stage', 'health_status', 'ethnicity', 'genotype' , 'mutagen']
 # values from experiment that does not require in deep inspection (no embedded things here)
-experiment_simple_interesting_values = ['date_released','accession', 'biosample_type', 'assay_title', 'assembly', 'description', 'dbxrefs', 'biosample_term_name']
+experiment_simple_interesting_values = ['date_released','accession', 'biosample_type', 'assay_title', 'assay_term_name', 'assembly', 'description', 'dbxrefs', 'biosample_term_name']
 replicate_simple_interesting_values = ['biological_replicate_number','technical_replicate_number']
-library_simple_interesting_values = ['accession','nucleic_acid_starting_quantity_units','fragmentation_method','library_size_selection_method','size_range','nucleic_acid_starting_quantity']
+library_simple_interesting_values = ['accession','nucleic_acid_starting_quantity_units','nucleic_acid_term', 'fragmentation_method','library_size_selection_method','size_range','nucleic_acid_starting_quantity']
 spikein_simple_interesting_values = ['accession','dbxrefs', 'description']
 
 
