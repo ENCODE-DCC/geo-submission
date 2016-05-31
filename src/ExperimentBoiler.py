@@ -141,7 +141,7 @@ def boildown_replicate(replicate_object):
 def boildown_files(files_list):
     listToReturn = []
     for entry in files_list:
-        # if 'assembly' in entry and entry['assembly'] != 'mm10':
+        #if 'assembly' in entry and entry['assembly'] != 'mm10':
         listToReturn.append(boildown_file(entry))
     return listToReturn
 
@@ -168,7 +168,10 @@ def boildown_platform(platform_object):
 def boildown_derived_from(derived_from_list):
     listToReturn = []
     for entry in derived_from_list:
-        listToReturn.append(entry['accession'])
+        if 'accession'in entry:
+            listToReturn.append(entry['accession'])
+        elif 'external_accession' in entry:
+            listToReturn.append(entry['external_accession'])
     return listToReturn
 
 def boildown_spikeins(spikeins_list):
@@ -233,7 +236,7 @@ donor_interesting_values = ['accession', 'strain_name', 'strain_background', 'se
 # values from experiment that does not require in deep inspection (no embedded things here)
 experiment_simple_interesting_values = ['date_released','accession', 'biosample_type', 'assay_title', 'assay_term_name', 'assembly', 'description', 'dbxrefs', 'biosample_term_name']
 replicate_simple_interesting_values = ['biological_replicate_number','technical_replicate_number']
-library_simple_interesting_values = ['accession','nucleic_acid_starting_quantity_units','nucleic_acid_term', 'fragmentation_method','library_size_selection_method','size_range','nucleic_acid_starting_quantity']
+library_simple_interesting_values = ['accession','nucleic_acid_starting_quantity_units','nucleic_acid_term_name', 'fragmentation_method','library_size_selection_method','size_range','nucleic_acid_starting_quantity']
 spikein_simple_interesting_values = ['accession','dbxrefs', 'description']
 
 
