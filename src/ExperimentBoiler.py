@@ -141,8 +141,10 @@ def boildown_replicate(replicate_object):
 def boildown_files(files_list):
     listToReturn = []
     for entry in files_list:
-        #if 'assembly' in entry and entry['assembly'] != 'mm10':
-        listToReturn.append(boildown_file(entry))
+        if 'assembly' in entry and entry['assembly'] != 'mm10':
+            listToReturn.append(boildown_file(entry))
+        elif 'assembly' not in entry:
+            listToReturn.append(boildown_file(entry))
     return listToReturn
 
 def boildown_file(file_object):
