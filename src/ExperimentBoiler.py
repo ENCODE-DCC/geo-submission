@@ -141,11 +141,15 @@ def boildown_replicate(replicate_object):
 def boildown_files(files_list):
     listToReturn = []
     for entry in files_list:
+        #listToReturn.append(boildown_file(entry))
+        
         if 'assembly' in entry and entry['assembly'] != 'mm10':
             listToReturn.append(boildown_file(entry))
         elif 'assembly' not in entry:
             listToReturn.append(boildown_file(entry))
+        
     return listToReturn
+
 
 def boildown_file(file_object):
     file_dictionary = {}
@@ -158,6 +162,8 @@ def boildown_file(file_object):
             file_dictionary[key]={'biological_replicate_number':file_object[key]['biological_replicate_number'],'technical_replicate_number':file_object[key]['technical_replicate_number']}
         if key=='derived_from':
             file_dictionary[key]=boildown_derived_from(file_object[key])
+        if key=='paired_with':
+            file_dictionary[key]=boildown_paired_with(file_object[key])
     return file_dictionary
 
 
@@ -167,6 +173,8 @@ def boildown_platform(platform_object):
         if key in platform_interesting_values:
             platform_dictionary[key]=platform_object[key]
     return platform_dictionary
+
+
 def boildown_derived_from(derived_from_list):
     listToReturn = []
     for entry in derived_from_list:
@@ -175,6 +183,11 @@ def boildown_derived_from(derived_from_list):
         elif 'external_accession' in entry:
             listToReturn.append(entry['external_accession'])
     return listToReturn
+
+
+def boildown_paired_with(paired_with_file):
+    return paired_with_file.split('/')[2]
+
 
 def boildown_spikeins(spikeins_list):
     listToReturn = []
@@ -231,7 +244,7 @@ def is_control_target(target_object):
 
 # same as in biosample
 platform_interesting_values = ['dbxrefs','term_name']
-file_interesting_values = ['assembly', 'genome_annotation', 'accession','md5sum','output_type','file_format','file_type','href','content_md5sum','read_length','read_length_units','file_size','run_type','output_category']
+file_interesting_values = ['paired_end', 'assembly', 'genome_annotation', 'accession','md5sum','output_type','file_format','file_type','href','content_md5sum','read_length','read_length_units','file_size','run_type','output_category']
 attachment_interesting_values = ['md5sum','href']
 construct_interesting_values = ['construct_type','description','url']
 donor_interesting_values = ['accession', 'strain_name', 'strain_background', 'sex', 'life_stage', 'health_status', 'ethnicity', 'genotype' , 'mutagen']
