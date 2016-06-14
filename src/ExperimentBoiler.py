@@ -205,6 +205,8 @@ def boildown_spikein(spikein_object):
 def boildown_library(library_object):
     library_dictionary = {}
     for key in library_object.keys():
+        if key == 'documents':
+            library_dictionary[key] = boildown_documents(library_object[key])
         if key in library_simple_interesting_values:
             library_dictionary[key]=library_object[key]
         if key=='biosample':
@@ -251,7 +253,7 @@ donor_interesting_values = ['accession', 'strain_name', 'strain_background', 'se
 # values from experiment that does not require in deep inspection (no embedded things here)
 experiment_simple_interesting_values = ['date_released','accession', 'biosample_type', 'assay_title', 'assay_term_name', 'assembly', 'description', 'dbxrefs', 'biosample_term_name']
 replicate_simple_interesting_values = ['biological_replicate_number','technical_replicate_number']
-library_simple_interesting_values = ['accession','nucleic_acid_starting_quantity_units','nucleic_acid_term_name', 'fragmentation_method','library_size_selection_method','size_range','nucleic_acid_starting_quantity']
+library_simple_interesting_values = ['accession','nucleic_acid_starting_quantity_units','nucleic_acid_term_name', 'extraction_method', 'fragmentation_method','library_size_selection_method','size_range','nucleic_acid_starting_quantity']
 spikein_simple_interesting_values = ['accession','dbxrefs', 'description']
 
 
