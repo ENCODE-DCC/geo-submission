@@ -25,8 +25,8 @@ HEADERS = {'accept': 'application/json'}
 GET_HEADERS = {'accept': 'application/json'}
 POST_HEADERS = {'accept': 'application/json',
                 'Content-Type': 'application/json'}
-SERVER = "https://test.encodedcc.org/"
-#SERVER = "https://www.encodeproject.org/"
+#SERVER = "https://test.encodedcc.org/"
+SERVER = "https://www.encodeproject.org/"
 
 def encoded_get(url, keypair=None, frame='object', return_response=False):
     url_obj = urlparse.urlsplit(url)
@@ -120,7 +120,25 @@ AUTHPW = keypair[1]
 submittedExperiments = set()
 for filename in glob.glob('../experiments/*.json'):
     submittedExperiments.add(filename.split('/')[2].split('_')[0])
+'''
+e3 =0
+other =0
+m = 0
+for experiment in submittedExperiments:
+    URL = SERVER + experiment + "/?frame=embedded&format=json"
+    response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
+    experiment = response.json()
+    if experiment['award']['rfa']=='ENCODE3':
+        e3 += 1
+    else:
+        other += 1
+    m += 1
+    if m % 10 == 0:
+        print ('processed ' + str(m))
 
+print ('E3 = ' + str(e3) + '  other = ' + str(other))
+'''
+'''
 # phase 2 - go over the experiments submitted so far and create a set of biosamples and donors 
 controls_list = []
 biosamples_list = []
@@ -185,7 +203,7 @@ for f in files_list:
             if entry.startswith('SRA:') is True:
                 continue
         files_to_upload.append(f)
-
+'''
 # print (set(files_to_upload))
 # print (set(experiments_and_controls))
 # print (set(biosamples_list))
@@ -229,11 +247,12 @@ for experimental_accession in experiments_and_controls:
 '''
 print ('FINISHED EXPERIMENTS')
 
+'''
 file_of_files = open('NEW_FILES_TO_UPLOAD', 'w')
 for file_accession in set(files_to_upload):
     up_creds = encoded_get(SERVER+'/files/'+acc+'/@@upload', keypair)
     s3_path_url = up_creds['@graph'][0]['upload_credentials']['upload_url']
     file_of_files.write('/s3'+s3_path_url[4:]+'\n')
 file_of_files.close()
-
+'''
 print ('FINISHED FILES')
