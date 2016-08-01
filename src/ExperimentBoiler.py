@@ -284,9 +284,7 @@ def main():
     URL = "https://www.encodeproject.org/ENCSR620HJQ/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
     response_json_dict = response.json()
-    # we can differently process ChIP-seq excluding mm10
     json_dict = boildown_experiment(response_json_dict)
-
     print (json.dumps(json_dict, indent=4, sort_keys=True))
 
 if __name__ == "__main__":
