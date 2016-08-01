@@ -120,24 +120,31 @@ AUTHPW = keypair[1]
 submittedExperiments = set()
 for filename in glob.glob('../experiments/*.json'):
     submittedExperiments.add(filename.split('/')[2].split('_')[0])
-'''
+
 e3 =0
 other =0
 m = 0
+f = open('e3_submitted_to_geo.tsv',"w")
+x = open('not_e3_submitted_to_geo.tsv',"w")
+
 for experiment in submittedExperiments:
     URL = SERVER + experiment + "/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
-    experiment = response.json()
-    if experiment['award']['rfa']=='ENCODE3':
+    experiment_o = response.json()
+    if experiment_o['award']['rfa']=='ENCODE3':
         e3 += 1
+        f.write(experiment + "\t" + str(experiment_o['dbxrefs']) + '\t' +experiment_o['award']['rfa'] + '\n')
     else:
         other += 1
+        x.write(experiment + "\t" + str(experiment_o['dbxrefs']) + '\t' + experiment_o['award']['rfa']+ '\n')
     m += 1
     if m % 10 == 0:
         print ('processed ' + str(m))
 
 print ('E3 = ' + str(e3) + '  other = ' + str(other))
-'''
+f.close()
+x.close()
+
 '''
 # phase 2 - go over the experiments submitted so far and create a set of biosamples and donors 
 controls_list = []
