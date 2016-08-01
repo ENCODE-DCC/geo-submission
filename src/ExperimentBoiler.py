@@ -59,6 +59,8 @@ def boildown_publication(publication_object):
 # document object is replaced by dictionary containing boiled down attachments and references in addition of a url if it exists
 def boildown_document(document_object):
     documentDictionary = {}
+    if 'document_type' in document_object:
+        documentDictionary['document_type'] = document_object['document_type']
     if 'attachment' in document_object:
         documentDictionary['attachment']=boildown_attachment(document_object['attachment'], document_object['@id'])
     if 'urls' in document_object:
