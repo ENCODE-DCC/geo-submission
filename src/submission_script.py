@@ -123,8 +123,8 @@ for experiment in submittedExperiments:
     print (str(mone) + ' Inspecting Experiment ')  # + str(experiment))
     controls_list.extend(extract_controls(experiment_o))
     biosamples_list.extend(extract_biosamples(experiment_o))
-    if mone > 5:
-        break
+    #if mone > 5:
+    #    break
 
 for experiment in controls_list:
     mone += 1
@@ -133,8 +133,8 @@ for experiment in controls_list:
     experiment_o = response.json()
     print (str(mone) + ' Inspecting Control Experiment ')  # + str(experiment))
     biosamples_list.extend(extract_biosamples(experiment_o))
-    if mone > 5:
-        break
+    #if mone > 5:
+    #    break
 
 
 biosample_objects = []
@@ -173,8 +173,8 @@ for experiment in experiments_and_controls:
     for fastq_file in experimental_fastqs:
         acc = fastq_file['accession']
         files_list.append(acc)
-    if mone > 5:
-        break
+    #if mone > 5:
+    #    break
 
 files_to_upload = []
 mone = 0
@@ -186,10 +186,12 @@ for f in files_list:
     if 'dbxrefs' not in file_object or len(file_object['dbxrefs']) == 0:
         files_to_upload.append(f)
     else:
+        sra_flag = False
         for entry in file_object['dbxrefs']:
             if entry.startswith('SRA:') is True:
-                continue
-        files_to_upload.append(f)
+                sra_flag = True
+        if sra_flag is False:
+            files_to_upload.append(f)
 
 # print (set(files_to_upload))
 # print (set(experiments_and_controls))
