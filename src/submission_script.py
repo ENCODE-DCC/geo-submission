@@ -13,7 +13,7 @@ GET_HEADERS = {'accept': 'application/json'}
 POST_HEADERS = {'accept': 'application/json',
                 'Content-Type': 'application/json'}
 #SERVER = "https://test.encodedcc.org/"
-SERVER = "https://www.encodeproject.org/"
+SERVER = "https://v46rc1.demo.encodedcc.org/"
 
 
 def encoded_get(url, keypair=None, frame='object', return_response=False):
