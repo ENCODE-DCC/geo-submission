@@ -143,13 +143,13 @@ def boildown_replicate(replicate_object):
 def boildown_files(files_list):
     listToReturn = []
     for entry in files_list:
-        #listToReturn.append(boildown_file(entry))
-        
+        listToReturn.append(boildown_file(entry))
+        '''
         if 'assembly' in entry and entry['assembly'] != 'mm10':
             listToReturn.append(boildown_file(entry))
         elif 'assembly' not in entry:
             listToReturn.append(boildown_file(entry))
-        
+        '''
     return listToReturn
 
 
@@ -284,9 +284,7 @@ def main():
     URL = "https://www.encodeproject.org/ENCSR620HJQ/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
     response_json_dict = response.json()
-    # we can differently process ChIP-seq excluding mm10
     json_dict = boildown_experiment(response_json_dict)
-
     print (json.dumps(json_dict, indent=4, sort_keys=True))
 
 if __name__ == "__main__":
