@@ -106,10 +106,13 @@ AUTHPW = keypair[1]
 # phase 1 - collect all experiments submitted so far.
 
 submittedExperiments = set()
-exp_f = open('09012016_epirr_expriments.list', 'r')
+#exp_f = open('09012016_epirr_expriments.list', 'r')
+exp_f = open("try_exp_list", "r")
 for l in exp_f:
     submittedExperiments.add(l.strip())
 exp_f.close()
+
+print ('There are ' + str(len(submittedExperiments)) + ' experiements')
 
 # phase 2 - go over the experiments submitted so far and create a set of biosamples and donors 
 controls_list = []
@@ -121,18 +124,20 @@ for experiment in submittedExperiments:
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
     experiment_o = response.json()
     print (str(mone) + ' Inspecting Experiment ')  # + str(experiment))
-    controls_list.extend(extract_controls(experiment_o))
-    biosamples_list.extend(extract_biosamples(experiment_o))
+    if experiment_o['status'] == 'released':
+        controls_list.extend(extract_controls(experiment_o))
+        biosamples_list.extend(extract_biosamples(experiment_o))
     #if mone > 5:
     #    break
 
-for experiment in controls_list:
+for experiment in set(controls_list):
     mone += 1
     URL = SERVER + experiment + "/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
     experiment_o = response.json()
     print (str(mone) + ' Inspecting Control Experiment ')  # + str(experiment))
-    biosamples_list.extend(extract_biosamples(experiment_o))
+    if experiment_o['status'] == 'released':
+        biosamples_list.extend(extract_biosamples(experiment_o))
     #if mone > 5:
     #    break
 
@@ -159,22 +164,28 @@ files_list = []
 mone = 0
 
 experiments_and_controls = submittedExperiments | set(controls_list)
+released_experiments = set()
 for experiment in experiments_and_controls:
-    mone += 1
-    URL = SERVER + "search/?type=File&dataset=/experiments/" + experiment + \
-          "/&file_format=fastq&format=json&frame=object"
+    URL = SERVER + experiment + "/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
-    all_experiment_fastqs = response.json()
-    experimental_fastqs = [f for f in all_experiment_fastqs[
-        '@graph'] if f['status'] not in [
-        'deleted', 'revoked', 'replaced',
-        'upload failed', 'format check failed',
-        'archived']]
-    for fastq_file in experimental_fastqs:
-        acc = fastq_file['accession']
-        files_list.append(acc)
-    #if mone > 5:
-    #    break
+    experiment_o = response.json()
+    if experiment_o['status'] == 'released':
+        released_experiments.add(experiment_o['accession'])
+        mone += 1
+        URL = SERVER + "search/?type=File&dataset=/experiments/" + experiment + \
+            "/&file_format=fastq&format=json&frame=object"
+        response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
+        all_experiment_fastqs = response.json()
+        experimental_fastqs = [f for f in all_experiment_fastqs[
+            '@graph'] if f['status'] not in [
+            'deleted', 'revoked', 'replaced',
+            'upload failed', 'format check failed',
+            'archived']]
+        for fastq_file in experimental_fastqs:
+            acc = fastq_file['accession']
+            files_list.append(acc)
+        #if mone > 5:
+        #    break
 
 files_to_upload = []
 mone = 0
@@ -226,7 +237,7 @@ for biosample_accession in set(biosamples_list):
 print ('FINISHED BIOSAMPLES')
 
 
-for experimental_accession in experiments_and_controls:
+for experimental_accession in released_experiments:
     URL = SERVER+experimental_accession+"/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
     response_json_dict = response.json()
