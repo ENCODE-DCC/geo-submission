@@ -106,8 +106,8 @@ AUTHPW = keypair[1]
 # phase 1 - collect all experiments submitted so far.
 
 submittedExperiments = set()
-#exp_f = open('09012016_epirr_expriments.list', 'r')
-exp_f = open("try_exp_list", "r")
+exp_f = open('09012016_epirr_expriments.list', 'r')
+#exp_f = open("try_exp_list", "r")
 for l in exp_f:
     submittedExperiments.add(l.strip())
 exp_f.close()
@@ -147,6 +147,7 @@ mone = 0
 for biosample in biosamples_list:
     mone += 1
     accession_number = biosample
+    #print ('biosample accession' + accession_number)
     URL = SERVER+accession_number+"/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
     biosample_object = response.json()
@@ -204,10 +205,10 @@ for f in files_list:
         if sra_flag is False:
             files_to_upload.append(f)
 
-# print (set(files_to_upload))
+#print (set(files_to_upload))
 # print (set(experiments_and_controls))
 # print (set(biosamples_list))
-# print (set(donors_list))
+#print (set(donors_list))
  
 '''
  at this point we have the following:
@@ -219,6 +220,7 @@ for f in files_list:
 
 
 for donor_accession in set(donors_list):
+    print (donor_accession)
     URL = SERVER+donor_accession+"/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
     response_json_dict = response.json()
@@ -244,13 +246,12 @@ for experimental_accession in released_experiments:
     file_out = open("../experiments/" + experimental_accession+"_modified.json", "w")
     file_out.write((json.dumps(ExperimentBoiler.boildown_experiment(response_json_dict), indent=4, sort_keys=True)))
     file_out.close()
-'''
+
 print ('FINISHED EXPERIMENTS')
 
-'''
 file_of_files = open('NEW_FILES_TO_UPLOAD', 'w')
 for file_accession in set(files_to_upload):
-    up_creds = encoded_get(SERVER+'/files/'+acc+'/@@upload', keypair)
+    up_creds = encoded_get(SERVER+'/files/'+file_accession+'/@@upload', keypair)
     s3_path_url = up_creds['@graph'][0]['upload_credentials']['upload_url']
     file_of_files.write('/s3'+s3_path_url[4:]+'\n')
 file_of_files.close()
