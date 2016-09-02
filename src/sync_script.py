@@ -120,11 +120,11 @@ AUTHPW = keypair[1]
 submittedExperiments = set()
 for filename in glob.glob('../experiments/*.json'):
     submittedExperiments.add(filename.split('/')[2].split('_')[0])
-
+'''
 e3 =0
 other =0
 m = 0
-f = open('e3_submitted_to_geo.tsv',"w")
+f_e3 = open('e3_submitted_to_geo.tsv',"w")
 x = open('not_e3_submitted_to_geo.tsv',"w")
 
 for experiment in submittedExperiments:
@@ -133,7 +133,7 @@ for experiment in submittedExperiments:
     experiment_o = response.json()
     if experiment_o['award']['rfa']=='ENCODE3':
         e3 += 1
-        f.write(experiment + "\t" + str(experiment_o['dbxrefs']) + '\t' +experiment_o['award']['rfa'] + '\n')
+        f_e3.write(experiment + "\t" + str(experiment_o['dbxrefs']) + '\t' +experiment_o['award']['rfa'] + '\n')
     else:
         other += 1
         x.write(experiment + "\t" + str(experiment_o['dbxrefs']) + '\t' + experiment_o['award']['rfa']+ '\n')
@@ -142,10 +142,11 @@ for experiment in submittedExperiments:
         print ('processed ' + str(m))
 
 print ('E3 = ' + str(e3) + '  other = ' + str(other))
-f.close()
+f_e3.close()
 x.close()
-
 '''
+print ('There are ' + str(len(submittedExperiments)) + ' experiments')
+
 # phase 2 - go over the experiments submitted so far and create a set of biosamples and donors 
 controls_list = []
 biosamples_list = []
@@ -154,18 +155,32 @@ for experiment in submittedExperiments:
     mone += 1
     URL = SERVER + experiment + "/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
-    experiment = response.json()
+    experiment_o = response.json()
     print (str(mone) + ' Inspecting Experiment ')  # + str(experiment))
-    controls_list.extend(extract_controls(experiment))
-    biosamples_list.extend(extract_biosamples(experiment))
-    if mone > 5:
-        break
+    if experiment_o['status'] == 'released':
+        controls_list.extend(extract_controls(experiment_o))
+        biosamples_list.extend(extract_biosamples(experiment_o))
+    #if mone > 5:
+    #    break
+
+for experiment in set(controls_list):
+    mone += 1
+    URL = SERVER + experiment + "/?frame=embedded&format=json"
+    response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
+    experiment_o = response.json()
+    print (str(mone) + ' Inspecting Control Experiment ')  # + str(experiment))
+    if experiment_o['status'] == 'released':
+        biosamples_list.extend(extract_biosamples(experiment_o))
+    #if mone > 5:
+    #    break
+
 
 biosample_objects = []
 mone = 0
 for biosample in biosamples_list:
     mone += 1
     accession_number = biosample
+    #print ('biosample accession' + accession_number)
     URL = SERVER+accession_number+"/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
     biosample_object = response.json()
@@ -183,18 +198,30 @@ files_list = []
 mone = 0
 
 experiments_and_controls = submittedExperiments | set(controls_list)
+released_experiments = set()
 for experiment in experiments_and_controls:
     mone += 1
-    URL = SERVER + "search/?type=File&dataset=/experiments/" + experiment + \
-          "/&file_format=fastq&format=json&frame=object"
+    print str(mone) + ' Inspecting Experiment ' + str(experiment)
+    URL = SERVER + experiment + "/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
-    all_experiment_fastqs = response.json()
-    experimental_fastqs = [f for f in all_experiment_fastqs['@graph'] if f['status'] not in ['deleted', 'revoked', 'replaced', 'upload failed', 'format check failed', 'archived']]
-    for fastq_file in experimental_fastqs:
-        acc = fastq_file['accession']
-        files_list.append(acc)
-    if mone > 5:
-        break
+    experiment_o = response.json()
+    if experiment_o['status'] == 'released':
+        released_experiments.add(experiment_o['accession'])
+        mone += 1
+        URL = SERVER + "search/?type=File&dataset=/experiments/" + experiment + \
+            "/&file_format=fastq&format=json&frame=object"
+        response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
+        all_experiment_fastqs = response.json()
+        experimental_fastqs = [f for f in all_experiment_fastqs[
+            '@graph'] if f['status'] not in [
+            'deleted', 'revoked', 'replaced',
+            'upload failed', 'format check failed',
+            'archived']]
+        for fastq_file in experimental_fastqs:
+            acc = fastq_file['accession']
+            files_list.append(acc)
+        #if mone > 5:
+        #    break
 
 files_to_upload = []
 mone = 0
@@ -206,15 +233,17 @@ for f in files_list:
     if 'dbxrefs' not in file_object or len(file_object['dbxrefs']) == 0:
         files_to_upload.append(f)
     else:
+        sra_flag = False
         for entry in file_object['dbxrefs']:
             if entry.startswith('SRA:') is True:
-                continue
-        files_to_upload.append(f)
-'''
-# print (set(files_to_upload))
+                sra_flag = True
+        if sra_flag is False:
+            files_to_upload.append(f)
+
+#print (set(files_to_upload))
 # print (set(experiments_and_controls))
 # print (set(biosamples_list))
-# print (set(donors_list))
+#print (set(donors_list))
  
 '''
  at this point we have the following:
@@ -224,8 +253,9 @@ for f in files_list:
  (3) files_to_upload - a list of file accessions that need to be uploaded to SRA
 '''
 
-'''
+
 for donor_accession in set(donors_list):
+    print (donor_accession)
     URL = SERVER+donor_accession+"/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
     response_json_dict = response.json()
@@ -235,6 +265,7 @@ for donor_accession in set(donors_list):
 print ('FINISHED DONORS')
 
 for biosample_accession in set(biosamples_list):
+    print (biosample_accession)
     URL = SERVER+biosample_accession+"/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
     response_json_dict = response.json()
@@ -244,22 +275,25 @@ for biosample_accession in set(biosamples_list):
 print ('FINISHED BIOSAMPLES')
 
 
-for experimental_accession in experiments_and_controls:
+print ('STARTING EXPERIMENTS')
+for experimental_accession in released_experiments:
+    print (experimental_accession)
     URL = SERVER+experimental_accession+"/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
     response_json_dict = response.json()
     file_out = open("../experiments/" + experimental_accession+"_modified.json", "w")
     file_out.write((json.dumps(ExperimentBoiler.boildown_experiment(response_json_dict), indent=4, sort_keys=True)))
     file_out.close()
-'''
+
 print ('FINISHED EXPERIMENTS')
 
-'''
+
+print ('STARTING FILES')
 file_of_files = open('NEW_FILES_TO_UPLOAD', 'w')
 for file_accession in set(files_to_upload):
-    up_creds = encoded_get(SERVER+'/files/'+acc+'/@@upload', keypair)
+    up_creds = encoded_get(SERVER+'/files/'+file_accession+'/@@upload', keypair)
     s3_path_url = up_creds['@graph'][0]['upload_credentials']['upload_url']
     file_of_files.write('/s3'+s3_path_url[4:]+'\n')
 file_of_files.close()
-'''
+
 print ('FINISHED FILES')
