@@ -35,6 +35,8 @@ def minimise_references(references_list, donor_flag):
 
 def minimise_document(document_object, donor_flag):
     document_dictionary = {}
+    if 'document_type' in document_object:
+        document_dictionary['document_type'] = document_object['document_type']
     if 'attachment' in document_object:
         document_dictionary['attachment']=minimise_attachment(document_object['attachment'], donor_flag, document_object['@id'])
     if 'urls' in document_object:

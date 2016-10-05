@@ -1,3 +1,4 @@
+import glob
 import requests
 import json
 import ExperimentBoiler
@@ -13,8 +14,7 @@ GET_HEADERS = {'accept': 'application/json'}
 POST_HEADERS = {'accept': 'application/json',
                 'Content-Type': 'application/json'}
 #SERVER = "https://test.encodedcc.org/"
-SERVER = "https://v46rc1.demo.encodedcc.org/"
-
+SERVER = "https://www.encodeproject.org/"
 
 def encoded_get(url, keypair=None, frame='object', return_response=False):
     url_obj = urlparse.urlsplit(url)
@@ -106,13 +106,13 @@ AUTHPW = keypair[1]
 # phase 1 - collect all experiments submitted so far.
 
 submittedExperiments = set()
-exp_f = open('09012016_epirr_expriments.list', 'r')
+exp_f = open('09022016_epirr_expriments.list', 'r')
 #exp_f = open("try_exp_list", "r")
 for l in exp_f:
     submittedExperiments.add(l.strip())
 exp_f.close()
 
-print ('There are ' + str(len(submittedExperiments)) + ' experiements')
+print ('There are ' + str(len(submittedExperiments)) + ' experiments')
 
 # phase 2 - go over the experiments submitted so far and create a set of biosamples and donors 
 controls_list = []
@@ -167,6 +167,8 @@ mone = 0
 experiments_and_controls = submittedExperiments | set(controls_list)
 released_experiments = set()
 for experiment in experiments_and_controls:
+    mone += 1
+    print str(mone) + ' Inspecting Experiment ' + str(experiment)
     URL = SERVER + experiment + "/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
     experiment_o = response.json()
@@ -230,6 +232,7 @@ for donor_accession in set(donors_list):
 print ('FINISHED DONORS')
 
 for biosample_accession in set(biosamples_list):
+    print (biosample_accession)
     URL = SERVER+biosample_accession+"/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
     response_json_dict = response.json()
@@ -239,7 +242,9 @@ for biosample_accession in set(biosamples_list):
 print ('FINISHED BIOSAMPLES')
 
 
+print ('STARTING EXPERIMENTS')
 for experimental_accession in released_experiments:
+    print (experimental_accession)
     URL = SERVER+experimental_accession+"/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
     response_json_dict = response.json()
@@ -249,7 +254,9 @@ for experimental_accession in released_experiments:
 
 print ('FINISHED EXPERIMENTS')
 
-file_of_files = open('NEW_FILES_TO_UPLOAD', 'w')
+
+print ('STARTING FILES')
+file_of_files = open('NEW_FILES_SUBMISSION_TO_UPLOAD', 'w')
 for file_accession in set(files_to_upload):
     up_creds = encoded_get(SERVER+'/files/'+file_accession+'/@@upload', keypair)
     s3_path_url = up_creds['@graph'][0]['upload_credentials']['upload_url']
