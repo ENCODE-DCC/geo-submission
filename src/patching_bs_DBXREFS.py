@@ -66,12 +66,12 @@ keypair = getKeyPair('keypairs.json', 'test')
 AUTHID = keypair[0]
 AUTHPW = keypair[1]
 
-table_f = open('epirr.bs.do.list','r')
+table_f = open('biosamples.10.2016.list', 'r')
 for l in table_f:
     arr = l.strip().split()
 
     print (arr[0]+'\t'+arr[1])
-    f = get_ENCODE(arr[0])
+    f = get_ENCODE(arr[1])
     #print f['dbxrefs']
     if 'dbxrefs' in f:
         old_dbxrefs = f['dbxrefs']
@@ -80,12 +80,12 @@ for l in table_f:
     new_list = old_dbxrefs
     #print (new_list)
 
-    new_list.append('GEO:'+arr[1])
+    new_list.append('GEO:'+arr[0])
     #print (new_list)
     
     patch_input = {"dbxrefs": new_list}
     #print (patch_input)
-    patch_ENCODE(arr[0], patch_input)
+    patch_ENCODE(arr[1], patch_input)
     
 
 table_f.close()

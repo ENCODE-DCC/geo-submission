@@ -1,5 +1,5 @@
-f = open('temp.files.list', 'r')
-m = open('files.epirr.9.2016.list', 'w')
+f = open('intermediate_files.list', 'r')
+m = open('files.10.2016.list', 'w')
 for l in f:
     # print ('line: ' + l)
     arr = l.strip().split()
