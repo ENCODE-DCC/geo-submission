@@ -67,12 +67,12 @@ AUTHID = keypair[0]
 AUTHPW = keypair[1]
 
 mone = 0
-table_f = open('experiments.epirr.9.2016.list','r')
+table_f = open('experiments.10.2016.list', 'r')
 for l in table_f:
     mone += 1
     arr = l.strip().split()
 
-    print (str(mone) +'\t'+arr[1]+'\t'+arr[0])
+    print (str(mone) + '\t'+arr[1]+'\t'+arr[0])
     f = get_ENCODE(arr[1])
     #print f['dbxrefs']
     if 'dbxrefs' in f:

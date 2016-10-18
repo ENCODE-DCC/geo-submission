@@ -66,7 +66,7 @@ AUTHPW = keypair[1]
 
 
 
-table_f = open('files.epirr.9.2016.list','r')
+table_f = open('files.10.2016.list', 'r')
 for l in table_f:
     arr = l.strip().split()
 
