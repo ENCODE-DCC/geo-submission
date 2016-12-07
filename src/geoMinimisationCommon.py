@@ -82,7 +82,7 @@ def minimise_protocol_documents(documents_list, donor_flag):
 def minimize_characterizations(characterizations_list, donor_flag):
     list_to_return = []
     for entry in characterizations_list:
-        list_to_return.append(minimise_characterization(entry, donor_flag))
+        list_to_return.append(minimize_characterization(entry, donor_flag))
     return list_to_return
 
 def minimize_characterization(characterization_object, donor_flag):
