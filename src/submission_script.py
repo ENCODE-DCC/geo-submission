@@ -106,7 +106,9 @@ AUTHPW = keypair[1]
 # phase 1 - collect all experiments submitted so far.
 
 submittedExperiments = set()
+
 exp_f = open('12072016_submission', 'r')
+
 #exp_f = open("try_exp_list", "r")
 for l in exp_f:
     submittedExperiments.add(l.strip())
