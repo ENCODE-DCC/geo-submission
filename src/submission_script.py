@@ -107,6 +107,7 @@ AUTHPW = keypair[1]
 
 submittedExperiments = set()
 exp_f = open('reddy_12_2016.list', 'r')
+
 #exp_f = open("try_exp_list", "r")
 for l in exp_f:
     submittedExperiments.add(l.strip())
