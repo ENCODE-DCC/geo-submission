@@ -106,7 +106,7 @@ AUTHPW = keypair[1]
 # phase 1 - collect all experiments submitted so far.
 
 submittedExperiments = set()
-exp_f = open('11182016_dnase_expriments.list', 'r')
+exp_f = open('12072016_GGR_experiments', 'r')
 #exp_f = open("try_exp_list", "r")
 for l in exp_f:
     submittedExperiments.add(l.strip())
