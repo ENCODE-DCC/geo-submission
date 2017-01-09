@@ -5,7 +5,7 @@ Common functions for GEO Minimization of the JSON objects
 def minimise_organism(organism_object, donor_flag):
     # object in donor and in biosample
     return organism_object['scientific_name']
-	
+
 def minimise_award(award_object, donor_flag):
     # object in biosample, string in donor
     if donor_flag==True:
@@ -42,7 +42,7 @@ def minimise_document(document_object, donor_flag):
     if 'urls' in document_object:
         document_dictionary['urls']=document_object['urls']
     if 'references' in document_object:
-        document_dictionary['references'] = minimise_references(document_object['references'], donor_flag)
+        document_dictionary['references'] = document_object['references']
     return document_dictionary
 
 def minimise_attachment(attachment_dict, donor_flag, attachment_id):
@@ -67,7 +67,12 @@ def minimise_constructs(constructs_list, donor_flag):
 def minimise_construct(construct_object, donor_flag):
     construct_dictionary = {}
     for key in construct_object.keys():
-        if key in construct_interesting_values:
+        if key in [
+            "construct_type",
+            "source",
+            "product_id",
+            "url"
+        ]:
             construct_dictionary[key]=construct_object[key]
         if key == 'target':
             if is_control_target(construct_object[key]) == False:

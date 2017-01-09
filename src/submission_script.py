@@ -107,7 +107,7 @@ AUTHPW = keypair[1]
 
 submittedExperiments = set()
 
-exp_f = open('12072016_submission', 'r')
+exp_f = open('246.list', 'r')
 
 #exp_f = open("try_exp_list", "r")
 for l in exp_f:
@@ -238,7 +238,7 @@ for biosample_accession in set(biosamples_list):
     URL = SERVER+biosample_accession+"/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
     response_json_dict = response.json()
-    file_out = open("../biosamples/" + biosample_accession+"_modified.json", "w")        
+    file_out = open("../biosamples/" + biosample_accession+"_modified.json", "w")
     file_out.write((json.dumps(geoBiosampleMinimiser.minimise_biosample(response_json_dict), indent=4, sort_keys=True)))
     file_out.close()
 print ('FINISHED BIOSAMPLES')
@@ -258,7 +258,7 @@ print ('FINISHED EXPERIMENTS')
 
 
 print ('STARTING FILES')
-file_of_files = open('NEW_FILES_DECEMBER_SUBMISSION_TO_UPLOAD', 'w')
+file_of_files = open('NEW_FILES_246_SUBMISSION_TO_UPLOAD', 'w')
 for file_accession in set(files_to_upload):
     up_creds = encoded_get(SERVER+'/files/'+file_accession+'/@@upload', keypair)
     s3_path_url = up_creds['@graph'][0]['upload_credentials']['upload_url']
