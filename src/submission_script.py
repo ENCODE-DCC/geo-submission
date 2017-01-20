@@ -107,7 +107,7 @@ AUTHPW = keypair[1]
 
 submittedExperiments = set()
 
-exp_f = open('12072016_submission', 'r')
+exp_f = open('01192017_GGR.list', 'r')
 
 #exp_f = open("try_exp_list", "r")
 for l in exp_f:
@@ -258,7 +258,7 @@ print ('FINISHED EXPERIMENTS')
 
 
 print ('STARTING FILES')
-file_of_files = open('NEW_FILES_DECEMBER_SUBMISSION_TO_UPLOAD', 'w')
+file_of_files = open('NEW_FILES_JANUARY_GGR_SUBMISSION_TO_UPLOAD', 'w')
 for file_accession in set(files_to_upload):
     up_creds = encoded_get(SERVER+'/files/'+file_accession+'/@@upload', keypair)
     s3_path_url = up_creds['@graph'][0]['upload_credentials']['upload_url']
