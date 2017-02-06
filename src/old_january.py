@@ -7,17 +7,6 @@ POST_HEADERS = {'accept': 'application/json', 'Content-Type': 'application/json'
 SERVER = "https://www.encodeproject.org/"
 DEBUG_ON = False
 
-def getKeyPair(path_to_key_pair_file, server_name):
-    keysf = open(path_to_key_pair_file, 'r')
-    keys_json_string = keysf.read()
-    keysf.close()
-    keys = json.loads(keys_json_string)
-    key_dict = keys[server_name]
-    AUTHID = key_dict['key']
-    AUTHPW = key_dict['secret']
-    return (AUTHID, AUTHPW)
-
-
 def get_ENCODE(obj_id):
 	'''GET an ENCODE object as JSON and return as dict
 	'''
@@ -61,6 +50,15 @@ def patch_ENCODE(obj_id, patch_input):
     return response.json()
 
 
+def getKeyPair(path_to_key_pair_file, server_name):
+    keysf = open(path_to_key_pair_file, 'r')
+    keys_json_string = keysf.read()
+    keysf.close()
+    keys = json.loads(keys_json_string)
+    key_dict = keys[server_name]
+    AUTHID = key_dict['key']
+    AUTHPW = key_dict['secret']
+    return (AUTHID, AUTHPW)
 
 
 keypair = getKeyPair('keypairs.json', 'test')
@@ -69,38 +67,12 @@ AUTHID = keypair[0]
 AUTHPW = keypair[1]
 
 mone = 0
-table_f = open('obsolete_list.list', 'r')
+table_f = open('old_january.list', 'r')
 for l in table_f:
-    # print (l)
-    arr = l.strip().split()
-    acc = arr[0]
-    dbxrefs_to_update = arr[1:]
-    print (acc + '\t' + str(dbxrefs_to_update))
-
-    ex = get_ENCODE(acc)
-    if 'dbxrefs' in ex:
-        old_dbxrefs = ex['dbxrefs']
-    else:
-        old_dbxrefs = []
-    new_dbxrefs = []
-    for entry in old_dbxrefs:
-        if entry not in dbxrefs_to_update:
-            new_dbxrefs.append(entry)
-        else:
-            new_dbxrefs.append('GEO-obsolete' + entry[3:])
-    print (new_dbxrefs)
-    patch_input = {"dbxrefs": new_dbxrefs}    
-    patch_ENCODE(acc, patch_input)
-    #new_list = old_dbxrefs
-    #print (new_list)
-
-    #new_list.append('GEO:'+arr[0])
-    #print (new_list)
-    '''
     mone += 1
     arr = l.strip().split()
 
-    print (str(mone) +'\t'+arr[1]+'\t'+arr[0])
+    #print (str(mone) + '\t'+arr[1]+'\t'+arr[0])
     f = get_ENCODE(arr[1])
     #print f['dbxrefs']
     if 'dbxrefs' in f:
@@ -110,13 +82,36 @@ for l in table_f:
     new_list = old_dbxrefs
     #print (new_list)
 
+
+    old_id_list = []
+    for entry in new_list:
+        if entry.startswith('GEO:') and entry != 'GEO:' + arr[0]:
+            old_id_list.append(entry[4:])
+            print (arr[1] + '\t' + entry[4:] + '\t' + arr[0])
+
+     
     new_list.append('GEO:'+arr[0])
     #print (new_list)
+
     
     patch_input = {"dbxrefs": new_list}
     #print (patch_input)
     
-    patch_ENCODE(arr[1], patch_input)
-    '''
+    #patch_ENCODE(arr[1], patch_input)
+    
 
 table_f.close()
+'''
+
+for key in noams_dict:
+    acc = key.split('/')[2]
+    alias = noams_dict[key]
+    #print (acc + '\t' + alias)
+    f = get_ENCODE(acc)
+    old_aliases = f['aliases']
+    new_list = old_aliases
+    new_list.append(alias)
+    patch_input = {"aliases": new_list}
+    print patch_input
+    patch_ENCODE(acc, patch_input)
+'''
