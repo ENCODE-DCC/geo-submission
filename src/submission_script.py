@@ -109,6 +109,7 @@ submittedExperiments = set()
 
 exp_f = open('246.list', 'r')
 
+
 #exp_f = open("try_exp_list", "r")
 for l in exp_f:
     submittedExperiments.add(l.strip())
@@ -259,6 +260,7 @@ print ('FINISHED EXPERIMENTS')
 
 print ('STARTING FILES')
 file_of_files = open('NEW_FILES_246_SUBMISSION_TO_UPLOAD', 'w')
+
 for file_accession in set(files_to_upload):
     up_creds = encoded_get(SERVER+'/files/'+file_accession+'/@@upload', keypair)
     s3_path_url = up_creds['@graph'][0]['upload_credentials']['upload_url']
