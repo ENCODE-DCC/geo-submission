@@ -67,12 +67,12 @@ AUTHID = keypair[0]
 AUTHPW = keypair[1]
 
 mone = 0
-table_f = open('experiments.10.2016.list', 'r')
+table_f = open('experiments.2.3.17', 'r')
 for l in table_f:
     mone += 1
     arr = l.strip().split()
 
-    print (str(mone) + '\t'+arr[1]+'\t'+arr[0])
+    #print (str(mone) + '\t'+arr[1]+'\t'+arr[0])
     f = get_ENCODE(arr[1])
     #print f['dbxrefs']
     if 'dbxrefs' in f:
@@ -80,13 +80,22 @@ for l in table_f:
     else:
         old_dbxrefs = []
     new_list = old_dbxrefs
-    #print (new_list)
+    print (new_list)
 
+
+    '''old_id_list = []
+    for entry in new_list:
+        if entry.startswith('GEO:'):
+            old_id_list.append(entry[4:])
+            print (arr[1] + '\t' + entry[4:] + '\t' + arr[0])
+    '''
+     
     new_list.append('GEO:'+arr[0])
-    #print (new_list)
+    print (new_list)
+
     
     patch_input = {"dbxrefs": new_list}
-    #print (patch_input)
+    print (patch_input)
     
     patch_ENCODE(arr[1], patch_input)
     
