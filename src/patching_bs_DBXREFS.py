@@ -66,7 +66,7 @@ keypair = getKeyPair('keypairs.json', 'test')
 AUTHID = keypair[0]
 AUTHPW = keypair[1]
 
-table_f = open('biosamples.10.2016.list', 'r')
+table_f = open('biosamples.2.3.17', 'r')
 for l in table_f:
     arr = l.strip().split()
 
@@ -84,7 +84,7 @@ for l in table_f:
     #print (new_list)
     
     patch_input = {"dbxrefs": new_list}
-    #print (patch_input)
+    print (patch_input)
     patch_ENCODE(arr[1], patch_input)
     
 

@@ -69,7 +69,7 @@ AUTHID = keypair[0]
 AUTHPW = keypair[1]
 
 mone = 0
-table_f = open('42_experiments.txt', 'r')
+table_f = open('obsolete_list.list', 'r')
 for l in table_f:
     # print (l)
     arr = l.strip().split()
