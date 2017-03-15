@@ -215,7 +215,7 @@ for experiment in experiments_and_controls:
         experimental_fastqs = [f for f in all_experiment_fastqs[
             '@graph'] if f['status'] not in [
             'deleted', 'revoked', 'replaced',
-            'upload failed', 'format check failed',
+            'upload failed', 'format check failed', 'content error',
             'archived']]
         for fastq_file in experimental_fastqs:
             acc = fastq_file['accession']
@@ -289,7 +289,7 @@ print ('FINISHED EXPERIMENTS')
 
 
 print ('STARTING FILES')
-file_of_files = open('NEW_FILES_TO_UPLOAD', 'w')
+file_of_files = open('NEW_SYNC_03_2017_FILES_TO_UPLOAD', 'w')
 for file_accession in set(files_to_upload):
     up_creds = encoded_get(SERVER+'/files/'+file_accession+'/@@upload', keypair)
     s3_path_url = up_creds['@graph'][0]['upload_credentials']['upload_url']

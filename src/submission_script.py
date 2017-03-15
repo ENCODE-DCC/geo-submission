@@ -186,7 +186,7 @@ for experiment in experiments_and_controls:
         experimental_fastqs = [f for f in all_experiment_fastqs[
             '@graph'] if f['status'] not in [
             'deleted', 'revoked', 'replaced',
-            'upload failed', 'format check failed',
+            'upload failed', 'format check failed', 'content error',
             'archived']]
         for fastq_file in experimental_fastqs:
             acc = fastq_file['accession']
