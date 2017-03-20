@@ -8,13 +8,16 @@
     "biosample_term_name": "H1-hESC", 
     "biosample_type": "stem cell", 
     "date_released": "2015-10-13", 
-    "dbxrefs": [], 
+    "dbxrefs": [
+        "GEO:GSE80911"
+    ], 
     "description": "HAIB Whole Genome Bisulfite Sequencing H1-hESC", 
     "documents": [
         {
             "attachment": {
                 "href": "/documents/6e461240-5af7-462c-843f-3dae804f957a/@@download/attachment/HAIB_Myers_WGBSprotocol_2014-10-30.pdf"
             }, 
+            "document_type": "growth protocol", 
             "references": {}, 
             "urls": []
         }
@@ -22,6 +25,7 @@
     "files": [
         {
             "accession": "ENCFF800KIP", 
+            "alternate_accessions": [], 
             "content_md5sum": "b07398d2c24cf1f3cdfee92f2976dc15", 
             "file_format": "fastq", 
             "file_size": 37112926184, 
@@ -30,6 +34,8 @@
             "md5sum": "b333f51b0e4d7f625ccf1c558cbedb8a", 
             "output_category": "raw data", 
             "output_type": "reads", 
+            "paired_end": "2", 
+            "paired_with": "ENCFF677BSB", 
             "platform": {
                 "dbxrefs": [
                     "GEO:GPL20795"
@@ -42,10 +48,12 @@
                 "biological_replicate_number": 1, 
                 "technical_replicate_number": 1
             }, 
-            "run_type": "paired-ended"
+            "run_type": "paired-ended", 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF677BSB", 
+            "alternate_accessions": [], 
             "content_md5sum": "1c6f8fce82ffe431bde5cca366378702", 
             "file_format": "fastq", 
             "file_size": 31100660147, 
@@ -54,6 +62,8 @@
             "md5sum": "ee9c5c81cd5c89f7c82b1b49ff3f2f55", 
             "output_category": "raw data", 
             "output_type": "reads", 
+            "paired_end": "1", 
+            "paired_with": "ENCFF800KIP", 
             "platform": {
                 "dbxrefs": [
                     "GEO:GPL20795"
@@ -66,10 +76,12 @@
                 "biological_replicate_number": 1, 
                 "technical_replicate_number": 1
             }, 
-            "run_type": "paired-ended"
+            "run_type": "paired-ended", 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF335TUD", 
+            "alternate_accessions": [], 
             "content_md5sum": "cd87643d93937ec29f06b5ea065f6b42", 
             "file_format": "fastq", 
             "file_size": 45257903286, 
@@ -78,6 +90,8 @@
             "md5sum": "3128694a7d80797a250b3efd4e481b84", 
             "output_category": "raw data", 
             "output_type": "reads", 
+            "paired_end": "2", 
+            "paired_with": "ENCFF311PSV", 
             "platform": {
                 "dbxrefs": [
                     "GEO:GPL17021", 
@@ -91,10 +105,14 @@
                 "biological_replicate_number": 2, 
                 "technical_replicate_number": 1
             }, 
-            "run_type": "paired-ended"
+            "run_type": "paired-ended", 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF311PSV", 
+            "alternate_accessions": [
+                "ENCFF654VPI"
+            ], 
             "content_md5sum": "70d4ec4e755530b98e24458fc0225fcd", 
             "file_format": "fastq", 
             "file_size": 46876430324, 
@@ -103,6 +121,8 @@
             "md5sum": "63c817776694467c93b7eb6dfa8b980d", 
             "output_category": "raw data", 
             "output_type": "reads", 
+            "paired_end": "1", 
+            "paired_with": "ENCFF335TUD", 
             "platform": {
                 "dbxrefs": [
                     "GEO:GPL17021", 
@@ -116,17 +136,15 @@
                 "biological_replicate_number": 2, 
                 "technical_replicate_number": 1
             }, 
-            "run_type": "paired-ended"
+            "run_type": "paired-ended", 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF857QML", 
+            "alternate_accessions": [], 
             "assembly": "GRCh38", 
             "content_md5sum": "af9a70d26a51cfae32ad11c2b737d2bd", 
-            "derived_from": [
-                "ENCFF800KIP", 
-                "ENCFF677BSB", 
-                "ENCFF161MAN"
-            ], 
+            "derived_from": [], 
             "file_format": "bam", 
             "file_size": 83869497797, 
             "file_type": "bam", 
@@ -137,15 +155,14 @@
             "replicate": {
                 "biological_replicate_number": 1, 
                 "technical_replicate_number": 1
-            }
+            }, 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF839EJV", 
+            "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [
-                "ENCFF161MAN", 
-                "ENCFF857QML"
-            ], 
+            "derived_from": [], 
             "file_format": "bigBed", 
             "file_size": 10928465216, 
             "file_type": "bigBed bedMethyl", 
@@ -156,15 +173,14 @@
             "replicate": {
                 "biological_replicate_number": 1, 
                 "technical_replicate_number": 1
-            }
+            }, 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF770YJW", 
+            "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [
-                "ENCFF161MAN", 
-                "ENCFF857QML"
-            ], 
+            "derived_from": [], 
             "file_format": "bigWig", 
             "file_size": 5636593416, 
             "file_type": "bigWig", 
@@ -175,15 +191,14 @@
             "replicate": {
                 "biological_replicate_number": 1, 
                 "technical_replicate_number": 1
-            }
+            }, 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF333EXV", 
+            "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [
-                "ENCFF161MAN", 
-                "ENCFF857QML"
-            ], 
+            "derived_from": [], 
             "file_format": "bigBed", 
             "file_size": 1221653121, 
             "file_type": "bigBed bedMethyl", 
@@ -194,15 +209,14 @@
             "replicate": {
                 "biological_replicate_number": 1, 
                 "technical_replicate_number": 1
-            }
+            }, 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF824AFQ", 
+            "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [
-                "ENCFF161MAN", 
-                "ENCFF546TLK"
-            ], 
+            "derived_from": [], 
             "file_format": "bigBed", 
             "file_size": 11896963510, 
             "file_type": "bigBed bedMethyl", 
@@ -213,16 +227,15 @@
             "replicate": {
                 "biological_replicate_number": 2, 
                 "technical_replicate_number": 1
-            }
+            }, 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF601NBW", 
+            "alternate_accessions": [], 
             "assembly": "GRCh38", 
             "content_md5sum": "3095fc5e71ab5ccb790ac41e66efde56", 
-            "derived_from": [
-                "ENCFF161MAN", 
-                "ENCFF857QML"
-            ], 
+            "derived_from": [], 
             "file_format": "bed", 
             "file_size": 635265120, 
             "file_type": "bed bedMethyl", 
@@ -233,17 +246,15 @@
             "replicate": {
                 "biological_replicate_number": 1, 
                 "technical_replicate_number": 1
-            }
+            }, 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF546TLK", 
+            "alternate_accessions": [], 
             "assembly": "GRCh38", 
             "content_md5sum": "6719d4c7877221e6347f9cf0b7b24cc4", 
-            "derived_from": [
-                "ENCFF335TUD", 
-                "ENCFF311PSV", 
-                "ENCFF161MAN"
-            ], 
+            "derived_from": [], 
             "file_format": "bam", 
             "file_size": 140534843542, 
             "file_type": "bam", 
@@ -254,16 +265,15 @@
             "replicate": {
                 "biological_replicate_number": 2, 
                 "technical_replicate_number": 1
-            }
+            }, 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF379ZXG", 
+            "alternate_accessions": [], 
             "assembly": "GRCh38", 
             "content_md5sum": "a9db9620a82bf9897bfbae1016e4010b", 
-            "derived_from": [
-                "ENCFF161MAN", 
-                "ENCFF857QML"
-            ], 
+            "derived_from": [], 
             "file_format": "bed", 
             "file_size": 2652070680, 
             "file_type": "bed bedMethyl", 
@@ -274,16 +284,15 @@
             "replicate": {
                 "biological_replicate_number": 1, 
                 "technical_replicate_number": 1
-            }
+            }, 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF417VRB", 
+            "alternate_accessions": [], 
             "assembly": "GRCh38", 
             "content_md5sum": "12b1829b9f2a21bc5e8884a6f93eed13", 
-            "derived_from": [
-                "ENCFF161MAN", 
-                "ENCFF857QML"
-            ], 
+            "derived_from": [], 
             "file_format": "bed", 
             "file_size": 8259677856, 
             "file_type": "bed bedMethyl", 
@@ -294,15 +303,14 @@
             "replicate": {
                 "biological_replicate_number": 1, 
                 "technical_replicate_number": 1
-            }
+            }, 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF342MVZ", 
+            "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [
-                "ENCFF161MAN", 
-                "ENCFF857QML"
-            ], 
+            "derived_from": [], 
             "file_format": "bigBed", 
             "file_size": 4589359412, 
             "file_type": "bigBed bedMethyl", 
@@ -313,16 +321,15 @@
             "replicate": {
                 "biological_replicate_number": 1, 
                 "technical_replicate_number": 1
-            }
+            }, 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF524BMX", 
+            "alternate_accessions": [], 
             "assembly": "GRCh38", 
             "content_md5sum": "5254918f0e55e7d424f6f13cc3f3b71e", 
-            "derived_from": [
-                "ENCFF161MAN", 
-                "ENCFF546TLK"
-            ], 
+            "derived_from": [], 
             "file_format": "bed", 
             "file_size": 2788900169, 
             "file_type": "bed bedMethyl", 
@@ -333,15 +340,14 @@
             "replicate": {
                 "biological_replicate_number": 2, 
                 "technical_replicate_number": 1
-            }
+            }, 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF263KSB", 
+            "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [
-                "ENCFF161MAN", 
-                "ENCFF546TLK"
-            ], 
+            "derived_from": [], 
             "file_format": "bigWig", 
             "file_size": 8402728740, 
             "file_type": "bigWig", 
@@ -352,15 +358,14 @@
             "replicate": {
                 "biological_replicate_number": 2, 
                 "technical_replicate_number": 1
-            }
+            }, 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF674STC", 
+            "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [
-                "ENCFF161MAN", 
-                "ENCFF546TLK"
-            ], 
+            "derived_from": [], 
             "file_format": "bigBed", 
             "file_size": 4751295086, 
             "file_type": "bigBed bedMethyl", 
@@ -371,16 +376,15 @@
             "replicate": {
                 "biological_replicate_number": 2, 
                 "technical_replicate_number": 1
-            }
+            }, 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF086MMC", 
+            "alternate_accessions": [], 
             "assembly": "GRCh38", 
             "content_md5sum": "3db3682635c358a75085abc18cbd075c", 
-            "derived_from": [
-                "ENCFF161MAN", 
-                "ENCFF546TLK"
-            ], 
+            "derived_from": [], 
             "file_format": "bed", 
             "file_size": 8731316355, 
             "file_type": "bed bedMethyl", 
@@ -391,15 +395,14 @@
             "replicate": {
                 "biological_replicate_number": 2, 
                 "technical_replicate_number": 1
-            }
+            }, 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF721VEV", 
+            "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [
-                "ENCFF161MAN", 
-                "ENCFF546TLK"
-            ], 
+            "derived_from": [], 
             "file_format": "bigBed", 
             "file_size": 1261562922, 
             "file_type": "bigBed bedMethyl", 
@@ -410,16 +413,15 @@
             "replicate": {
                 "biological_replicate_number": 2, 
                 "technical_replicate_number": 1
-            }
+            }, 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF918PML", 
+            "alternate_accessions": [], 
             "assembly": "GRCh38", 
             "content_md5sum": "7cc4357acdcc0ee2e332ad07db5887a0", 
-            "derived_from": [
-                "ENCFF161MAN", 
-                "ENCFF546TLK"
-            ], 
+            "derived_from": [], 
             "file_format": "bed", 
             "file_size": 671592878, 
             "file_type": "bed bedMethyl", 
@@ -430,7 +432,8 @@
             "replicate": {
                 "biological_replicate_number": 2, 
                 "technical_replicate_number": 1
-            }
+            }, 
+            "status": "released"
         }
     ], 
     "lab": "Richard Myers, HAIB", 
@@ -442,7 +445,9 @@
             "library": {
                 "accession": "ENCLB098BGY", 
                 "biosample": "ENCBS111ENC", 
+                "documents": [], 
                 "fragmentation_method": "shearing (Covaris generic)", 
+                "nucleic_acid_term_name": "DNA", 
                 "spikeins_used": []
             }, 
             "technical_replicate_number": 1
@@ -452,7 +457,9 @@
             "library": {
                 "accession": "ENCLB167QQW", 
                 "biosample": "ENCBS345JIP", 
+                "documents": [], 
                 "fragmentation_method": "shearing (Covaris generic)", 
+                "nucleic_acid_term_name": "DNA", 
                 "spikeins_used": []
             }, 
             "technical_replicate_number": 1

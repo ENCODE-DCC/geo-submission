@@ -6,13 +6,17 @@
     "biosample_term_name": "limb", 
     "biosample_type": "tissue", 
     "date_released": "2015-11-03", 
-    "dbxrefs": [], 
+    "dbxrefs": [
+        "GEO:GSE82405"
+    ], 
     "description": "Control ChIP-seq on embryonic 15.5 day mouse limb", 
     "documents": [
         {
             "attachment": {
-                "href": "/documents/89795b31-e65a-42ca-9d7b-d75196f6f4b3/@@download/attachment/Ren_Chromatin_Immunoprecipitation.pdf"
+                "href": "/documents/89795b31-e65a-42ca-9d7b-d75196f6f4b3/@@download/attachment/Ren%20Lab%20ENCODE%20Chromatin%20Immunoprecipitation%20Protocol_V2.pdf", 
+                "md5sum": "/documents/89795b31-e65a-42ca-9d7b-d75196f6f4b3/324f64bc03c12844f67e2ba2b0143119"
             }, 
+            "document_type": "general protocol", 
             "references": {}, 
             "urls": []
         }, 
@@ -20,13 +24,16 @@
             "attachment": {
                 "href": "/documents/4f73fbc3-956e-47ae-aa2d-41a7df552c81/@@download/attachment/Ren_ChIP_Library_Preparation_v060614.pdf"
             }, 
+            "document_type": "general protocol", 
             "references": {}, 
             "urls": []
         }, 
         {
             "attachment": {
-                "href": "/documents/631aa21c-8e48-467e-8cac-d40c875b3913/@@download/attachment/Tissue_Excision_Protocols_112414.pdf"
+                "href": "/documents/631aa21c-8e48-467e-8cac-d40c875b3913/@@download/attachment/StandardTissueExcisionProtocol_02132017.pdf", 
+                "md5sum": "/documents/631aa21c-8e48-467e-8cac-d40c875b3913/ae718595b099b479cf47e89015a20380"
             }, 
+            "document_type": "excision protocol", 
             "references": {}, 
             "urls": []
         }
@@ -34,6 +41,9 @@
     "files": [
         {
             "accession": "ENCFF223XHF", 
+            "alternate_accessions": [
+                "/files/ENCFF235BGB/"
+            ], 
             "content_md5sum": "8509ace18506060e10e90e0a8d60d642", 
             "file_format": "fastq", 
             "file_size": 3100946159, 
@@ -44,9 +54,11 @@
             "output_type": "reads", 
             "platform": {
                 "dbxrefs": [
-                    "GEO:GPL21103"
+                    "UCSC-ENCODE-cv:Illumina_HiSeq_2000", 
+                    "GEO:GPL13112", 
+                    "GEO:GPL11154"
                 ], 
-                "term_name": "HiSeq 4000"
+                "term_name": "HiSeq 2000"
             }, 
             "read_length": 50, 
             "read_length_units": "nt", 
@@ -54,10 +66,14 @@
                 "biological_replicate_number": 1, 
                 "technical_replicate_number": 1
             }, 
-            "run_type": "single-ended"
+            "run_type": "single-ended", 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF835CWG", 
+            "alternate_accessions": [
+                "/files/ENCFF733GIA/"
+            ], 
             "content_md5sum": "ec55c407610d6cf0203fbe9c233b9333", 
             "file_format": "fastq", 
             "file_size": 2735034956, 
@@ -68,9 +84,10 @@
             "output_type": "reads", 
             "platform": {
                 "dbxrefs": [
-                    "GEO:GPL21103"
+                    "GEO:GPL17021", 
+                    "GEO:GPL16791"
                 ], 
-                "term_name": "HiSeq 4000"
+                "term_name": "HiSeq 2500"
             }, 
             "read_length": 50, 
             "read_length_units": "nt", 
@@ -78,42 +95,72 @@
                 "biological_replicate_number": 2, 
                 "technical_replicate_number": 1
             }, 
-            "run_type": "single-ended"
+            "run_type": "single-ended", 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF263OMS", 
+            "alternate_accessions": [], 
             "assembly": "mm10-minimal", 
             "content_md5sum": "1e9268e1b4cf95ec4b7a8c456516fdd8", 
-            "derived_from": [
-                "ENCFF806TVZ", 
-                "ENCFF223XHF"
-            ], 
+            "derived_from": [], 
             "file_format": "bam", 
             "file_size": 2596178757, 
             "file_type": "bam", 
             "href": "/files/ENCFF263OMS/@@download/ENCFF263OMS.bam", 
             "md5sum": "893199fbc0b3c001a5c92f101f2be4d2", 
             "output_category": "alignment", 
-            "output_type": "alignments"
+            "output_type": "alignments", 
+            "status": "archived"
         }, 
         {
             "accession": "ENCFF667WJC", 
+            "alternate_accessions": [], 
             "assembly": "mm10-minimal", 
             "content_md5sum": "3208c0fdf9097c28024a1728db179b6f", 
-            "derived_from": [
-                "ENCFF806TVZ", 
-                "ENCFF835CWG"
-            ], 
+            "derived_from": [], 
             "file_format": "bam", 
             "file_size": 2124555683, 
             "file_type": "bam", 
             "href": "/files/ENCFF667WJC/@@download/ENCFF667WJC.bam", 
             "md5sum": "0ff52260e1d8ba083987c443c258adab", 
             "output_category": "alignment", 
-            "output_type": "alignments"
+            "output_type": "alignments", 
+            "status": "archived"
+        }, 
+        {
+            "accession": "ENCFF293FQT", 
+            "alternate_accessions": [], 
+            "assembly": "mm10", 
+            "content_md5sum": "a510f5003774b939858a86d7940397f5", 
+            "derived_from": [], 
+            "file_format": "bam", 
+            "file_size": 3772907768, 
+            "file_type": "bam", 
+            "href": "/files/ENCFF293FQT/@@download/ENCFF293FQT.bam", 
+            "md5sum": "c7672e7816dc8ca352175f6c37e3e771", 
+            "output_category": "alignment", 
+            "output_type": "unfiltered alignments", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF031OYA", 
+            "alternate_accessions": [], 
+            "assembly": "mm10", 
+            "content_md5sum": "4f631ddab785ccc5a125e0ba9f2e77a9", 
+            "derived_from": [], 
+            "file_format": "bam", 
+            "file_size": 2595493157, 
+            "file_type": "bam", 
+            "href": "/files/ENCFF031OYA/@@download/ENCFF031OYA.bam", 
+            "md5sum": "96e01a9e46ff2f0afc11c262dbda171e", 
+            "output_category": "alignment", 
+            "output_type": "alignments", 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF448VOB", 
+            "alternate_accessions": [], 
             "content_md5sum": "4d0bee23730c4c300110a4e246b0788b", 
             "file_format": "fastq", 
             "file_size": 303892799, 
@@ -134,10 +181,12 @@
                 "biological_replicate_number": 2, 
                 "technical_replicate_number": 2
             }, 
-            "run_type": "single-ended"
+            "run_type": "single-ended", 
+            "status": "released"
         }, 
         {
             "accession": "ENCFF528TKO", 
+            "alternate_accessions": [], 
             "content_md5sum": "032930e9801d0759a8ad12b656b175a4", 
             "file_format": "fastq", 
             "file_size": 830365087, 
@@ -158,7 +207,42 @@
                 "biological_replicate_number": 2, 
                 "technical_replicate_number": 3
             }, 
-            "run_type": "single-ended"
+            "run_type": "single-ended", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF514GVM", 
+            "alternate_accessions": [
+                "ENCFF938PWS"
+            ], 
+            "assembly": "mm10", 
+            "content_md5sum": "f98538ea75de2d69bff2e2f56ae2bc28", 
+            "derived_from": [], 
+            "file_format": "bam", 
+            "file_size": 3291859273, 
+            "file_type": "bam", 
+            "href": "/files/ENCFF514GVM/@@download/ENCFF514GVM.bam", 
+            "md5sum": "7d360b14ac2692d1bcbb7ae14435d30a", 
+            "output_category": "alignment", 
+            "output_type": "alignments", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF326OAB", 
+            "alternate_accessions": [
+                "ENCFF618HRH"
+            ], 
+            "assembly": "mm10", 
+            "content_md5sum": "15b86ada9177c94c6897cc46b8070b78", 
+            "derived_from": [], 
+            "file_format": "bam", 
+            "file_size": 4975912951, 
+            "file_type": "bam", 
+            "href": "/files/ENCFF326OAB/@@download/ENCFF326OAB.bam", 
+            "md5sum": "d51ac8d4e8aa126f3ce4944ef99f1324", 
+            "output_category": "alignment", 
+            "output_type": "unfiltered alignments", 
+            "status": "released"
         }
     ], 
     "lab": "Bing Ren, UCSD", 
@@ -170,6 +254,7 @@
             "library": {
                 "accession": "ENCLB453VLG", 
                 "biosample": "ENCBS696JKV", 
+                "documents": [], 
                 "fragmentation_method": "sonication (generic)", 
                 "library_size_selection_method": "gel", 
                 "nucleic_acid_term_name": "DNA", 
@@ -183,6 +268,7 @@
             "library": {
                 "accession": "ENCLB895VRD", 
                 "biosample": "ENCBS735QNY", 
+                "documents": [], 
                 "fragmentation_method": "sonication (generic)", 
                 "library_size_selection_method": "gel", 
                 "nucleic_acid_term_name": "DNA", 
@@ -196,6 +282,7 @@
             "library": {
                 "accession": "ENCLB453VLG", 
                 "biosample": "ENCBS696JKV", 
+                "documents": [], 
                 "fragmentation_method": "sonication (generic)", 
                 "library_size_selection_method": "gel", 
                 "nucleic_acid_term_name": "DNA", 
@@ -209,6 +296,7 @@
             "library": {
                 "accession": "ENCLB453VLG", 
                 "biosample": "ENCBS696JKV", 
+                "documents": [], 
                 "fragmentation_method": "sonication (generic)", 
                 "library_size_selection_method": "gel", 
                 "nucleic_acid_term_name": "DNA", 

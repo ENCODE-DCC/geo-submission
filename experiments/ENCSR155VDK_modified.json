@@ -3,13 +3,15 @@
     "assay_term_name": "ChIP-seq", 
     "assay_title": "ChIP-seq", 
     "assembly": [
-        "GRCh38", 
-        "hg19"
+        "hg19", 
+        "GRCh38"
     ], 
     "biosample_term_name": "MCF-7", 
     "biosample_type": "immortalized cell line", 
     "date_released": "2016-04-25", 
-    "dbxrefs": [], 
+    "dbxrefs": [
+        "GEO:GSE95952"
+    ], 
     "description": "ChIP-Seq on MCF7-human", 
     "documents": [
         {
@@ -22,6 +24,34 @@
         }
     ], 
     "files": [
+        {
+            "accession": "ENCFF040XLF", 
+            "alternate_accessions": [], 
+            "content_md5sum": "036a2b1620148ab18fea62f8582f6550", 
+            "file_format": "fastq", 
+            "file_size": 1625724795, 
+            "file_type": "fastq", 
+            "href": "/files/ENCFF040XLF/@@download/ENCFF040XLF.fastq.gz", 
+            "md5sum": "9426b610617a37280ab893405384fd8b", 
+            "output_category": "raw data", 
+            "output_type": "reads", 
+            "platform": {
+                "dbxrefs": [
+                    "UCSC-ENCODE-cv:Illumina_HiSeq_2000", 
+                    "GEO:GPL13112", 
+                    "GEO:GPL11154"
+                ], 
+                "term_name": "HiSeq 2000"
+            }, 
+            "read_length": 50, 
+            "read_length_units": "nt", 
+            "replicate": {
+                "biological_replicate_number": 1, 
+                "technical_replicate_number": 1
+            }, 
+            "run_type": "single-ended", 
+            "status": "released"
+        }, 
         {
             "accession": "ENCFF300NGT", 
             "alternate_accessions": [], 
@@ -63,6 +93,7 @@
             "md5sum": "24690e671e00a0aedade454c7a4f4a6a", 
             "output_category": "alignment", 
             "output_type": "alignments", 
+            "read_length_units": "nt", 
             "status": "released"
         }, 
         {
@@ -78,6 +109,7 @@
             "md5sum": "ddc715907acfed09a1f86ead24a9a447", 
             "output_category": "alignment", 
             "output_type": "alignments", 
+            "read_length_units": "nt", 
             "status": "released"
         }, 
         {
@@ -106,20 +138,6 @@
             "md5sum": "481675e5d5f4d89f6c447bb29a63d1dc", 
             "output_category": "signal", 
             "output_type": "fold change over control", 
-            "status": "released"
-        }, 
-        {
-            "accession": "ENCFF536KVU", 
-            "alternate_accessions": [], 
-            "assembly": "hg19", 
-            "derived_from": [], 
-            "file_format": "bigBed", 
-            "file_size": 99316, 
-            "file_type": "bigBed narrowPeak", 
-            "href": "/files/ENCFF536KVU/@@download/ENCFF536KVU.bigBed", 
-            "md5sum": "f562559dc4ba84622117aedaeaefab55", 
-            "output_category": "annotation", 
-            "output_type": "optimal idr thresholded peaks", 
             "status": "released"
         }, 
         {
@@ -163,20 +181,6 @@
             "md5sum": "c67942e792139bb2bd77e52001bdd264", 
             "output_category": "annotation", 
             "output_type": "peaks", 
-            "status": "released"
-        }, 
-        {
-            "accession": "ENCFF671WIV", 
-            "alternate_accessions": [], 
-            "assembly": "hg19", 
-            "derived_from": [], 
-            "file_format": "bigBed", 
-            "file_size": 90735, 
-            "file_type": "bigBed narrowPeak", 
-            "href": "/files/ENCFF671WIV/@@download/ENCFF671WIV.bigBed", 
-            "md5sum": "912ae4c21a5a131b5d1bf2afcf26c0b0", 
-            "output_category": "annotation", 
-            "output_type": "conservative idr thresholded peaks", 
             "status": "released"
         }, 
         {
@@ -224,21 +228,6 @@
             "status": "released"
         }, 
         {
-            "accession": "ENCFF783USN", 
-            "alternate_accessions": [], 
-            "assembly": "hg19", 
-            "content_md5sum": "e6367d5c33d796458b896009de67c856", 
-            "derived_from": [], 
-            "file_format": "bed", 
-            "file_size": 36274, 
-            "file_type": "bed narrowPeak", 
-            "href": "/files/ENCFF783USN/@@download/ENCFF783USN.bed.gz", 
-            "md5sum": "bf1f1191708bb6c284b5acfebdfe461d", 
-            "output_category": "annotation", 
-            "output_type": "optimal idr thresholded peaks", 
-            "status": "released"
-        }, 
-        {
             "accession": "ENCFF793HHN", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
@@ -264,21 +253,6 @@
             "md5sum": "ba8653833ddac82686c82fe189f079ef", 
             "output_category": "annotation", 
             "output_type": "peaks", 
-            "status": "released"
-        }, 
-        {
-            "accession": "ENCFF699LNC", 
-            "alternate_accessions": [], 
-            "assembly": "hg19", 
-            "content_md5sum": "76f77205bca078460e50a030ac66a4ca", 
-            "derived_from": [], 
-            "file_format": "bed", 
-            "file_size": 29065, 
-            "file_type": "bed narrowPeak", 
-            "href": "/files/ENCFF699LNC/@@download/ENCFF699LNC.bed.gz", 
-            "md5sum": "2ed99aa1b1ef0c55d8a61ca6171e650f", 
-            "output_category": "annotation", 
-            "output_type": "conservative idr thresholded peaks", 
             "status": "released"
         }, 
         {
@@ -600,6 +574,64 @@
             "md5sum": "b92e0f00fd45ab5d33f75bac71e83f5a", 
             "output_category": "annotation", 
             "output_type": "peaks", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF007CUQ", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [], 
+            "file_format": "bigBed", 
+            "file_size": 131177, 
+            "file_type": "bigBed narrowPeak", 
+            "href": "/files/ENCFF007CUQ/@@download/ENCFF007CUQ.bigBed", 
+            "md5sum": "603d22e6d0b05fcaf0905bf3872abcd6", 
+            "output_category": "annotation", 
+            "output_type": "optimal idr thresholded peaks", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF903FEF", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [], 
+            "file_format": "bigBed", 
+            "file_size": 96871, 
+            "file_type": "bigBed narrowPeak", 
+            "href": "/files/ENCFF903FEF/@@download/ENCFF903FEF.bigBed", 
+            "md5sum": "3309907e6752e741fbc2eaa2bba5a489", 
+            "output_category": "annotation", 
+            "output_type": "conservative idr thresholded peaks", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF126PJF", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "content_md5sum": "3f37a327d24b3cb9c8cd0788d0947ba3", 
+            "derived_from": [], 
+            "file_format": "bed", 
+            "file_size": 42359, 
+            "file_type": "bed narrowPeak", 
+            "href": "/files/ENCFF126PJF/@@download/ENCFF126PJF.bed.gz", 
+            "md5sum": "1cbb892e070ba237950c699124a9f18a", 
+            "output_category": "annotation", 
+            "output_type": "optimal idr thresholded peaks", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF134TUC", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "content_md5sum": "fe664db1a08915ee5b1c72e066695c5c", 
+            "derived_from": [], 
+            "file_format": "bed", 
+            "file_size": 34013, 
+            "file_type": "bed narrowPeak", 
+            "href": "/files/ENCFF134TUC/@@download/ENCFF134TUC.bed.gz", 
+            "md5sum": "56dcf8f2ad8fea021dee459e11bd9489", 
+            "output_category": "annotation", 
+            "output_type": "conservative idr thresholded peaks", 
             "status": "released"
         }
     ], 

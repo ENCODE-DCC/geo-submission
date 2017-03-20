@@ -253,7 +253,7 @@ for f in files_list:
  (3) files_to_upload - a list of file accessions that need to be uploaded to SRA
 '''
 
-
+'''
 for donor_accession in set(donors_list):
     print (donor_accession)
     URL = SERVER+donor_accession+"/?frame=embedded&format=json"
@@ -274,7 +274,7 @@ for biosample_accession in set(biosamples_list):
     file_out.close()
 print ('FINISHED BIOSAMPLES')
 
-
+'''
 print ('STARTING EXPERIMENTS')
 for experimental_accession in released_experiments:
     print (experimental_accession)

@@ -191,19 +191,6 @@ def boildown_paired_with(paired_with_file):
     return paired_with_file.split('/')[2]
 
 
-def boildown_spikeins(spikeins_list):
-    listToReturn = []
-    for entry in spikeins_list:
-        listToReturn.append(boildown_spikein(entry))
-    return listToReturn
-
-def boildown_spikein(spikein_object):
-    spikein_dictionary = {}
-    for key in spikein_object.keys():
-        if key in spikein_simple_interesting_values:
-            spikein_dictionary[key]=spikein_object[key]
-    return spikein_dictionary
-
 def boildown_library(library_object):
     library_dictionary = {}
     for key in library_object.keys():
@@ -214,8 +201,9 @@ def boildown_library(library_object):
         if key=='biosample':
             library_dictionary[key]=library_object[key]['accession']
         if key == 'spikeins_used':
-            library_dictionary[key]=boildown_spikeins(library_object[key])
+            library_dictionary[key]=library_object[key]
     return library_dictionary
+
 
 def boildown_possible_controls(controls_list):
     listToReturn = []
@@ -273,7 +261,6 @@ function_dispatch = {
     'documents' : boildown_documents,
     'files': boildown_files,
     'replicates': boildown_replicates,
-    'spikeins_used': boildown_spikeins,
     'library': boildown_library,
     'possible_controls': boildown_possible_controls,
     'target': boildown_target
