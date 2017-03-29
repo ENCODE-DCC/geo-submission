@@ -3,13 +3,14 @@
     "assay_term_name": "eCLIP", 
     "assay_title": "eCLIP", 
     "assembly": [
-        "hg19", 
-        "GRCh38"
+        "GRCh38", 
+        "hg19"
     ], 
     "biosample_term_name": "HepG2", 
     "biosample_type": "immortalized cell line", 
     "date_released": "2016-04-26", 
     "dbxrefs": [
+        "RBPImage:DKC1", 
         "GEO:GSE91563"
     ], 
     "description": "eCLIP control experiment on HepG2 against DKC1", 
@@ -18,6 +19,9 @@
         {
             "accession": "ENCFF793DFG", 
             "alternate_accessions": [], 
+            "biological_replicates": [
+                1
+            ], 
             "content_md5sum": "d8e8fc8f9eb97b8c97b10d7eac1f58fd", 
             "file_format": "fastq", 
             "file_size": 1011373393, 
@@ -41,11 +45,17 @@
                 "technical_replicate_number": 1
             }, 
             "run_type": "paired-ended", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF734WRT", 
             "alternate_accessions": [], 
+            "biological_replicates": [
+                1
+            ], 
             "content_md5sum": "99428021bece5ad7a0816cf68894ba51", 
             "file_format": "fastq", 
             "file_size": 950116790, 
@@ -69,14 +79,23 @@
                 "technical_replicate_number": 1
             }, 
             "run_type": "paired-ended", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF973XJS", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
+            "biological_replicates": [
+                1
+            ], 
             "content_md5sum": "138f6b6731e3a0e75744fe21f3dd08f8", 
-            "derived_from": [], 
+            "derived_from": [
+                "ENCFF793DFG", 
+                "ENCFF734WRT"
+            ], 
             "file_format": "bam", 
             "file_size": 832058109, 
             "file_type": "bam", 
@@ -88,14 +107,23 @@
                 "biological_replicate_number": 1, 
                 "technical_replicate_number": 1
             }, 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF038LJH", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
+            "biological_replicates": [
+                1
+            ], 
             "content_md5sum": "b80093c5df5a5f2148102b0c79dc7b82", 
-            "derived_from": [], 
+            "derived_from": [
+                "ENCFF793DFG", 
+                "ENCFF734WRT"
+            ], 
             "file_format": "bam", 
             "file_size": 850271814, 
             "file_type": "bam", 
@@ -107,13 +135,21 @@
                 "biological_replicate_number": 1, 
                 "technical_replicate_number": 1
             }, 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF072TXJ", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1
+            ], 
+            "derived_from": [
+                "ENCFF973XJS"
+            ], 
             "file_format": "bigWig", 
             "file_size": 35339319, 
             "file_type": "bigWig", 
@@ -125,13 +161,21 @@
                 "biological_replicate_number": 1, 
                 "technical_replicate_number": 1
             }, 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF248PBA", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1
+            ], 
+            "derived_from": [
+                "ENCFF973XJS"
+            ], 
             "file_format": "bigWig", 
             "file_size": 36546118, 
             "file_type": "bigWig", 
@@ -143,13 +187,21 @@
                 "biological_replicate_number": 1, 
                 "technical_replicate_number": 1
             }, 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF742BDR", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1
+            ], 
+            "derived_from": [
+                "ENCFF038LJH"
+            ], 
             "file_format": "bigWig", 
             "file_size": 35981716, 
             "file_type": "bigWig", 
@@ -161,13 +213,21 @@
                 "biological_replicate_number": 1, 
                 "technical_replicate_number": 1
             }, 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF144DTF", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1
+            ], 
+            "derived_from": [
+                "ENCFF038LJH"
+            ], 
             "file_format": "bigWig", 
             "file_size": 37187367, 
             "file_type": "bigWig", 
@@ -179,7 +239,10 @@
                 "biological_replicate_number": 1, 
                 "technical_replicate_number": 1
             }, 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }
     ], 
     "lab": "Gene Yeo, UCSD", 

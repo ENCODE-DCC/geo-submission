@@ -3,8 +3,8 @@
     "assay_term_name": "ChIP-seq", 
     "assay_title": "ChIP-seq", 
     "assembly": [
-        "hg19", 
-        "GRCh38"
+        "GRCh38", 
+        "hg19"
     ], 
     "biosample_term_name": "GM12878", 
     "biosample_type": "immortalized cell line", 
@@ -27,6 +27,9 @@
         {
             "accession": "ENCFF002BFK", 
             "alternate_accessions": [], 
+            "biological_replicates": [
+                1
+            ], 
             "content_md5sum": "417f898f78803e75b6a1d78e05ffb3b1", 
             "file_format": "fastq", 
             "file_size": 1719435050, 
@@ -50,11 +53,17 @@
                 "technical_replicate_number": 1
             }, 
             "run_type": "single-ended", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF002BFL", 
             "alternate_accessions": [], 
+            "biological_replicates": [
+                2
+            ], 
             "content_md5sum": "3310fbdc308996af14a165c2a0935873", 
             "file_format": "fastq", 
             "file_size": 1718537202, 
@@ -78,14 +87,23 @@
                 "technical_replicate_number": 1
             }, 
             "run_type": "single-ended", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF209SJM", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
+            "biological_replicates": [
+                1
+            ], 
             "content_md5sum": "3a1778295d98862f8f4a4bca2dc11dd0", 
-            "derived_from": [], 
+            "derived_from": [
+                "ENCFF002BFK", 
+                "ENCFF807MUK"
+            ], 
             "file_format": "bam", 
             "file_size": 1317947874, 
             "file_type": "bam", 
@@ -94,14 +112,23 @@
             "output_category": "alignment", 
             "output_type": "alignments", 
             "read_length_units": "nt", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF901ETI", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
+            "biological_replicates": [
+                2
+            ], 
             "content_md5sum": "72005684fe1dff4c293cd2c1f7a0ad94", 
-            "derived_from": [], 
+            "derived_from": [
+                "ENCFF807MUK", 
+                "ENCFF002BFL"
+            ], 
             "file_format": "bam", 
             "file_size": 1296681228, 
             "file_type": "bam", 
@@ -110,13 +137,25 @@
             "output_category": "alignment", 
             "output_type": "alignments", 
             "read_length_units": "nt", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF762OJJ", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1, 
+                2
+            ], 
+            "derived_from": [
+                "ENCFF223KCT", 
+                "ENCFF859ZYD", 
+                "ENCFF209SJM", 
+                "ENCFF901ETI"
+            ], 
             "file_format": "bigWig", 
             "file_size": 1124519793, 
             "file_type": "bigWig", 
@@ -124,14 +163,27 @@
             "md5sum": "24d3daac5df34fc607c697f4a8a81f8e", 
             "output_category": "signal", 
             "output_type": "signal p-value", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1", 
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF496IEH", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
+            "biological_replicates": [
+                1, 
+                2
+            ], 
             "content_md5sum": "474e2597d81d8802eb40596bbd0b50b2", 
-            "derived_from": [], 
+            "derived_from": [
+                "ENCFF223KCT", 
+                "ENCFF859ZYD", 
+                "ENCFF209SJM", 
+                "ENCFF901ETI"
+            ], 
             "file_format": "bed", 
             "file_size": 6928369, 
             "file_type": "bed narrowPeak", 
@@ -139,13 +191,22 @@
             "md5sum": "dbb91b95a00245ee35d1d669c7495045", 
             "output_category": "annotation", 
             "output_type": "peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1", 
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF761BJR", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1
+            ], 
+            "derived_from": [
+                "ENCFF162BDU"
+            ], 
             "file_format": "bigBed", 
             "file_size": 11332032, 
             "file_type": "bigBed narrowPeak", 
@@ -153,13 +214,22 @@
             "md5sum": "614e9e14e30c5ca4fdfc0182f22da12c", 
             "output_category": "annotation", 
             "output_type": "peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF894KAJ", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1
+            ], 
+            "derived_from": [
+                "ENCFF223KCT", 
+                "ENCFF209SJM"
+            ], 
             "file_format": "bigWig", 
             "file_size": 518558390, 
             "file_type": "bigWig", 
@@ -167,14 +237,23 @@
             "md5sum": "580839bc59ca7476ff2c9b2361120e82", 
             "output_category": "signal", 
             "output_type": "fold change over control", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF162BDU", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
+            "biological_replicates": [
+                1
+            ], 
             "content_md5sum": "f568d22b719d885aeed915e54d40d610", 
-            "derived_from": [], 
+            "derived_from": [
+                "ENCFF223KCT", 
+                "ENCFF209SJM"
+            ], 
             "file_format": "bed", 
             "file_size": 5588455, 
             "file_type": "bed narrowPeak", 
@@ -182,13 +261,22 @@
             "md5sum": "1f3567c960dc1a40d7c5fc384fd7a346", 
             "output_category": "annotation", 
             "output_type": "peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF319PMQ", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1
+            ], 
+            "derived_from": [
+                "ENCFF223KCT", 
+                "ENCFF209SJM"
+            ], 
             "file_format": "bigWig", 
             "file_size": 551365596, 
             "file_type": "bigWig", 
@@ -196,13 +284,22 @@
             "md5sum": "a854de810f61820fdc338e5e153d0b19", 
             "output_category": "signal", 
             "output_type": "signal p-value", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF400ILK", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
-            "derived_from": [], 
+            "biological_replicates": [
+                2
+            ], 
+            "derived_from": [
+                "ENCFF859ZYD", 
+                "ENCFF901ETI"
+            ], 
             "file_format": "bigWig", 
             "file_size": 548123499, 
             "file_type": "bigWig", 
@@ -210,13 +307,25 @@
             "md5sum": "3cea2558a306b457525809e8785b99da", 
             "output_category": "signal", 
             "output_type": "signal p-value", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF486PYA", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1, 
+                2
+            ], 
+            "derived_from": [
+                "ENCFF223KCT", 
+                "ENCFF859ZYD", 
+                "ENCFF209SJM", 
+                "ENCFF901ETI"
+            ], 
             "file_format": "bigWig", 
             "file_size": 1117677730, 
             "file_type": "bigWig", 
@@ -224,14 +333,24 @@
             "md5sum": "ccb59b051be0daa48aaa3a5a06f33c83", 
             "output_category": "signal", 
             "output_type": "fold change over control", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1", 
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF777XYO", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
+            "biological_replicates": [
+                2
+            ], 
             "content_md5sum": "649fe054e0096cae6813c9a56bfedf5b", 
-            "derived_from": [], 
+            "derived_from": [
+                "ENCFF859ZYD", 
+                "ENCFF901ETI"
+            ], 
             "file_format": "bed", 
             "file_size": 6114774, 
             "file_type": "bed narrowPeak", 
@@ -239,13 +358,21 @@
             "md5sum": "591a63e89b91ba7784a1f2dd8d5bdeca", 
             "output_category": "annotation", 
             "output_type": "peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF434RBQ", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
-            "derived_from": [], 
+            "biological_replicates": [
+                2
+            ], 
+            "derived_from": [
+                "ENCFF777XYO"
+            ], 
             "file_format": "bigBed", 
             "file_size": 13374473, 
             "file_type": "bigBed narrowPeak", 
@@ -253,13 +380,22 @@
             "md5sum": "59be9eb7ab19be7c23d79d787420bd96", 
             "output_category": "annotation", 
             "output_type": "peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF225HQM", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1, 
+                2
+            ], 
+            "derived_from": [
+                "ENCFF496IEH"
+            ], 
             "file_format": "bigBed", 
             "file_size": 13471338, 
             "file_type": "bigBed narrowPeak", 
@@ -267,13 +403,23 @@
             "md5sum": "d0c563870f4727d71cbbb07a584ad980", 
             "output_category": "annotation", 
             "output_type": "peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1", 
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF881CKS", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
-            "derived_from": [], 
+            "biological_replicates": [
+                2
+            ], 
+            "derived_from": [
+                "ENCFF859ZYD", 
+                "ENCFF901ETI"
+            ], 
             "file_format": "bigWig", 
             "file_size": 554529088, 
             "file_type": "bigWig", 
@@ -281,14 +427,23 @@
             "md5sum": "bbb04e5dbeea0676e6c160cc62fa7282", 
             "output_category": "signal", 
             "output_type": "fold change over control", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF764IXV", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
+            "biological_replicates": [
+                2
+            ], 
             "content_md5sum": "f8e8fa23f5112187607bc6656bcfa93d", 
-            "derived_from": [], 
+            "derived_from": [
+                "ENCFF643CGH", 
+                "ENCFF002BFL"
+            ], 
             "file_format": "bam", 
             "file_size": 1814203199, 
             "file_type": "bam", 
@@ -297,14 +452,23 @@
             "output_category": "alignment", 
             "output_type": "unfiltered alignments", 
             "read_length_units": "nt", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF496BNB", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
+            "biological_replicates": [
+                1
+            ], 
             "content_md5sum": "6b955bf4f6453115383988101b5950b7", 
-            "derived_from": [], 
+            "derived_from": [
+                "ENCFF002BFK", 
+                "ENCFF643CGH"
+            ], 
             "file_format": "bam", 
             "file_size": 1821027299, 
             "file_type": "bam", 
@@ -313,14 +477,23 @@
             "output_category": "alignment", 
             "output_type": "unfiltered alignments", 
             "read_length_units": "nt", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF472MGT", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
+            "biological_replicates": [
+                2
+            ], 
             "content_md5sum": "df30aa7aa658bead0c1648ff5ffcaf92", 
-            "derived_from": [], 
+            "derived_from": [
+                "ENCFF643CGH", 
+                "ENCFF002BFL"
+            ], 
             "file_format": "bam", 
             "file_size": 1304221358, 
             "file_type": "bam", 
@@ -329,14 +502,23 @@
             "output_category": "alignment", 
             "output_type": "alignments", 
             "read_length_units": "nt", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF383ODW", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
+            "biological_replicates": [
+                1
+            ], 
             "content_md5sum": "a7290e2c23868add6b94084882f5f887", 
-            "derived_from": [], 
+            "derived_from": [
+                "ENCFF002BFK", 
+                "ENCFF643CGH"
+            ], 
             "file_format": "bam", 
             "file_size": 1325427381, 
             "file_type": "bam", 
@@ -345,13 +527,22 @@
             "output_category": "alignment", 
             "output_type": "alignments", 
             "read_length_units": "nt", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF499PMB", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [], 
+            "biological_replicates": [
+                2
+            ], 
+            "derived_from": [
+                "ENCFF154WIU", 
+                "ENCFF472MGT"
+            ], 
             "file_format": "bigWig", 
             "file_size": 593614813, 
             "file_type": "bigWig", 
@@ -359,13 +550,22 @@
             "md5sum": "7233236e658bca6693c5f6924539bc9e", 
             "output_category": "signal", 
             "output_type": "signal p-value", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF193MGP", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1
+            ], 
+            "derived_from": [
+                "ENCFF747NOF", 
+                "ENCFF383ODW"
+            ], 
             "file_format": "bigWig", 
             "file_size": 682213889, 
             "file_type": "bigWig", 
@@ -373,13 +573,25 @@
             "md5sum": "cae254c8ce01fde75db50bf77baf03e6", 
             "output_category": "signal", 
             "output_type": "signal p-value", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF461SOE", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1, 
+                2
+            ], 
+            "derived_from": [
+                "ENCFF154WIU", 
+                "ENCFF472MGT", 
+                "ENCFF383ODW", 
+                "ENCFF747NOF"
+            ], 
             "file_format": "bigWig", 
             "file_size": 1130320012, 
             "file_type": "bigWig", 
@@ -387,13 +599,23 @@
             "md5sum": "5d128ec8c8a547d16321592248a75a74", 
             "output_category": "signal", 
             "output_type": "signal p-value", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1", 
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF662NZE", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1
+            ], 
+            "derived_from": [
+                "ENCFF747NOF", 
+                "ENCFF383ODW"
+            ], 
             "file_format": "bigWig", 
             "file_size": 509114173, 
             "file_type": "bigWig", 
@@ -401,13 +623,22 @@
             "md5sum": "368f6c9654bf425c150522509826f6bf", 
             "output_category": "signal", 
             "output_type": "fold change over control", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF394JES", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [], 
+            "biological_replicates": [
+                2
+            ], 
+            "derived_from": [
+                "ENCFF154WIU", 
+                "ENCFF472MGT"
+            ], 
             "file_format": "bigWig", 
             "file_size": 545472230, 
             "file_type": "bigWig", 
@@ -415,13 +646,25 @@
             "md5sum": "6f352a3bd0456248ec9618da83c45afa", 
             "output_category": "signal", 
             "output_type": "fold change over control", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF304SIN", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1, 
+                2
+            ], 
+            "derived_from": [
+                "ENCFF154WIU", 
+                "ENCFF472MGT", 
+                "ENCFF383ODW", 
+                "ENCFF747NOF"
+            ], 
             "file_format": "bigWig", 
             "file_size": 1118934828, 
             "file_type": "bigWig", 
@@ -429,14 +672,27 @@
             "md5sum": "a831312a3ba3ceef2c962f43a25d4273", 
             "output_category": "signal", 
             "output_type": "fold change over control", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1", 
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF142JGU", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
+            "biological_replicates": [
+                1, 
+                2
+            ], 
             "content_md5sum": "75422c2c66dba588223177a11e64e314", 
-            "derived_from": [], 
+            "derived_from": [
+                "ENCFF154WIU", 
+                "ENCFF472MGT", 
+                "ENCFF383ODW", 
+                "ENCFF747NOF"
+            ], 
             "file_format": "bed", 
             "file_size": 6807601, 
             "file_type": "bed narrowPeak", 
@@ -444,13 +700,23 @@
             "md5sum": "f8a8e242dabf5384a6717fcb92b9dd69", 
             "output_category": "annotation", 
             "output_type": "peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1", 
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF012WTF", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1, 
+                2
+            ], 
+            "derived_from": [
+                "ENCFF142JGU"
+            ], 
             "file_format": "bigBed", 
             "file_size": 13472859, 
             "file_type": "bigBed narrowPeak", 
@@ -458,13 +724,22 @@
             "md5sum": "410d4f87ef0f74a1e58b1426c6ec4c50", 
             "output_category": "annotation", 
             "output_type": "peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1", 
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF461IYM", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [], 
+            "biological_replicates": [
+                2
+            ], 
+            "derived_from": [
+                "ENCFF673FMT"
+            ], 
             "file_format": "bigBed", 
             "file_size": 13349663, 
             "file_type": "bigBed narrowPeak", 
@@ -472,14 +747,23 @@
             "md5sum": "aeac0d7526079e07f28ac31d5a7a9404", 
             "output_category": "annotation", 
             "output_type": "peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF916QGP", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
+            "biological_replicates": [
+                1
+            ], 
             "content_md5sum": "6e6d2c0a7eb77ccfb3b2065e46cc823d", 
-            "derived_from": [], 
+            "derived_from": [
+                "ENCFF747NOF", 
+                "ENCFF383ODW"
+            ], 
             "file_format": "bed", 
             "file_size": 5411850, 
             "file_type": "bed narrowPeak", 
@@ -487,13 +771,21 @@
             "md5sum": "bac99f3216ff62694517e4ddd8c6af68", 
             "output_category": "annotation", 
             "output_type": "peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF018BOV", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1
+            ], 
+            "derived_from": [
+                "ENCFF916QGP"
+            ], 
             "file_format": "bigBed", 
             "file_size": 11277630, 
             "file_type": "bigBed narrowPeak", 
@@ -501,14 +793,26 @@
             "md5sum": "5ece84628e2065d43afd1c0fb5eda69c", 
             "output_category": "annotation", 
             "output_type": "peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1"
+            ]
         }, 
         {
             "accession": "ENCFF269LTR", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
+            "biological_replicates": [
+                1, 
+                2
+            ], 
             "content_md5sum": "092ba43dbc3dd54f272fb75fc1dd6d79", 
-            "derived_from": [], 
+            "derived_from": [
+                "ENCFF419RSJ", 
+                "ENCFF673FMT", 
+                "ENCFF916QGP", 
+                "ENCFF142JGU"
+            ], 
             "file_format": "bed", 
             "file_size": 256651, 
             "file_type": "bed narrowPeak", 
@@ -516,14 +820,24 @@
             "md5sum": "b49388341fbf59b8e2853648316facad", 
             "output_category": "annotation", 
             "output_type": "conservative idr thresholded peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1", 
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF673FMT", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
+            "biological_replicates": [
+                2
+            ], 
             "content_md5sum": "4211f7556a19b557eada770a74b63dac", 
-            "derived_from": [], 
+            "derived_from": [
+                "ENCFF154WIU", 
+                "ENCFF472MGT"
+            ], 
             "file_format": "bed", 
             "file_size": 5948761, 
             "file_type": "bed narrowPeak", 
@@ -531,13 +845,22 @@
             "md5sum": "9f096c41507cae83734ddc21e62ea0db", 
             "output_category": "annotation", 
             "output_type": "peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF592LKK", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1, 
+                2
+            ], 
+            "derived_from": [
+                "ENCFF269LTR"
+            ], 
             "file_format": "bigBed", 
             "file_size": 595704, 
             "file_type": "bigBed narrowPeak", 
@@ -545,14 +868,27 @@
             "md5sum": "a16589d60a379b8316cf75d6b2d6ca09", 
             "output_category": "annotation", 
             "output_type": "conservative idr thresholded peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1", 
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF745ANU", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
+            "biological_replicates": [
+                1, 
+                2
+            ], 
             "content_md5sum": "a48457b1efde70be3c37c0bc781dc5c0", 
-            "derived_from": [], 
+            "derived_from": [
+                "ENCFF419RSJ", 
+                "ENCFF673FMT", 
+                "ENCFF916QGP", 
+                "ENCFF142JGU"
+            ], 
             "file_format": "bed", 
             "file_size": 382019, 
             "file_type": "bed narrowPeak", 
@@ -560,13 +896,23 @@
             "md5sum": "cff6f88f836c9a4566acf3a4bc39d9a0", 
             "output_category": "annotation", 
             "output_type": "optimal idr thresholded peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1", 
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF482BSZ", 
             "alternate_accessions": [], 
             "assembly": "GRCh38", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1, 
+                2
+            ], 
+            "derived_from": [
+                "ENCFF745ANU"
+            ], 
             "file_format": "bigBed", 
             "file_size": 797564, 
             "file_type": "bigBed narrowPeak", 
@@ -574,13 +920,23 @@
             "md5sum": "461623e0c7c3e9edced0ce13791a9d62", 
             "output_category": "annotation", 
             "output_type": "optimal idr thresholded peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1", 
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF891RJI", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1, 
+                2
+            ], 
+            "derived_from": [
+                "ENCFF972SOG"
+            ], 
             "file_format": "bigBed", 
             "file_size": 451269, 
             "file_type": "bigBed narrowPeak", 
@@ -588,14 +944,27 @@
             "md5sum": "9b130066ec3c18c72ae181b010d4e7ff", 
             "output_category": "annotation", 
             "output_type": "conservative idr thresholded peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1", 
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF972SOG", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
+            "biological_replicates": [
+                1, 
+                2
+            ], 
             "content_md5sum": "79deab138dfadec20166aa608355f6cd", 
-            "derived_from": [], 
+            "derived_from": [
+                "ENCFF777XYO", 
+                "ENCFF001TDO", 
+                "ENCFF162BDU", 
+                "ENCFF496IEH"
+            ], 
             "file_format": "bed", 
             "file_size": 229670, 
             "file_type": "bed narrowPeak", 
@@ -603,13 +972,23 @@
             "md5sum": "8e8a22cc5e08a12827fd8705e6db2cf8", 
             "output_category": "annotation", 
             "output_type": "conservative idr thresholded peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1", 
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF746DYZ", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
-            "derived_from": [], 
+            "biological_replicates": [
+                1, 
+                2
+            ], 
+            "derived_from": [
+                "ENCFF692GBM"
+            ], 
             "file_format": "bigBed", 
             "file_size": 589795, 
             "file_type": "bigBed narrowPeak", 
@@ -617,14 +996,27 @@
             "md5sum": "357d09e64f008ccf0f840245013fbc86", 
             "output_category": "annotation", 
             "output_type": "optimal idr thresholded peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1", 
+                "2_1"
+            ]
         }, 
         {
             "accession": "ENCFF692GBM", 
             "alternate_accessions": [], 
             "assembly": "hg19", 
+            "biological_replicates": [
+                1, 
+                2
+            ], 
             "content_md5sum": "f284674266542c2a535affc6f879da99", 
-            "derived_from": [], 
+            "derived_from": [
+                "ENCFF777XYO", 
+                "ENCFF001TDO", 
+                "ENCFF162BDU", 
+                "ENCFF496IEH"
+            ], 
             "file_format": "bed", 
             "file_size": 337339, 
             "file_type": "bed narrowPeak", 
@@ -632,7 +1024,11 @@
             "md5sum": "1acc555b446c6ccf848d0b6257a65ad6", 
             "output_category": "annotation", 
             "output_type": "optimal idr thresholded peaks", 
-            "status": "released"
+            "status": "released", 
+            "technical_replicates": [
+                "1_1", 
+                "2_1"
+            ]
         }
     ], 
     "lab": "Richard Myers, HAIB", 
