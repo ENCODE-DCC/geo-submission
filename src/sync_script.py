@@ -215,7 +215,7 @@ for experiment in experiments_and_controls:
         experimental_fastqs = [f for f in all_experiment_fastqs[
             '@graph'] if f['status'] not in [
             'deleted', 'revoked', 'replaced',
-            'upload failed', 'format check failed',
+            'upload failed', 'format check failed', 'content error',
             'archived']]
         for fastq_file in experimental_fastqs:
             acc = fastq_file['accession']
@@ -253,7 +253,7 @@ for f in files_list:
  (3) files_to_upload - a list of file accessions that need to be uploaded to SRA
 '''
 
-
+'''
 for donor_accession in set(donors_list):
     print (donor_accession)
     URL = SERVER+donor_accession+"/?frame=embedded&format=json"
@@ -274,7 +274,7 @@ for biosample_accession in set(biosamples_list):
     file_out.close()
 print ('FINISHED BIOSAMPLES')
 
-
+'''
 print ('STARTING EXPERIMENTS')
 for experimental_accession in released_experiments:
     print (experimental_accession)
@@ -289,7 +289,7 @@ print ('FINISHED EXPERIMENTS')
 
 
 print ('STARTING FILES')
-file_of_files = open('NEW_FILES_TO_UPLOAD', 'w')
+file_of_files = open('NEW_SYNC_03_29_2017_FILES_TO_UPLOAD', 'w')
 for file_accession in set(files_to_upload):
     up_creds = encoded_get(SERVER+'/files/'+file_accession+'/@@upload', keypair)
     s3_path_url = up_creds['@graph'][0]['upload_credentials']['upload_url']
