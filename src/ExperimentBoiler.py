@@ -160,8 +160,8 @@ def boildown_file(file_object):
             file_dictionary[key]=file_object[key]
         if key=='platform':
             file_dictionary[key]=boildown_platform(file_object[key])
-        #if key=='replicate':
-        #    file_dictionary[key]={'biological_replicate_number':file_object[key]['biological_replicate_number'],'technical_replicate_number':file_object[key]['technical_replicate_number']}
+        if key=='replicate':
+            file_dictionary[key]={'biological_replicate_number':file_object[key]['biological_replicate_number'],'technical_replicate_number':file_object[key]['technical_replicate_number']}
         if key=='derived_from':
             file_dictionary[key]=boildown_derived_from(file_object[key])
         if key=='paired_with':
