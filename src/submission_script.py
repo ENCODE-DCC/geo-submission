@@ -107,7 +107,7 @@ AUTHPW = keypair[1]
 
 submittedExperiments = set()
 
-exp_f = open('02282017.list', 'r')
+exp_f = open('06192017.list', 'r')
 
 
 
@@ -186,7 +186,7 @@ for experiment in experiments_and_controls:
         experimental_fastqs = [f for f in all_experiment_fastqs[
             '@graph'] if f['status'] not in [
             'deleted', 'revoked', 'replaced',
-            'upload failed', 'format check failed',
+            'upload failed', 'format check failed', 'content error',
             'archived']]
         for fastq_file in experimental_fastqs:
             acc = fastq_file['accession']
@@ -260,7 +260,7 @@ print ('FINISHED EXPERIMENTS')
 
 
 print ('STARTING FILES')
-file_of_files = open('NEW_FILES_FEBRUARY_2017_SUBMISSION_TO_UPLOAD', 'w')
+file_of_files = open('NEW_FILES_JUNE_2017_SUBMISSION_TO_UPLOAD', 'w')
 
 
 for file_accession in set(files_to_upload):
