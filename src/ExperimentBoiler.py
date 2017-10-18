@@ -128,16 +128,17 @@ def boildown_protocol_documents(documents_list):
 def boildown_replicates(replicates_list):
     listToReturn = []
     for entry in replicates_list:
-        listToReturn.append(boildown_replicate(entry))
+        if entry.get('status') == 'released':
+            listToReturn.append(boildown_replicate(entry))
     return listToReturn
 
 def boildown_replicate(replicate_object):
     replicate_dictionary = {}
     for key in replicate_object.keys():
         if key in replicate_simple_interesting_values:
-            replicate_dictionary[key]=replicate_object[key]
-        if key == 'library':
-            replicate_dictionary[key]=boildown_library(replicate_object[key])
+            replicate_dictionary[key] = replicate_object[key]
+        if key == 'library' and replicate_object['library'].get('status') == 'released':
+            replicate_dictionary[key] = boildown_library(replicate_object[key])
     return replicate_dictionary
 
 def boildown_files(files_list):
@@ -157,15 +158,15 @@ def boildown_file(file_object):
     file_dictionary = {}
     for key in file_object.keys():
         if key in file_interesting_values:
-            file_dictionary[key]=file_object[key]
-        if key=='platform':
-            file_dictionary[key]=boildown_platform(file_object[key])
-        if key=='replicate':
-            file_dictionary[key]={'biological_replicate_number':file_object[key]['biological_replicate_number'],'technical_replicate_number':file_object[key]['technical_replicate_number']}
-        if key=='derived_from':
-            file_dictionary[key]=boildown_derived_from(file_object[key])
-        if key=='paired_with':
-            file_dictionary[key]=boildown_paired_with(file_object[key])
+            file_dictionary[key] = file_object[key]
+        if key == 'platform':
+            file_dictionary[key] = boildown_platform(file_object[key])
+        if key == 'replicate':
+            file_dictionary[key] = {
+                'biological_replicate_number':
+                    file_object[key]['biological_replicate_number'],
+                'technical_replicate_number':
+                    file_object[key]['technical_replicate_number']}
     return file_dictionary
 
 
@@ -211,7 +212,7 @@ def boildown_library(library_object):
             library_dictionary[key] = boildown_documents(library_object[key])
         if key in library_simple_interesting_values:
             library_dictionary[key]=library_object[key]
-        if key=='biosample':
+        if key=='biosample' and library_object['biosample'].get('status') == 'released':
             library_dictionary[key]=library_object[key]['accession']
         if key == 'spikeins_used':
             library_dictionary[key]=boildown_spikeins(library_object[key])
@@ -248,7 +249,7 @@ def is_control_target(target_object):
 
 # same as in biosample
 platform_interesting_values = ['dbxrefs','term_name']
-file_interesting_values = ['alternate_accessions', 'status', 'paired_end', 'assembly', 'genome_annotation', 'accession','md5sum','output_type','file_format','file_type','href','content_md5sum','read_length','read_length_units','file_size','run_type','output_category']
+file_interesting_values = ['alternate_accessions', 'status', 'paired_end', 'derived_from', 'paired_with', 'assembly', 'genome_annotation', 'accession','md5sum','output_type','file_format','file_type','href','content_md5sum','read_length','read_length_units','file_size','run_type','output_category']
 attachment_interesting_values = ['md5sum','href']
 construct_interesting_values = ['construct_type','description','url']
 donor_interesting_values = ['accession', 'strain_name', 'strain_background', 'sex', 'life_stage', 'health_status', 'ethnicity', 'genotype' , 'mutagen']
@@ -257,9 +258,6 @@ experiment_simple_interesting_values = ['date_released','accession', 'biosample_
 replicate_simple_interesting_values = ['biological_replicate_number','technical_replicate_number']
 library_simple_interesting_values = ['accession','nucleic_acid_starting_quantity_units','nucleic_acid_term_name', 'extraction_method', 'fragmentation_method','library_size_selection_method','size_range','nucleic_acid_starting_quantity']
 spikein_simple_interesting_values = ['accession','dbxrefs', 'description']
-
-
-
 
 
 function_dispatch = {

@@ -64,15 +64,19 @@ def getKeyPair(path_to_key_pair_file, server_name):
 
 
 def extract_biosamples(exp):
+    #print ('EXAMINING ' + exp['accession'])
     samples = []
     if exp['status'] == 'released' and \
        'replicates' in exp and \
        len(exp['replicates']) > 0:
         for replicate in exp['replicates']:
+            #print (replicate['@id'] + '\t' + replicate['status'])
+            #print (replicate['library']['@id'] + '\t' + replicate['library']['status'])
             if replicate['status'] == 'released' and \
                replicate['library']['status'] == 'released' and \
                replicate['library']['biosample']['status'] == 'released':
                 samples.append(replicate['library']['biosample']['accession'])
+    #print (samples)
     return list(set(samples))
 
 
@@ -108,6 +112,8 @@ AUTHPW = keypair[1]
 submittedExperiments = set()
 
 exp_f = open('10122017_ENCODE.list', 'r')
+#exp_f = open('test.list', 'r')
+
 
 
 
