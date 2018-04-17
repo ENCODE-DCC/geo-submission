@@ -11,7 +11,7 @@ def getKeyPair(path_to_key_pair_file, server_name):
     return (AUTHID, AUTHPW)
 
 
-keypair = getKeyPair('keypairs.json', 'test')
+keypair = getKeyPair('/Users/idan/Desktop/geo-submission/src/keypairs.json', 'test')
 
 AUTHID = keypair[0]
 AUTHPW = keypair[1]
