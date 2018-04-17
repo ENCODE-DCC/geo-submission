@@ -109,8 +109,6 @@ submittedExperiments = set()
 
 exp_f = open('ggr.10.12.2017', 'r')
 
-
-
 #exp_f = open("try_exp_list", "r")
 for l in exp_f:
     submittedExperiments.add(l.strip())
@@ -186,7 +184,7 @@ for experiment in experiments_and_controls:
         experimental_fastqs = [f for f in all_experiment_fastqs[
             '@graph'] if f['status'] not in [
             'deleted', 'revoked', 'replaced',
-            'upload failed', 'format check failed',
+            'upload failed', 'format check failed', 'content error',
             'archived']]
         for fastq_file in experimental_fastqs:
             acc = fastq_file['accession']
@@ -261,6 +259,7 @@ print ('FINISHED EXPERIMENTS')
 
 print ('STARTING FILES')
 file_of_files = open('NEW_FILES_OCTOBER_2017_GGR_TO_UPLOAD', 'w')
+
 
 
 for file_accession in set(files_to_upload):

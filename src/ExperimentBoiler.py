@@ -248,7 +248,7 @@ def is_control_target(target_object):
 
 # same as in biosample
 platform_interesting_values = ['dbxrefs','term_name']
-file_interesting_values = ['alternate_accessions', 'status', 'paired_end', 'assembly', 'genome_annotation', 'accession','md5sum','output_type','file_format','file_type','href','content_md5sum','read_length','read_length_units','file_size','run_type','output_category']
+file_interesting_values = ['technical_replicates', 'alternate_accessions', 'status', 'paired_end', 'assembly', 'genome_annotation', 'accession','md5sum','output_type','file_format','file_type','href','content_md5sum','read_length','read_length_units','file_size','run_type','output_category']
 attachment_interesting_values = ['md5sum','href']
 construct_interesting_values = ['construct_type','description','url']
 donor_interesting_values = ['accession', 'strain_name', 'strain_background', 'sex', 'life_stage', 'health_status', 'ethnicity', 'genotype' , 'mutagen']
