@@ -34,7 +34,8 @@ function_dispatch = {
 	'mutated_gene': geoMinimisationCommon.minimise_target,
 	'littermates': geoMinimisationCommon.minimize_donors,
 	'characterizations': geoMinimisationCommon.minimize_characterizations,
-	'treatments':geoMinimisationCommon.minimize_treatments
+	'treatments':geoMinimisationCommon.minimize_treatments,
+	'applied_modifications': geoMinimisationCommon.minimize_modifications,
 }
 
 
@@ -71,7 +72,7 @@ def minimise_biosample(biosample_object):
 			mini_dict[key]=biosample_object[key]
 		else:
 			if key in function_dispatch:
-				mini_dict[key]=function_dispatch[key](biosample_object[key],False)
+				mini_dict[key]=function_dispatch[key](biosample_object[key], False)
     			
     	
 	return mini_dict
