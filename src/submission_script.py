@@ -107,9 +107,7 @@ AUTHPW = keypair[1]
 
 submittedExperiments = set()
 
-exp_f = open('06192017.list', 'r')
-
-
+exp_f = open('ggr.10.12.2017', 'r')
 
 #exp_f = open("try_exp_list", "r")
 for l in exp_f:
@@ -260,7 +258,8 @@ print ('FINISHED EXPERIMENTS')
 
 
 print ('STARTING FILES')
-file_of_files = open('NEW_FILES_JUNE_2017_SUBMISSION_TO_UPLOAD', 'w')
+file_of_files = open('NEW_FILES_OCTOBER_2017_GGR_TO_UPLOAD', 'w')
+
 
 
 for file_accession in set(files_to_upload):
