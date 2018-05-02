@@ -34,9 +34,9 @@ def minimise_document(document_object, donor_flag):
     if 'document_type' in document_object:
         document_dictionary['document_type'] = document_object['document_type']
     if 'attachment' in document_object:
-        document_dictionary['attachment']=minimise_attachment(document_object['attachment'], donor_flag, document_object['@id'])
+        document_dictionary['attachment'] = minimise_attachment(document_object['attachment'], donor_flag, document_object['@id'])
     if 'urls' in document_object:
-        document_dictionary['urls']=document_object['urls']
+        document_dictionary['urls'] = document_object['urls']
     if 'references' in document_object:
         document_dictionary['references'] = document_object['references']
     return document_dictionary
@@ -53,6 +53,11 @@ def minimise_documents(documents_list, donor_flag):
 def minimise_publication(publication_object, donor_flag):
     return publication_object['identifiers']
 
+def minimize_modifications(modifications_list, donor_flag):
+    list_to_return = []
+    for entry in modifications_list:
+        list_to_return.append(minimise_modification(entry, donor_flag))
+    return list_to_return
 
 def minimise_constructs(constructs_list, donor_flag):
     list_to_return = []
@@ -60,16 +65,36 @@ def minimise_constructs(constructs_list, donor_flag):
         list_to_return.append(minimise_construct(entry, donor_flag))
     return list_to_return
 
+def minimise_modification(modification_object, donor_flag):
+    modification_dict = {}
+    for key in modification_object.keys():
+        if key in [
+                "purpose",
+                "category",
+                "introduced_tags",
+                "reagents",
+                "method",
+                "zygosity",
+                "modified_site_by_coordinates",
+        ]:
+            modification_dict[key] = modification_object[key]
+        if key == 'treatments':
+            modification_dict[key] = minimize_treatments(modification_object[key], donor_flag)
+        if key == 'modified_site_by_target_id':
+            if is_control_target(modification_object[key], donor_flag) is False:
+                modification_dict[key] = modification_object[key]['label']
+    return modification_dict
+
 def minimise_construct(construct_object, donor_flag):
     construct_dictionary = {}
     for key in construct_object.keys():
         if key in [
-            "construct_type",
-            "source",
-            "product_id",
-            "url"
+                "construct_type",
+                "source",
+                "product_id",
+                "url"
         ]:
-            construct_dictionary[key]=construct_object[key]
+            construct_dictionary[key] = construct_object[key]
         if key == 'target':
             if is_control_target(construct_object[key]) == False:
                 construct_dictionary[key] = construct_object[key]['label']

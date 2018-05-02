@@ -32,6 +32,7 @@ function_dispatch = {
 	'mutated_gene': geoMinimisationCommon.minimise_target,
 	'littermates': geoMinimisationCommon.minimize_donors,
 	'characterizations': geoMinimisationCommon.minimize_characterizations,
+	'genetic_modifications': geoMinimisationCommon.minimize_modifications,
 }
 
 values_to_retain_dictionary = {
@@ -54,7 +55,7 @@ def minimise_donor(donor_object):
 			mini_dict[key]=donor_object[key]
 		else:
 			if key in function_dispatch:
-				mini_dict[key]=function_dispatch[key](donor_object[key],True)
+				mini_dict[key]=function_dispatch[key](donor_object[key], True)
     			
     	
 	return mini_dict
