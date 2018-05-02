@@ -66,7 +66,7 @@ keypair = getKeyPair('keypairs.json', 'test')
 AUTHID = keypair[0]
 AUTHPW = keypair[1]
 
-table_f = open('biosamples.10.12.2017', 'r')
+table_f = open('biosamples.5.2.18', 'r')
 for l in table_f:
     arr = l.strip().split()
 
