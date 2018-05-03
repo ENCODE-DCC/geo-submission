@@ -22,10 +22,8 @@ def minimise_source(source_object, donor_flag):
 
 def minimise_lab(lab_object, donor_flag):
     # object in biosample, string in donor
-    if donor_flag == True:
-        return lab_object.split("/")[2]
-    else:
-        return lab_object['title']
+    return lab_object['title']
+
 
 def minimise_references(references_list, donor_flag):
     list_to_return = []
