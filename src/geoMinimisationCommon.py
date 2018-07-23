@@ -23,6 +23,7 @@ def minimise_source(source_object, donor_flag):
 def minimise_lab(lab_object, donor_flag):
     return lab_object['title']
 
+
 def minimise_references(references_list, donor_flag):
     list_to_return = []
     for publication_object in references_list:

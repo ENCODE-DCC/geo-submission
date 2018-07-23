@@ -1,5 +1,5 @@
-f = open('files.trans.10.12.2017', 'r')
-m = open('files.10.12.2017', 'w')
+f = open('files_trans.5.2.18', 'r')
+m = open('files.5.2.18', 'w')
 for l in f:
     # print ('line: ' + l)
     arr = l.strip().split()
