@@ -111,7 +111,7 @@ AUTHPW = keypair[1]
 
 submittedExperiments = set()
 
-exp_f = open('10122017_ENCODE.list', 'r')
+exp_f = open('experiments.submission.ggr.050218', 'r')
 #exp_f = open('test.list', 'r')
 
 
@@ -264,7 +264,7 @@ print ('FINISHED EXPERIMENTS')
 
 
 print ('STARTING FILES')
-file_of_files = open('NEW_FILES_OCTOBER_2017_SUBMISSION_TO_UPLOAD', 'w')
+file_of_files = open('NEW_FILES_MAY_2018_SUBMISSION_TO_UPLOAD', 'w')
 
 
 
