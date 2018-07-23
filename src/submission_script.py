@@ -102,6 +102,17 @@ def extract_donors(biosamples_list):
     return list(set(donors))
 
 
+def update_documents(response_json_dict):
+    docs = response_json_dict.get('documents')
+    documents_list = []
+    if docs:
+        for d in docs:  
+            URL = SERVER+d+"/?format=json"
+            response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
+            document = response.json()
+            documents_list.append(document)
+    response_json_dict['documents'] = documents_list
+
 keypair = getKeyPair('keypairs.json', 'test')
 
 AUTHID = keypair[0]
@@ -256,6 +267,7 @@ for experimental_accession in released_experiments:
     URL = SERVER+experimental_accession+"/?frame=embedded&format=json"
     response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
     response_json_dict = response.json()
+    update_documents(response_json_dict)
     file_out = open("../experiments/" + experimental_accession+"_modified.json", "w")
     file_out.write((json.dumps(ExperimentBoiler.boildown_experiment(response_json_dict), indent=4, sort_keys=True)))
     file_out.close()
@@ -264,7 +276,9 @@ print ('FINISHED EXPERIMENTS')
 
 
 print ('STARTING FILES')
+
 file_of_files = open('NEW_FILES_MAY_2018_SUBMISSION_TO_UPLOAD', 'w')
+
 
 
 

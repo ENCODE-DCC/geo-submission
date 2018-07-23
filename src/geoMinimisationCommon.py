@@ -21,7 +21,6 @@ def minimise_source(source_object, donor_flag):
         return source_object['title']
 
 def minimise_lab(lab_object, donor_flag):
-    # object in biosample, string in donor
     return lab_object['title']
 
 
