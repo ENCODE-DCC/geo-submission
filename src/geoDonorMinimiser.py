@@ -1,4 +1,4 @@
-import  requests, json, sys, geoMinimisationCommon 
+import  requests, json, sys, geoMinimisationCommon
 HEADERS = {'accept': 'application/json'}
 def getKeyPair(path_to_key_pair_file, server_name):
     keysf = open(path_to_key_pair_file, 'r')
@@ -11,7 +11,7 @@ def getKeyPair(path_to_key_pair_file, server_name):
     return (AUTHID, AUTHPW)
 
 
-keypair = getKeyPair('/Users/idan/Desktop/geo-submission/src/keypairs.json', 'test')
+keypair = getKeyPair('keypairs.json', 'test')
 
 AUTHID = keypair[0]
 AUTHPW = keypair[1]
@@ -56,8 +56,8 @@ def minimise_donor(donor_object):
 		else:
 			if key in function_dispatch:
 				mini_dict[key]=function_dispatch[key](donor_object[key], True)
-    			
-    	
+
+
 	return mini_dict
 
 def main():
@@ -65,6 +65,6 @@ def main():
 	response_json_dict = response.json()
 	print (json.dumps( minimise_donor(response_json_dict), indent=4, sort_keys=True))
 
-	
+
 if __name__ == "__main__":
     main()

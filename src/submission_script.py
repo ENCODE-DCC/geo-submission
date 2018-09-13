@@ -8,7 +8,6 @@ import urlparse
 import sys
 from time import sleep
 
-
 HEADERS = {'accept': 'application/json'}
 GET_HEADERS = {'accept': 'application/json'}
 POST_HEADERS = {'accept': 'application/json',
@@ -106,7 +105,7 @@ def update_documents(response_json_dict):
     docs = response_json_dict.get('documents')
     documents_list = []
     if docs:
-        for d in docs:  
+        for d in docs:
             URL = SERVER+d+"/?format=json"
             response = requests.get(URL, auth=(AUTHID, AUTHPW), headers=HEADERS)
             document = response.json()
@@ -122,7 +121,8 @@ AUTHPW = keypair[1]
 
 submittedExperiments = set()
 
-exp_f = open('stam_exp', 'r')
+# exp_f = open('stam_exp', 'r')
+exp_f = open('remc_exp', 'r')
 #exp_f = open('test.list', 'r')
 
 
@@ -133,7 +133,7 @@ exp_f.close()
 
 print ('There are ' + str(len(submittedExperiments)) + ' experiments')
 
-# phase 2 - go over the experiments submitted so far and create a set of biosamples and donors 
+# phase 2 - go over the experiments submitted so far and create a set of biosamples and donors
 controls_list = []
 biosamples_list = []
 mone = 0
@@ -226,11 +226,11 @@ for f in files_list:
         if sra_flag is False:
             files_to_upload.append(f)
 
-#print (set(files_to_upload))
+# print (set(files_to_upload))
 # print (set(experiments_and_controls))
 # print (set(biosamples_list))
 #print (set(donors_list))
- 
+
 '''
  at this point we have the following:
  (1) donors_list
@@ -277,11 +277,7 @@ print ('FINISHED EXPERIMENTS')
 
 print ('STARTING FILES')
 
-file_of_files = open('NEW_FILES_JUNE_2018_SUBMISSION_TO_UPLOAD', 'w')
-
-
-
-
+file_of_files = open('NEW_FILES_SEPTEMBER_2018_GGR_SUBMISSION_TO_UPLOAD', 'w')
 
 for file_accession in set(files_to_upload):
     up_creds = encoded_get(SERVER+'/files/'+file_accession+'/@@upload', keypair)
