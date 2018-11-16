@@ -255,8 +255,8 @@ def main():
     write_to_json('experiment', experiment_objs)
     
     # Obtain s3 file paths
-    # write_files_file(output_lists['files'], 'NEW_FILES_NOVEMBER_2018_SUBMISSION_TO_UPLOAD')
-    write_files_file(output_lists['files'], '/Users/paul/geo-debug/new_script/geo_sub_files_to_upload')
+    write_files_file(output_lists['files'], 'NEW_FILES_NOVEMBER_2018_SUBMISSION_TO_UPLOAD')
+    # write_files_file(output_lists['files'], '/Users/paul/geo-debug/new_script/geo_sub_files_to_upload')
     
     t1 = time.clock()
     print('elapsed time: ', t1 - t0)
@@ -323,8 +323,8 @@ def write_to_json(object_type, objects):
         print(accession)
         accessions.append(accession)
         # file_path = "../{}/".format(object_type) + accession + "_modified.json"
-        file_path = "/Users/paul/geo-debug/new_script/{}/".format(object_type) + accession + "_modified.json"
-        # file_path = "../{}/{}_modified.json".format(object_type, accession)
+        # file_path = "/Users/paul/geo-debug/new_script/{}/".format(object_type) + accession + "_modified.json"
+        file_path = "../{}/{}_modified.json".format(object_type, accession)
         with open(file_path, "w") as file_out:
             file_out.write(json.dumps(obj, indent=4, sort_keys=True))
     
