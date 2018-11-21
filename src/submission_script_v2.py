@@ -409,9 +409,10 @@ def get_file_accessions(experiments, output_lists):
         res = search('file', experiment)
         # Check for criteria
         for file in res:
-            if file['status'] in ('uploading', 'released', 'in progress'):
-                if not_in_sra(file):
-                    output_lists['files'].append(file['accession'])
+            if file['status'] in ('uploading', 'released', 'in progress') and not_in_sra(file):
+                if 'restricted' in file:
+                    assert file['restricted'] == False, 'Aborting, cannot submit restricted file {}'.format(file['accession'])
+                output_lists['files'].append(file['accession'])
                     # output_lists['files'].append(file['s3_uri'])
 
 
