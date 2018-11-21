@@ -13,7 +13,7 @@ def main():
     # phase 1 - collect all experiments submitted so far.
     submitted_experiments = set()
 
-    with open('test_exps', 'r') as exp_f:
+    with open('november_2018_test_submission', 'r') as exp_f:
         for l in exp_f:
             # allow for commenting out experiments
             if l.startswith('#'):
@@ -256,7 +256,7 @@ def main():
     
     # Obtain s3 file paths
     write_files_file(output_lists['files'], 'NEW_FILES_NOVEMBER_2018_SUBMISSION_TO_UPLOAD')
-    # write_files_file(output_lists['files'], '/Users/paul/geo-debug/new_script/geo_sub_files_to_upload')
+    # write_files_file(output_lists['files'], 'november_2018_test_submission_files_to_upload')
     
     t1 = time.clock()
     print('elapsed time: ', t1 - t0)
@@ -411,8 +411,8 @@ def get_file_accessions(experiments, output_lists):
         for file in res:
             if file['status'] in ('uploading', 'released', 'in progress'):
                 if not_in_sra(file):
-                    # output_lists['files'].append(file['accession'])
-                    output_lists['files'].append(file['s3_uri'])
+                    output_lists['files'].append(file['accession'])
+                    # output_lists['files'].append(file['s3_uri'])
 
 
 def build_experiments(output_lists, fields_dict, fields_conversion, objs_by_type, objs_by_id):
@@ -1100,10 +1100,12 @@ def not_in_sra(file_object):
 def write_files_file(files_to_upload, file_path):
     print('STARTING FILES')
     with open(file_path, 'w') as file_of_files:
-        for s3_uri in set(files_to_upload):
-            # up_creds = encoded_get(SERVER+'/files/'+file_accession+'/@@upload', keypair)
-            # s3_path_url = up_creds['@graph'][0]['upload_credentials']['upload_url']
-            file_of_files.write('/s3'+s3_uri[4:]+'\n')
+        # for s3_uri in set(files_to_upload):
+        for file_accession in set(files_to_upload):
+            up_creds = encoded_get(SERVER+'/files/'+file_accession+'/@@upload', keypair)
+            s3_path_url = up_creds['@graph'][0]['upload_credentials']['upload_url']
+            # file_of_files.write('/s3'+s3_uri[4:]+'\n')
+            file_of_files.write('/s3'+s3_path_url[4:]+'\n')
     print('FINISHED FILES')
 
 
