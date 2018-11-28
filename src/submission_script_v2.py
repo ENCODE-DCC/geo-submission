@@ -373,7 +373,7 @@ def get_experiment_accessions(accession_set, output_lists, rep_fields):
     replicates_by_exp = {}
     response = search('Experiment', list(accession_set))
     for exp in response:
-        if exp['status'] == 'released':
+        if exp['status'] in ['released', 'archived']:
             # Store experiment object for later use
             output_lists['experiments'].append(exp)
             released_experiments.append(exp['accession'])
@@ -390,10 +390,10 @@ def get_experiment_accessions(accession_set, output_lists, rep_fields):
     # get biosamples and donors from all replicates in one pass
     rep_df = get_report_tsv_from_fields('replicate', all_replicates, rep_fields)
     for j in rep_df.index:
-        if rep_df.loc[j, 'library.biosample.status'] == 'released':
+        if rep_df.loc[j, 'library.biosample.status'] in ['released', 'archived']:
             biosample_accessions = rep_df.loc[j, 'library.biosample.accession']
             output_lists['biosamples'].extend(make_list_from_str(biosample_accessions))
-            if rep_df.loc[j, 'library.biosample.donor.status'] == 'released':
+            if rep_df.loc[j, 'library.biosample.donor.status'] in ['released', 'archived']:
                 donors = make_list_from_str(rep_df.loc[j, 'library.biosample.donor'])
                 donor_type = rep_df.loc[j, 'library.biosample.donor.@type'].split(',')[0]
                 for donor in donors:
@@ -409,7 +409,7 @@ def get_file_accessions(experiments, output_lists):
         res = search('file', experiment)
         # Check for criteria
         for file in res:
-            if file['status'] in ('uploading', 'released', 'in progress') and not_in_sra(file):
+            if file['status'] in ('uploading', 'released', 'in progress', 'archived') and not_in_sra(file):
                 if 'restricted' in file:
                     assert file['restricted'] == False, 'Aborting, cannot submit restricted file {}'.format(file['accession'])
                 output_lists['files'].append(file['accession'])
@@ -871,7 +871,7 @@ def minimize_replicates(rep_df, fields_conversion, objs_by_type, objs_by_id):
     """
     rep_fields_conversion = fields_conversion['replicate']
     for i in rep_df.index:
-        if rep_df.loc[i, 'Status'] != 'released':
+        if rep_df.loc[i, 'Status'] not in ['released', 'archived']:
             continue
         replicate = {}
         library = {}
@@ -895,7 +895,7 @@ def minimize_replicates(rep_df, fields_conversion, objs_by_type, objs_by_id):
                 if column in ('library.biosample.status', 'library.@id', 'library.status'):
                     continue
                 elif column == 'library.biosample.accession':
-                    if rep_df.loc[i, 'library.biosample.status'] == 'released':
+                    if rep_df.loc[i, 'library.biosample.status'] in ['released', 'archived']:
                         library['biosample'] = value
                 elif column == 'library.nucleic_acid_starting_quantity':
                     library[rep_fields_conversion[column]] = str(int(value))
@@ -905,7 +905,7 @@ def minimize_replicates(rep_df, fields_conversion, objs_by_type, objs_by_id):
                 # Other columns don't make it into outputted experiment json
                 pass
         
-        if rep_df.loc[i, 'library.status'] == 'released':
+        if rep_df.loc[i, 'library.status'] in ['released', 'archived']:
             replicate['library'] = library
 
         objs_by_type['replicate'][rep_df.loc[i, 'ID']] = replicate
