@@ -13,7 +13,7 @@ def main():
     # phase 1 - collect all experiments submitted so far.
     submitted_experiments = set()
 
-    with open('november_2018_test_submission', 'r') as exp_f:
+    with open('november_2018_test_submission_no_restricted', 'r') as exp_f:
         for l in exp_f:
             # allow for commenting out experiments
             if l.startswith('#'):
@@ -487,8 +487,10 @@ def minimize_experiment(report_df, report_df_index, fields_conversion):
     for column in report_df.columns:
         # columns whose values can be directly submitted
         if column in fields_direct_conversion:
-            # don't submit fields with blank (NaN) values
+            # don't submit fields with blank (NaN) values except for description
             if pd.isna(report_df.loc[report_df_index, column]):
+                if column == 'Description':
+                    obj[fields_direct_conversion[column]] = ''
                 continue
             obj[fields_direct_conversion[column]] = report_df.loc[report_df_index, column]
         # columns that need preprocessing
@@ -630,6 +632,8 @@ def minimize_donors_and_biosamples(report_df, report_df_index, fields_conversion
         if column in fields_direct_conversion:
             # don't submit fields with blank (NaN) values
             if pd.isna(value):
+                if column == 'Description':
+                    obj_to_output[fields_direct_conversion[column]] = ''
                 continue
             obj_to_output[fields_direct_conversion[column]] = value
         # columns that need preprocessing
