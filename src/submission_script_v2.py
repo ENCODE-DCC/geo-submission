@@ -13,7 +13,7 @@ def main():
     # phase 1 - collect all experiments submitted so far.
     submitted_experiments = set()
 
-    with open('november_2018_test_submission_no_restricted', 'r') as exp_f:
+    with open('feb_19_submission.txt', 'r') as exp_f:
         for l in exp_f:
             # allow for commenting out experiments
             if l.startswith('#'):
@@ -127,7 +127,7 @@ def main():
     donor_objs = build_donors(output_lists, donor_fields, donor_fields_conversion, donor_objs_by_type, 
                                      donor_objs_by_id)
 
-    biosample_fields = ['summary', 'accession', 'biosample_type', 'biosample_term_name', 
+    biosample_fields = ['summary', 'accession', 'biosample_ontology.classification', 'biosample_ontology.term_name', 
                         'biosample_term_id', 'description', 'dbxrefs', 'passage_number',
                         'model_organism_mating_status', 'subcellular_fraction_term_name',
                         'subcellular_fraction_term_id', 'phase', 'url', 'fly_synchronization_stage',
@@ -180,8 +180,8 @@ def main():
     biosample_objs = build_biosamples(output_lists, biosample_fields_dict, biosample_fields_conversion, 
                                              biosample_objs_by_type, biosample_objs_by_id)
     
-    experiment_fields = ['date_released', 'accession', 'biosample_type', 'assay_title', 'assay_term_name', 'assembly', 
-                         'description', 'dbxrefs', 'biosample_term_name', 'replicates', 'files', 
+    experiment_fields = ['date_released', 'accession', 'biosample_ontology.classification', 'assay_title', 'assay_term_name', 'assembly', 
+                         'description', 'dbxrefs', 'biosample_ontology.term_name', 'replicates', 'files', 
                          'lab.title', 'references', 'documents', 'possible_controls.accession', 
                          'target.investigated_as', 'target.label']
     
@@ -211,7 +211,7 @@ def main():
                                              'Target label': 'target', 'Assembly': 'assembly'}
                                              
     experiment_fields_direct_conversion = {'Date released': 'date_released', 'Accession': 'accession', 
-                                           'Biosample type': 'biosample_type', 'Assay Nickname': 'assay_title', 
+                                           'biosample_ontology.classification': 'biosample_type', 'Assay Nickname': 'assay_title', 
                                            'Assay Type': 'assay_term_name',  'Description': 'description', 
                                            'Biosample': 'biosample_term_name', 'Lab': 'lab'}
                                            
@@ -255,7 +255,7 @@ def main():
     write_to_json('experiment', experiment_objs)
     
     # Obtain s3 file paths
-    write_files_file(output_lists['files'], 'NEW_FILES_NOVEMBER_2018_SUBMISSION_TO_UPLOAD')
+    write_files_file(output_lists['files'], 'NEW_FILES_FEB_2019_SUBMISSION_TO_UPLOAD')
     # write_files_file(output_lists['files'], 'november_2018_test_submission_files_to_upload')
     
     t1 = time.clock()
@@ -1033,7 +1033,7 @@ def get_report_tsv_from_fields(object_type, accession, fields_list):
     then concatenated.
     """
     # Max nginx url
-    max_url_length = 8192
+    max_url_length = 8100
 
     url_part_0 = 'report.tsv?type='
     id_key = '&@id='
