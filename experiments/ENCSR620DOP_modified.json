@@ -1,0 +1,876 @@
+{
+    "accession": "ENCSR620DOP", 
+    "assay_term_name": "CRISPRi followed by RNA-seq", 
+    "assay_title": "CRISPRi RNA-seq", 
+    "assembly": [
+        "hg19", 
+        "GRCh38"
+    ], 
+    "biosample_term_name": "K562", 
+    "biosample_type": "cell line", 
+    "date_released": "2017-11-18", 
+    "dbxrefs": [], 
+    "description": "RNA-seq on K562 cells treated by CRISPR interference targeting KLF2.", 
+    "documents": [
+        {
+            "attachment": {
+                "href": "/documents/3c0220e8-4a55-4a83-b11e-ca44bfac00a2/@@download/attachment/Weissman_Yale_NEB_RNA%20_Library_Preparation.pdf", 
+                "md5sum": "5cc28f8c6e1f335a04eef451368a1404"
+            }, 
+            "document_type": "general protocol", 
+            "references": {}, 
+            "urls": []
+        }, 
+        {
+            "attachment": {
+                "href": "/documents/ba93f5cc-a470-41a2-842f-2cb3befbeb60/@@download/attachment/Snyder_RSEM_Protocol.txt", 
+                "md5sum": "ea3169009e811800680ea1b54c7b2da2"
+            }, 
+            "document_type": "data QA", 
+            "references": {}, 
+            "urls": []
+        }
+    ], 
+    "files": [
+        {
+            "accession": "ENCFF542NYJ", 
+            "alternate_accessions": [], 
+            "content_md5sum": "164cae4777e094cc298b53a85a15305f", 
+            "file_format": "fastq", 
+            "file_size": 2895445307, 
+            "file_type": "fastq", 
+            "href": "/files/ENCFF542NYJ/@@download/ENCFF542NYJ.fastq.gz", 
+            "md5sum": "a8d01dc98eaf33cbac75321ebe1a9a48", 
+            "output_category": "raw data", 
+            "output_type": "reads", 
+            "paired_end": "2", 
+            "paired_with": "/files/ENCFF343HHD/", 
+            "platform": {
+                "dbxrefs": [], 
+                "term_name": "Illumina HiSeq 4000"
+            }, 
+            "read_length": 101, 
+            "read_length_units": "nt", 
+            "replicate": {
+                "biological_replicate_number": 1, 
+                "technical_replicate_number": 1
+            }, 
+            "run_type": "paired-ended", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF125MSP", 
+            "alternate_accessions": [], 
+            "content_md5sum": "24b9511240d99a5410b2a98eadb918ca", 
+            "file_format": "fastq", 
+            "file_size": 3019931082, 
+            "file_type": "fastq", 
+            "href": "/files/ENCFF125MSP/@@download/ENCFF125MSP.fastq.gz", 
+            "md5sum": "d8273a7ac63d14806ce60966771cdcbc", 
+            "output_category": "raw data", 
+            "output_type": "reads", 
+            "paired_end": "2", 
+            "paired_with": "/files/ENCFF605PSQ/", 
+            "platform": {
+                "dbxrefs": [], 
+                "term_name": "Illumina HiSeq 4000"
+            }, 
+            "read_length": 101, 
+            "read_length_units": "nt", 
+            "replicate": {
+                "biological_replicate_number": 2, 
+                "technical_replicate_number": 1
+            }, 
+            "run_type": "paired-ended", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF343HHD", 
+            "alternate_accessions": [], 
+            "content_md5sum": "6924e377081c0b31823b48957940e077", 
+            "file_format": "fastq", 
+            "file_size": 2437994591, 
+            "file_type": "fastq", 
+            "href": "/files/ENCFF343HHD/@@download/ENCFF343HHD.fastq.gz", 
+            "md5sum": "f6cc017b6a70fdaeb5b1267e44ab6855", 
+            "output_category": "raw data", 
+            "output_type": "reads", 
+            "paired_end": "1", 
+            "paired_with": "/files/ENCFF542NYJ/", 
+            "platform": {
+                "dbxrefs": [], 
+                "term_name": "Illumina HiSeq 4000"
+            }, 
+            "read_length": 101, 
+            "read_length_units": "nt", 
+            "replicate": {
+                "biological_replicate_number": 1, 
+                "technical_replicate_number": 1
+            }, 
+            "run_type": "paired-ended", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF605PSQ", 
+            "alternate_accessions": [], 
+            "content_md5sum": "64ad729e54fbf4f3e1c5f0029badb24b", 
+            "file_format": "fastq", 
+            "file_size": 2591130209, 
+            "file_type": "fastq", 
+            "href": "/files/ENCFF605PSQ/@@download/ENCFF605PSQ.fastq.gz", 
+            "md5sum": "b429c14c122ddcc9ec0334d02c002643", 
+            "output_category": "raw data", 
+            "output_type": "reads", 
+            "paired_end": "1", 
+            "paired_with": "/files/ENCFF125MSP/", 
+            "platform": {
+                "dbxrefs": [], 
+                "term_name": "Illumina HiSeq 4000"
+            }, 
+            "read_length": 101, 
+            "read_length_units": "nt", 
+            "replicate": {
+                "biological_replicate_number": 2, 
+                "technical_replicate_number": 1
+            }, 
+            "run_type": "paired-ended", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF206WDN", 
+            "alternate_accessions": [], 
+            "assembly": "GRCh38", 
+            "content_md5sum": "8f1cf789eb2c211fb7365dd182176a03", 
+            "derived_from": [
+                "/files/ENCFF542NYJ/", 
+                "/files/ENCFF343HHD/", 
+                "/files/ENCFF742NER/"
+            ], 
+            "file_format": "bam", 
+            "file_size": 7120493681, 
+            "file_type": "bam", 
+            "genome_annotation": "V24", 
+            "href": "/files/ENCFF206WDN/@@download/ENCFF206WDN.bam", 
+            "md5sum": "3b61d9edfe788ad0d561a35624cb53da", 
+            "output_category": "alignment", 
+            "output_type": "alignments", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF481KQD", 
+            "alternate_accessions": [], 
+            "assembly": "GRCh38", 
+            "content_md5sum": "66835bc4c80503af6bd000308a6d28e3", 
+            "derived_from": [
+                "/files/ENCFF542NYJ/", 
+                "/files/ENCFF343HHD/", 
+                "/files/ENCFF742NER/"
+            ], 
+            "file_format": "bam", 
+            "file_size": 6322089200, 
+            "file_type": "bam", 
+            "genome_annotation": "V24", 
+            "href": "/files/ENCFF481KQD/@@download/ENCFF481KQD.bam", 
+            "md5sum": "927631c1e5b1638bded2d1ca145dda3f", 
+            "output_category": "alignment", 
+            "output_type": "transcriptome alignments", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF984XYI", 
+            "alternate_accessions": [], 
+            "assembly": "GRCh38", 
+            "content_md5sum": "c178d79a81dcd5e1ddaa55277bdea1f7", 
+            "derived_from": [
+                "/files/ENCFF125MSP/", 
+                "/files/ENCFF605PSQ/", 
+                "/files/ENCFF742NER/"
+            ], 
+            "file_format": "bam", 
+            "file_size": 6600573538, 
+            "file_type": "bam", 
+            "genome_annotation": "V24", 
+            "href": "/files/ENCFF984XYI/@@download/ENCFF984XYI.bam", 
+            "md5sum": "93284661b608c2df0b63433e3309c3b4", 
+            "output_category": "alignment", 
+            "output_type": "alignments", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF570HEO", 
+            "alternate_accessions": [], 
+            "assembly": "GRCh38", 
+            "content_md5sum": "da97e8db8312edbd7c41bea79267d8b1", 
+            "derived_from": [
+                "/files/ENCFF125MSP/", 
+                "/files/ENCFF605PSQ/", 
+                "/files/ENCFF742NER/"
+            ], 
+            "file_format": "bam", 
+            "file_size": 6684810226, 
+            "file_type": "bam", 
+            "genome_annotation": "V24", 
+            "href": "/files/ENCFF570HEO/@@download/ENCFF570HEO.bam", 
+            "md5sum": "21796865b32b1da335c0d24c6b9579be", 
+            "output_category": "alignment", 
+            "output_type": "transcriptome alignments", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF556LSV", 
+            "alternate_accessions": [], 
+            "assembly": "GRCh38", 
+            "derived_from": [
+                "/files/ENCFF206WDN/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 157419188, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V24", 
+            "href": "/files/ENCFF556LSV/@@download/ENCFF556LSV.bigWig", 
+            "md5sum": "196c19302a0e16c4ff7c3da09ae770e4", 
+            "output_category": "signal", 
+            "output_type": "signal of unique reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF399YJK", 
+            "alternate_accessions": [], 
+            "assembly": "GRCh38", 
+            "derived_from": [
+                "/files/ENCFF206WDN/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 175651063, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V24", 
+            "href": "/files/ENCFF399YJK/@@download/ENCFF399YJK.bigWig", 
+            "md5sum": "ea0ffe15af1712390436e1cf6e0ff7a6", 
+            "output_category": "signal", 
+            "output_type": "signal of all reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF557VCT", 
+            "alternate_accessions": [], 
+            "assembly": "GRCh38", 
+            "derived_from": [
+                "/files/ENCFF984XYI/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 187404793, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V24", 
+            "href": "/files/ENCFF557VCT/@@download/ENCFF557VCT.bigWig", 
+            "md5sum": "969b2106055ccf33082fbaa16f28eaf1", 
+            "output_category": "signal", 
+            "output_type": "signal of unique reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF206ZEE", 
+            "alternate_accessions": [], 
+            "assembly": "GRCh38", 
+            "derived_from": [
+                "/files/ENCFF984XYI/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 213218035, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V24", 
+            "href": "/files/ENCFF206ZEE/@@download/ENCFF206ZEE.bigWig", 
+            "md5sum": "34d5b029da3e4687765de6cf98566d2a", 
+            "output_category": "signal", 
+            "output_type": "signal of all reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF854HMM", 
+            "alternate_accessions": [], 
+            "assembly": "GRCh38", 
+            "derived_from": [
+                "/files/ENCFF481KQD/", 
+                "/files/ENCFF940AZB/"
+            ], 
+            "file_format": "tsv", 
+            "file_size": 9875632, 
+            "file_type": "tsv", 
+            "genome_annotation": "V24", 
+            "href": "/files/ENCFF854HMM/@@download/ENCFF854HMM.tsv", 
+            "md5sum": "9cb89d43e35b968c7650425e772bf8b9", 
+            "output_category": "quantification", 
+            "output_type": "gene quantifications", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF269XVR", 
+            "alternate_accessions": [], 
+            "assembly": "GRCh38", 
+            "derived_from": [
+                "/files/ENCFF481KQD/", 
+                "/files/ENCFF940AZB/"
+            ], 
+            "file_format": "tsv", 
+            "file_size": 26469888, 
+            "file_type": "tsv", 
+            "genome_annotation": "V24", 
+            "href": "/files/ENCFF269XVR/@@download/ENCFF269XVR.tsv", 
+            "md5sum": "f636d1180be43e6de8491c22aceaa0eb", 
+            "output_category": "quantification", 
+            "output_type": "transcript quantifications", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF238VSO", 
+            "alternate_accessions": [], 
+            "assembly": "GRCh38", 
+            "derived_from": [
+                "/files/ENCFF570HEO/", 
+                "/files/ENCFF940AZB/"
+            ], 
+            "file_format": "tsv", 
+            "file_size": 9880605, 
+            "file_type": "tsv", 
+            "genome_annotation": "V24", 
+            "href": "/files/ENCFF238VSO/@@download/ENCFF238VSO.tsv", 
+            "md5sum": "458cbcce19d2acef177e16c7834f1bae", 
+            "output_category": "quantification", 
+            "output_type": "gene quantifications", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF946UXV", 
+            "alternate_accessions": [], 
+            "assembly": "GRCh38", 
+            "derived_from": [
+                "/files/ENCFF570HEO/", 
+                "/files/ENCFF940AZB/"
+            ], 
+            "file_format": "tsv", 
+            "file_size": 26472993, 
+            "file_type": "tsv", 
+            "genome_annotation": "V24", 
+            "href": "/files/ENCFF946UXV/@@download/ENCFF946UXV.tsv", 
+            "md5sum": "327e393ed8a586688a1c413401ee2e71", 
+            "output_category": "quantification", 
+            "output_type": "transcript quantifications", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF280AMQ", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "content_md5sum": "d18bf2978060236dd32f77aeacb5d55a", 
+            "derived_from": [
+                "/files/ENCFF343HHD/", 
+                "/files/ENCFF700TXC/", 
+                "/files/ENCFF542NYJ/"
+            ], 
+            "file_format": "bam", 
+            "file_size": 4687138904, 
+            "file_type": "bam", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF280AMQ/@@download/ENCFF280AMQ.bam", 
+            "md5sum": "a7b8df1c61899a1ec88168eae973f0e2", 
+            "output_category": "alignment", 
+            "output_type": "alignments", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF559PUU", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "content_md5sum": "1c22f430ec79959311e5a83391616295", 
+            "derived_from": [
+                "/files/ENCFF605PSQ/", 
+                "/files/ENCFF700TXC/", 
+                "/files/ENCFF125MSP/"
+            ], 
+            "file_format": "bam", 
+            "file_size": 4934935174, 
+            "file_type": "bam", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF559PUU/@@download/ENCFF559PUU.bam", 
+            "md5sum": "85a59483c409cf04afcf8a4c907ccbe6", 
+            "output_category": "alignment", 
+            "output_type": "alignments", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF314XSS", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF280AMQ/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 90704092, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF314XSS/@@download/ENCFF314XSS.bigWig", 
+            "md5sum": "84d98d3b85e2bc05efcb540d5306e0ca", 
+            "output_category": "signal", 
+            "output_type": "minus strand signal of unique reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF431WZM", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF280AMQ/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 90737184, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF431WZM/@@download/ENCFF431WZM.bigWig", 
+            "md5sum": "7ea1fb171459bd8d034a0a6c1f817af7", 
+            "output_category": "signal", 
+            "output_type": "plus strand signal of unique reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF342ANP", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF280AMQ/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 97476515, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF342ANP/@@download/ENCFF342ANP.bigWig", 
+            "md5sum": "cde13b3d81682bfed5b6df5adbf48fb7", 
+            "output_category": "signal", 
+            "output_type": "minus strand signal of all reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF037VVP", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF280AMQ/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 97539357, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF037VVP/@@download/ENCFF037VVP.bigWig", 
+            "md5sum": "21fb203a70e3a8a62947bcf990de35aa", 
+            "output_category": "signal", 
+            "output_type": "plus strand signal of all reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF593GNR", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF559PUU/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 106099413, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF593GNR/@@download/ENCFF593GNR.bigWig", 
+            "md5sum": "0f0ef3cb20d1083dd45b8485dfb0ea5c", 
+            "output_category": "signal", 
+            "output_type": "minus strand signal of unique reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF070TPR", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF559PUU/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 106103136, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF070TPR/@@download/ENCFF070TPR.bigWig", 
+            "md5sum": "d50d3fb2b8d34415dc506627afbb1618", 
+            "output_category": "signal", 
+            "output_type": "plus strand signal of unique reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF340OLC", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF559PUU/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 113140230, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF340OLC/@@download/ENCFF340OLC.bigWig", 
+            "md5sum": "7e850e14905735d7aacbcc2996dee11b", 
+            "output_category": "signal", 
+            "output_type": "plus strand signal of all reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF574FWB", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF559PUU/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 113107089, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF574FWB/@@download/ENCFF574FWB.bigWig", 
+            "md5sum": "8be7fff68d9eaca35c8706f87086273c", 
+            "output_category": "signal", 
+            "output_type": "minus strand signal of all reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF858YFS", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "content_md5sum": "0dd1fa6e2a2a0474ab6dec17e2d56ccc", 
+            "derived_from": [
+                "/files/ENCFF542NYJ/", 
+                "/files/ENCFF343HHD/", 
+                "/files/ENCFF839KAI/"
+            ], 
+            "file_format": "bam", 
+            "file_size": 5785858028, 
+            "file_type": "bam", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF858YFS/@@download/ENCFF858YFS.bam", 
+            "md5sum": "95cff65346ae1775258571f37e3d80be", 
+            "output_category": "alignment", 
+            "output_type": "alignments", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF536RLX", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "content_md5sum": "a98540070425380bcefcf052f11365af", 
+            "derived_from": [
+                "/files/ENCFF542NYJ/", 
+                "/files/ENCFF343HHD/", 
+                "/files/ENCFF839KAI/"
+            ], 
+            "file_format": "bam", 
+            "file_size": 6416816573, 
+            "file_type": "bam", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF536RLX/@@download/ENCFF536RLX.bam", 
+            "md5sum": "72f8098d1e7035002260bcd656701f47", 
+            "output_category": "alignment", 
+            "output_type": "transcriptome alignments", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF403MEP", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "content_md5sum": "ce0bf0fbe08d4e5f6048d9139931ba83", 
+            "derived_from": [
+                "/files/ENCFF125MSP/", 
+                "/files/ENCFF605PSQ/", 
+                "/files/ENCFF839KAI/"
+            ], 
+            "file_format": "bam", 
+            "file_size": 6133475462, 
+            "file_type": "bam", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF403MEP/@@download/ENCFF403MEP.bam", 
+            "md5sum": "6f9621d876db2f91f7b501839a6f04c4", 
+            "output_category": "alignment", 
+            "output_type": "alignments", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF673CCJ", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "content_md5sum": "acb5d3bec5c05015cef910778b09ffd8", 
+            "derived_from": [
+                "/files/ENCFF125MSP/", 
+                "/files/ENCFF605PSQ/", 
+                "/files/ENCFF839KAI/"
+            ], 
+            "file_format": "bam", 
+            "file_size": 6696949813, 
+            "file_type": "bam", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF673CCJ/@@download/ENCFF673CCJ.bam", 
+            "md5sum": "78b23084dbdaa9428f70d9c3d199bc81", 
+            "output_category": "alignment", 
+            "output_type": "transcriptome alignments", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF037VUB", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF858YFS/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 106604248, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF037VUB/@@download/ENCFF037VUB.bigWig", 
+            "md5sum": "5485c6082e1f836d26e1b29e4e4dfd9a", 
+            "output_category": "signal", 
+            "output_type": "minus strand signal of unique reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF360QYI", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF858YFS/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 106581103, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF360QYI/@@download/ENCFF360QYI.bigWig", 
+            "md5sum": "37b319b19d91d62d5f48a3edbd3c9050", 
+            "output_category": "signal", 
+            "output_type": "plus strand signal of unique reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF656CJH", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF858YFS/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 117168793, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF656CJH/@@download/ENCFF656CJH.bigWig", 
+            "md5sum": "ffcf7ec9033f31c5a5cf23fa46b637db", 
+            "output_category": "signal", 
+            "output_type": "plus strand signal of all reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF984BKE", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF858YFS/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 117186258, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF984BKE/@@download/ENCFF984BKE.bigWig", 
+            "md5sum": "5920403b6b3b656caad454c1612697e1", 
+            "output_category": "signal", 
+            "output_type": "minus strand signal of all reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF538XDP", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF403MEP/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 125617093, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF538XDP/@@download/ENCFF538XDP.bigWig", 
+            "md5sum": "fd56879e6e8488fe964015174103c37e", 
+            "output_category": "signal", 
+            "output_type": "minus strand signal of unique reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF504IKG", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF403MEP/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 125519296, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF504IKG/@@download/ENCFF504IKG.bigWig", 
+            "md5sum": "ec5d8cdfbaa28dbfde4ba0caa9bd3e62", 
+            "output_category": "signal", 
+            "output_type": "plus strand signal of unique reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF995AUP", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF403MEP/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 139415838, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF995AUP/@@download/ENCFF995AUP.bigWig", 
+            "md5sum": "f5bce631dcb038431b711729ab0fb25c", 
+            "output_category": "signal", 
+            "output_type": "plus strand signal of all reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF923MBA", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF403MEP/"
+            ], 
+            "file_format": "bigWig", 
+            "file_size": 139503699, 
+            "file_type": "bigWig", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF923MBA/@@download/ENCFF923MBA.bigWig", 
+            "md5sum": "05db7500a8f9f6f6514e352caaf2ff3a", 
+            "output_category": "signal", 
+            "output_type": "minus strand signal of all reads", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF553YAW", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF826ONU/", 
+                "/files/ENCFF536RLX/"
+            ], 
+            "file_format": "tsv", 
+            "file_size": 9476900, 
+            "file_type": "tsv", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF553YAW/@@download/ENCFF553YAW.tsv", 
+            "md5sum": "2913f0ae355c7e5f77a24cd6e970291d", 
+            "output_category": "quantification", 
+            "output_type": "gene quantifications", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF833HMU", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF826ONU/", 
+                "/files/ENCFF536RLX/"
+            ], 
+            "file_format": "tsv", 
+            "file_size": 25958199, 
+            "file_type": "tsv", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF833HMU/@@download/ENCFF833HMU.tsv", 
+            "md5sum": "7d72d8ac2305090dd6824f0baa532abd", 
+            "output_category": "quantification", 
+            "output_type": "transcript quantifications", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF429SGC", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF826ONU/", 
+                "/files/ENCFF673CCJ/"
+            ], 
+            "file_format": "tsv", 
+            "file_size": 9483025, 
+            "file_type": "tsv", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF429SGC/@@download/ENCFF429SGC.tsv", 
+            "md5sum": "9da2eb7dde5fba39a9906400dad4d5a1", 
+            "output_category": "quantification", 
+            "output_type": "gene quantifications", 
+            "status": "released"
+        }, 
+        {
+            "accession": "ENCFF182ODJ", 
+            "alternate_accessions": [], 
+            "assembly": "hg19", 
+            "derived_from": [
+                "/files/ENCFF826ONU/", 
+                "/files/ENCFF673CCJ/"
+            ], 
+            "file_format": "tsv", 
+            "file_size": 25972238, 
+            "file_type": "tsv", 
+            "genome_annotation": "V19", 
+            "href": "/files/ENCFF182ODJ/@@download/ENCFF182ODJ.tsv", 
+            "md5sum": "bfcdcf3c733a9d0a23fc8a86dadcd629", 
+            "output_category": "quantification", 
+            "output_type": "transcript quantifications", 
+            "status": "released"
+        }
+    ], 
+    "lab": "Michael Snyder, Stanford", 
+    "possible_controls": [
+        "ENCSR095PIC"
+    ], 
+    "references": [], 
+    "replicates": [
+        {
+            "biological_replicate_number": 1, 
+            "library": {
+                "accession": "ENCLB668WNY", 
+                "biosample": "ENCBS022YEG", 
+                "documents": [
+                    {
+                        "attachment": {
+                            "href": "/documents/0ffc8082-77ff-4d72-bebf-e034156a7970/@@download/attachment/L1-K562-CRISPRi-KLF2_relative_knockdown.jpeg", 
+                            "md5sum": "5d139076f25ad799cca72a61ebc3ddd0"
+                        }, 
+                        "document_type": "data QA", 
+                        "references": {}, 
+                        "urls": []
+                    }
+                ], 
+                "nucleic_acid_term_name": "RNA", 
+                "size_range": ">200", 
+                "spikeins_used": []
+            }, 
+            "technical_replicate_number": 1
+        }, 
+        {
+            "biological_replicate_number": 2, 
+            "library": {
+                "accession": "ENCLB954PCI", 
+                "biosample": "ENCBS560YKU", 
+                "documents": [
+                    {
+                        "attachment": {
+                            "href": "/documents/ab575b6a-54d6-4f79-9a98-ded9d69f4dfb/@@download/attachment/L2-K562-CRISPRi-KLF2_relative_knockdown.jpeg", 
+                            "md5sum": "f4ca9ae03d48922b2e544d000e6dd06a"
+                        }, 
+                        "document_type": "data QA", 
+                        "references": {}, 
+                        "urls": []
+                    }
+                ], 
+                "nucleic_acid_term_name": "RNA", 
+                "size_range": ">200", 
+                "spikeins_used": []
+            }, 
+            "technical_replicate_number": 1
+        }
+    ], 
+    "target": "KLF2"
+}
