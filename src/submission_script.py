@@ -1,6 +1,6 @@
 import requests
 import json
-import urlparse
+from urllib.parse import urlsplit, urlunsplit, parse_qs
 import sys
 from time import sleep, strftime
 import pandas as pd
@@ -42,7 +42,7 @@ def main():
 
     document_fields = ['document_type', 'attachment.href',
                             '@id', 'urls', 'references']
-                                  
+
     gm_fields = ['@id', 'purpose', 'category', 'introduced_tags', 'reagents',
                       'method', 'zygosity', 'modified_site_by_coordinates',
                       'modified_site_by_target_id.label', 
@@ -51,7 +51,7 @@ def main():
     treatment_fields = ['@id', 'treatment_type','dbxrefs','treatment_term_name','treatment_term_id',
                              'amount','amount_units','duration','duration_units', 'temperature',
                              'temperature_units']
-        
+
     # top level fields and species-specific fields
     values_to_retain = {
     	'Homo sapiens': ['url','accession','sex','age','age_units','life_stage','health_status',
@@ -66,34 +66,34 @@ def main():
 
     # has format dataframe_column_name: output_object_name
     donor_fields_direct_conversion = {'Organism': 'organism', # organsim.scientific_name
-                               'Title': 'lab', # lab.title
+                               'Lab': 'lab', # lab.title
                                'URL': 'url',
                                'Accession': 'accession', 'Strain name': 'strain_name',
                                'Strain background': 'strain_background',	
                                'Strain genotype': 'genotype',
-                               'Sex': 'sex', 'Donor age units': 'age_units',
-                               'Life stage': 'life_stage', 'Donor health status': 'health_status',
+                               'Sex': 'sex', 'Age units': 'age_units',
+                               'Life stage': 'life_stage', 'Health status': 'health_status',
                                'Ethnicity': 'ethnicity', 
                                'Twin': 'twin', 'Twin type': 'twin_type',
                                'Number of times outcrossed': 'num_times_outcrossed',
                                'outcrossed_strain.accession': 'outcrossed_strain'}
 
     # fields that need preprocessing 
-    donor_fields_indirect_conversion = {'Database external identifiers': 'dbxrefs',
+    donor_fields_indirect_conversion = {'External resources': 'dbxrefs',
                                         'References': 'references',
                                         'Source': 'source', 'Documents': 'documents', 
                                         'Characterizations': 'characterizations', 
                                         'Genetic modifications': 'genetic_modifications',
                                         'Children': 'children', 'Siblings': 'siblings',
-                                        'Donor age': 'age',}
+                                        'Age': 'age',}
 
     document_fields_conversion = {'ID': '@id', 'Document type': 'document_type', 
                                  'attachment.href': 'attachment', 'URLs': 'urls', 
                                  'References': 'references'}
 
-    characterizations_fields_conversion = {'ID': '@id', 'Method': 'characterization_method', 
+    characterizations_fields_conversion = {'ID': '@id', 'Method': 'characterization_method',
                                            'references.identifiers': 'references'}
-    
+
     gm_fields_conversion = {'ID': '@id', 'Purpose': 'purpose', 'Category': 'category', 
                             'Introduced protein tags': 'introduced_tags', 'Reagents': 'reagents',
                             'Method': 'method', 'Modification zygosity': 'zygosity', 
@@ -102,7 +102,7 @@ def main():
                             'Treatments': 'treatments'}
                                         
     donor_fields_conversion = {'direct': donor_fields_direct_conversion, 
-                                    'indirect': donor_fields_indirect_conversion, 
+                                    'indirect': donor_fields_indirect_conversion,
                                     'documents': document_fields_conversion, 
                                     'donor_characterization': characterizations_fields_conversion,
                                     'genetic_modification': gm_fields_conversion}                     
@@ -119,7 +119,7 @@ def main():
 
     # Get all biosample, donor, control, and file accessions
     get_all_accessions(submitted_experiments, output_lists, rep_fields)
-    
+
     # Organizes subobjects by type to facilitate retrieval
     donor_objs_by_type = {'document': {}, 'genetic_modification': {}, 'donor_characterization': {}, 
                           'treatment': {}, 'publication': {}}
@@ -130,8 +130,8 @@ def main():
     donor_objs = build_donors(output_lists, donor_fields, donor_fields_conversion, donor_objs_by_type, 
                                      donor_objs_by_id)
 
-    biosample_fields = ['summary', 'accession', 'biosample_type', 'biosample_term_name', 
-                        'biosample_term_id', 'description', 'dbxrefs', 'passage_number',
+    biosample_fields = ['summary', 'accession', 'biosample_ontology.classification', 'biosample_ontology.term_name', 
+                        'biosample_ontology.term_id', 'description', 'dbxrefs', 'passage_number',
                         'model_organism_mating_status', 'subcellular_fraction_term_name',
                         'subcellular_fraction_term_id', 'phase', 'url', 'fly_synchronization_stage',
                         'post_synchronization_time', 'post_synchronization_time_units',
@@ -145,7 +145,7 @@ def main():
                    'treatment': treatment_fields}
 
     biosample_fields_indirect_conversion = {#'Database external identifiers': 'dbxrefs', 
-                                            'External identifiers': 'dbxrefs',# need to convert to list
+                                            'External resources': 'dbxrefs',# need to convert to list
                                             'References': 'references', 
                                             'Source': 'source', 'Documents': 'documents', 
                                             'Characterizations': 'characterizations', 
@@ -153,20 +153,20 @@ def main():
                                             'Donor': 'donor', 'Treatments': 'treatments',
                                             'Passage number': 'passage_number'}
 
-    biosample_fields_direct_conversion = {'Summary': 'summary', 'Accession': 'accession', 
-                                          'Type': 'biosample_type', 'Term': 'biosample_term_name', 
-                                          'Ontology ID': 'biosample_term_id', 'Description': 'description',
-                                          'Mating status': 'model_organism_mating_status', 
-                                          'Subcellular fraction name': 'subcellular_fraction_term_name',
-                                          'subcellular_fraction_term_id': 'subcellular_fraction_term_id',
-                                          'Cell-cycle phase': 'phase', 'URL': 'url', 
+    biosample_fields_direct_conversion = {'Summary': 'summary', 'Accession': 'accession',
+                                          'Biosample classification': 'biosample_type', 'Biosample term name': 'biosample_term_name',
+                                          'biosample_ontology.term_id': 'biosample_term_id', 'Description': 'description',
+                                          'Model organism mating status': 'model_organism_mating_status',
+                                          'Subcellular fraction': 'subcellular_fraction_term_name',
+                                          'subcellular fraction term ID': 'subcellular_fraction_term_id',
+                                          'Cell cycle phase': 'phase', 'URL': 'url',
                                           'Fly synchronization stage': 'fly_synchronization_stage',
                                           'Post-synchronization time': 'post_synchronization_time',
                                           'Post-synchronization time units': 'post_synchronization_time_units',
-                                          'Worm synchronization stage': 'worm_synchronization_stage', 
-                                          'Age Units': 'age_units', 'Sex': 'sex', 'Health status': 'health_status', 
-                                          'Age': 'age', 'Life stage': 'life_stage', 'Title': 'lab', 
-                                          'Source': 'source', 'Species': 'organism', 'Submitter': 'lab'}
+                                          'Worm synchronization stage': 'worm_synchronization_stage',
+                                          'Age units': 'age_units', 'Sex': 'sex', 'Health status': 'health_status',
+                                          'Age': 'age', 'Life stage': 'life_stage', 'Lab': 'lab',
+                                          'Source': 'source', 'Organism': 'organism'}
                                            
     biosample_fields_conversion = {'direct': biosample_fields_direct_conversion, 
                                         'indirect': biosample_fields_indirect_conversion, 
@@ -181,8 +181,8 @@ def main():
     biosample_objs = build_biosamples(output_lists, biosample_fields_dict, biosample_fields_conversion, 
                                              biosample_objs_by_type, biosample_objs_by_id)
 
-    experiment_fields = ['date_released', 'accession', 'biosample_type', 'assay_title', 'assay_term_name', 'assembly', 
-                         'description', 'dbxrefs', 'biosample_term_name', 'replicates', 'files', 
+    experiment_fields = ['date_released', 'accession', 'biosample_ontology.classification', 'assay_title', 'assay_term_name', 'assembly', 
+                         'description', 'dbxrefs', 'biosample_ontology.term_name', 'replicates', 'files', 
                          'lab.title', 'references', 'documents', 'possible_controls.accession', 
                          'target.investigated_as', 'target.label']
     
@@ -195,7 +195,7 @@ def main():
     replicate_fields = ['biological_replicate_number','technical_replicate_number', 'status', '@id']
 
     library_fields = ['accession','nucleic_acid_starting_quantity_units','nucleic_acid_term_name', 'extraction_method', 
-                      'fragmentation_method', 'library_size_selection_method','size_range','nucleic_acid_starting_quantity', 
+                      'fragmentation_methods', 'library_size_selection_method','size_range','nucleic_acid_starting_quantity', 
                       'spikeins_used', 'documents', 'biosample.accession', 'status', 'biosample.status', '@id']
 
     replicate_fields.extend('library.' + field for field in library_fields)
@@ -207,12 +207,12 @@ def main():
                                              'References': 'references', 'Documents': 'documents', 
                                              'Replicates': 'replicates', 'Files': 'files', 
                                              'possible_controls.accession': 'possible_controls',
-                                             'Target label': 'target', 'Assembly': 'assembly'}
+                                             'Target of assay': 'target', 'Genome assembly': 'assembly'}
                                              
     experiment_fields_direct_conversion = {'Date released': 'date_released', 'Accession': 'accession', 
-                                           'Biosample type': 'biosample_type', 'Assay Nickname': 'assay_title', 
-                                           'Assay Type': 'assay_term_name',  'Description': 'description', 
-                                           'Biosample': 'biosample_term_name', 'Lab': 'lab'}
+                                           'biosample_ontology.classification': 'biosample_type', 'Assay title': 'assay_title',
+                                           'Assay name': 'assay_term_name',  'Description': 'description', 
+                                           'Biosample term name': 'biosample_term_name', 'Lab': 'lab'}
                                            
     file_fields_conversion = {'Alternate accessions': 'alternate_accessions', 'Status': 'status', 
                               'Paired end identifier': 'paired_end', 'Derived from': 'derived_from', 
@@ -264,9 +264,9 @@ def encoded_get(url, keypair=None, frame='object', return_response=False):
     """
     This is used to obtain s3 file paths by write_files_file
     """
-    url_obj = urlparse.urlsplit(url)
+    url_obj = urlsplit(url)
     new_url_list = list(url_obj)
-    query = urlparse.parse_qs(url_obj.query)
+    query = parse_qs(url_obj.query)
     if 'format' not in query:
         new_url_list[3] += '&format=json'
     if 'frame' not in query:
@@ -275,7 +275,7 @@ def encoded_get(url, keypair=None, frame='object', return_response=False):
         new_url_list[3] += '&limit=all'
     if new_url_list[3].startswith('&'):
         new_url_list[3] = new_url_list[3].replace('&', '', 1)
-    get_url = urlparse.urlunsplit(new_url_list)
+    get_url = urlunsplit(new_url_list)
     max_retries = 10
     max_sleep = 10
     while max_retries:
@@ -843,7 +843,7 @@ def minimize_files(file_df, fields_conversion, objs_by_type, objs_by_id):
                 continue
             elif column in ('File size', 'Read length'):#, 'Paired End Identifier'):
                 file_dict[file_fields_conversion[column]] = int(value)
-            elif column == 'Paired End Identifier':
+            elif column == 'Paired end identifier':
                 # In original script, value is outputted as string
                 file_dict[file_fields_conversion[column]] = str(value).rstrip('.0')
             elif column == 'Derived from':
@@ -901,6 +901,9 @@ def minimize_replicates(rep_df, fields_conversion, objs_by_type, objs_by_id):
                         library['biosample'] = value
                 elif column == 'library.nucleic_acid_starting_quantity':
                     library[rep_fields_conversion[column]] = str(int(value))
+                elif column == 'library.fragmentation_methods':
+                    fragmentation_methods = make_list_from_str(value)
+                    library[rep_fields_conversion[column]] = ', '.join(fragmentation_methods)
                 else:
                     library[rep_fields_conversion[column]] = value
             else:
@@ -942,7 +945,7 @@ def get_objects_w_report(object_type, objs_by_type, fields_dict, fields_conversi
     all_documents = list(set(all_documents))
 
     if all_documents:
-        output_columns = document_fields_conversion.keys()
+        output_columns = list(document_fields_conversion.keys())
         output_columns.remove('ID')
         # output_columns = document_fields_conversion.keys().remove('ID')
         doc_df = get_report_tsv_from_fields(object_type, all_documents, document_fields)
