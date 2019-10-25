@@ -404,7 +404,7 @@ def get_experiment_accessions(accession_set, output_lists, rep_fields):
 def get_file_accessions(experiments, output_lists):
     # Search for files in the experiment
     for experiment in experiments:
-        res = search('file', experiment)
+        res = search('File', experiment)
         # Check for criteria
         for file in res:
             if file['status'] in ('uploading', 'released', 'in progress', 'archived') and not_in_sra(file):
@@ -633,7 +633,10 @@ def minimize_donors_and_biosamples(report_df, report_df_index, fields_conversion
                 if column == 'Description':
                     obj_to_output[fields_direct_conversion[column]] = ''
                 continue
-            obj_to_output[fields_direct_conversion[column]] = value
+            elif column == 'Age':
+                obj_to_output[fields_direct_conversion[column]] = str(value)
+            else:
+                obj_to_output[fields_direct_conversion[column]] = value
         # columns that need preprocessing
         elif column in fields_indirect_conversion:
             if column in ('Source', 'Donor'):
@@ -643,7 +646,7 @@ def minimize_donors_and_biosamples(report_df, report_df_index, fields_conversion
                 # convert from '/sources/source-name/' to 'source-name'
                 parsed = value.split('/')[2]
                 obj_to_output[fields_indirect_conversion[column]] = parsed
-            elif column == 'Donor age':
+            elif column == 'Age':
                 obj_to_output[fields_indirect_conversion[column]] = str(value)
             elif column == 'Passage number':
                 if not pd.isna(value):
@@ -973,10 +976,19 @@ def get_objects_w_report(object_type, objs_by_type, fields_dict, fields_conversi
             objs_by_id[doc_df.loc[i, 'ID']] = document_obj
 
 
+def capitalize_object_type(object_type):
+    split = object_type.split("_")
+    if len(split) == 1:
+        if "Donor" in object_type:
+            return object_type
+        return object_type.capitalize()
+    return "".join(i.capitalize() for i in split)
+
+
 def search(object_type, accession):
     # Max nginx url
     max_url_length = 8192
-
+    object_type = capitalize_object_type(object_type)
     url_part_0 = 'search/?type='
     url_part_2 = '&frame=object&limit=all'
     dataset_key = '&dataset='
@@ -989,7 +1001,7 @@ def search(object_type, accession):
     available_url = max_url_length - fixed_length
     
     # search for fastqs in a given dataset, no need to chunk since always short query
-    if object_type == 'file':
+    if object_type == 'File':
         # search_key = dataset_key
         # # searching for files by dataset requires extra parameter
         # available_url -= len(file_format_key)
@@ -1021,7 +1033,6 @@ def search(object_type, accession):
         response = requests.get(URL, auth=(AUTHID, AUTHPW))
         res = response.json()
         responses.extend(res['@graph'])
-        
     return responses
     
 
@@ -1035,7 +1046,7 @@ def get_report_tsv_from_fields(object_type, accession, fields_list):
     """
     # Max nginx url
     max_url_length = 8192
-
+    object_type = capitalize_object_type(object_type)
     url_part_0 = 'report.tsv?type='
     id_key = '&@id='
     accession_key = '&accession='
@@ -1053,8 +1064,8 @@ def get_report_tsv_from_fields(object_type, accession, fields_list):
     
     if isinstance(accession, list):
         # Figure out whether searching @ids or accessions
-        if object_type in ('replicate', 'genetic_modification', 'donor_characterization', 
-                           'biosample_characterization', 'file'):
+        if object_type in ('Replicate', 'GeneticModification', 'DonorCharacterization',
+                           'BiosampleCharacterization', 'File'):
             search_key = id_key
         else: 
             search_key = accession_key
