@@ -1,0 +1,145 @@
+{
+    "accession": "ENCSR846ZBX",
+    "assay_term_name": "ATAC-seq",
+    "assay_title": "ATAC-seq",
+    "assembly": [
+        "GRCh38"
+    ],
+    "biosample_term_name": "breast epithelium",
+    "biosample_type": "tissue",
+    "date_released": "2016-06-15",
+    "description": "ATAC-seq on human breast epithelium",
+    "documents": [
+        {
+            "attachment": {
+                "href": "/documents/404ab3a6-4766-45ca-af80-878a344f07b6/@@download/attachment/ATAC-Seq%20protocol.pdf",
+                "md5sum": "92ffc5d47518d80a5b643cba8a0ec3c3"
+            },
+            "document_type": "general protocol",
+            "references": {},
+            "urls": []
+        }
+    ],
+    "files": [
+        {
+            "accession": "ENCFF216RFR",
+            "alternate_accessions": [],
+            "content_md5sum": "73310c1bb5b06c5897cb3d0d724c3724",
+            "file_format": "fastq",
+            "file_size": 4895250873,
+            "file_type": "fastq",
+            "href": "/files/ENCFF216RFR/@@download/ENCFF216RFR.fastq.gz",
+            "md5sum": "e027bfddd9c13a87c36c48d6ca8f556b",
+            "output_category": "raw data",
+            "output_type": "reads",
+            "paired_end": "2",
+            "paired_with": "/files/ENCFF488ELU/",
+            "platform": {
+                "dbxrefs": [],
+                "term_name": "Illumina HiSeq 4000"
+            },
+            "read_length": 100,
+            "read_length_units": "nt",
+            "replicate": {
+                "biological_replicate_number": 1,
+                "technical_replicate_number": 1
+            },
+            "run_type": "paired-ended",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF488ELU",
+            "alternate_accessions": [],
+            "content_md5sum": "758f10d3c9f09e17c5a0d5c20929d0ee",
+            "file_format": "fastq",
+            "file_size": 4542212323,
+            "file_type": "fastq",
+            "href": "/files/ENCFF488ELU/@@download/ENCFF488ELU.fastq.gz",
+            "md5sum": "9cdb3f9a7ff53dd2db70550fa56ce6af",
+            "output_category": "raw data",
+            "output_type": "reads",
+            "paired_end": "1",
+            "paired_with": "/files/ENCFF216RFR/",
+            "platform": {
+                "dbxrefs": [],
+                "term_name": "Illumina HiSeq 4000"
+            },
+            "read_length": 100,
+            "read_length_units": "nt",
+            "replicate": {
+                "biological_replicate_number": 1,
+                "technical_replicate_number": 1
+            },
+            "run_type": "paired-ended",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF482CAN",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "content_md5sum": "66cc67807827f47ab4b2b593ba860c1a",
+            "derived_from": [
+                "/files/ENCFF488ELU/",
+                "/files/ENCFF216RFR/"
+            ],
+            "file_format": "bam",
+            "file_size": 6275955197,
+            "file_type": "bam",
+            "href": "/files/ENCFF482CAN/@@download/ENCFF482CAN.bam",
+            "md5sum": "f885b096c54dc1075731a4d55c082404",
+            "output_category": "alignment",
+            "output_type": "alignments",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF513DQW",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "derived_from": [
+                "/files/ENCFF482CAN/"
+            ],
+            "file_format": "bigWig",
+            "file_size": 1251226941,
+            "file_type": "bigWig",
+            "href": "/files/ENCFF513DQW/@@download/ENCFF513DQW.bigWig",
+            "md5sum": "af9afbb2b1efece9c0be3359bb161bfc",
+            "output_category": "signal",
+            "output_type": "signal p-value",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF056HIV",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "derived_from": [
+                "/files/ENCFF482CAN/"
+            ],
+            "file_format": "bigWig",
+            "file_size": 1378077501,
+            "file_type": "bigWig",
+            "href": "/files/ENCFF056HIV/@@download/ENCFF056HIV.bigWig",
+            "md5sum": "d3a1fb6519816b8dfe5d337d9fc132cb",
+            "output_category": "signal",
+            "output_type": "fold change over control",
+            "status": "released"
+        }
+    ],
+    "lab": "Michael Snyder, Stanford",
+    "possible_controls": [],
+    "references": [],
+    "replicates": [
+        {
+            "biological_replicate_number": 1,
+            "library": {
+                "accession": "ENCLB095HXE",
+                "biosample": "ENCBS824TRN",
+                "documents": [],
+                "nucleic_acid_term_name": "DNA",
+                "size_range": "150-250",
+                "spikeins_used": []
+            },
+            "technical_replicate_number": 1
+        }
+    ],
+    "target": []
+}
