@@ -1119,9 +1119,8 @@ def write_files_file(files_to_upload, file_path):
     with open(file_path, 'w') as file_of_files:
         # for s3_uri in set(files_to_upload):
         for file_accession in set(files_to_upload):
-            up_creds = encoded_get(SERVER+'/files/'+file_accession+'/@@upload', keypair)
-            s3_path_url = up_creds['@graph'][0]['upload_credentials']['upload_url']
-            # file_of_files.write('/s3'+s3_uri[4:]+'\n')
+            file_object = encoded_get(SERVER+'/files/'+file_accession, keypair)
+            s3_path_url = file_object.get("s3_uri")
             file_of_files.write('/s3'+s3_path_url[4:]+'\n')
     print('FINISHED FILES')
 
