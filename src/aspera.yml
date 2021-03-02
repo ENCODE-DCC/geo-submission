@@ -1,8 +1,8 @@
 #cloud-config
 
 # Launch instance with network interfaces configured to the local IP addresses we references in the config.
-# $ aws ec2 run-instances --user-data file://aspera.yml --iam-instance-profile Name="encoded-instance" --image-id ami-5a928a3b --region us-west-2 --security-groups ssh-http-https --instance-type c4.xlarge
-
+# $ aws ec2 run-instances --user-data file://aspera.yml --iam-instance-profile Name="encoded-instance" --image-id  ami-0c15e9177d9a88f04 --region us-west-2 --security-groups ssh-http-https --instance-type c4.xlarge --key-name your-key-name  --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=your-instance-name}]'
+# base image name is ubuntu-minimal/images/hvm-ssd/ubuntu-groovy-20.10-amd64-minimal-20210223-6decfe77-2e08-47db-9e7d-37db4b481aeb
 
 bootcmd:
 - cloud-init-per once ssh-users-ca echo "TrustedUserCAKeys /etc/ssh/users_ca.pub" >> /etc/ssh/sshd_config
@@ -19,26 +19,20 @@ packages:
 - ntp
 
 runcmd:
-
 - set -ex
 - systemctl daemon-reload
 - mkdir -p /s3/encode-files
 - mkdir -p /s3/encoded-files-dev
+- mkdir -p /s3/encode-public
 
-## - curl -sS -L -o /usr/local/bin/goofys https://github.com/kahing/goofys/releases/download/v0.0.4/goofys
-- curl -sS -L -o /usr/local/bin/goofys https://s3-us-west-1.amazonaws.com/encoded-build/goofys/goofys-aee8168
+- curl -sS -L -o /usr/local/bin/goofys https://github.com/kahing/goofys/releases/download/v0.24.0/goofys
 - chmod +x /usr/local/bin/goofys
-
-## - mkdir -p /opt/goofys/bin
-## - chown -R build:build /opt/goofys
-## - sudo -u build GOPATH=/opt/goofys go get github.com/kahing/goofys
-## - mv /opt/goofys/bin/goofys /usr/local/bin/
 
 - mount -a
 - mkdir -p /opt/aspera
 - cd /opt/aspera
-- curl -s http://demo.asperasoft.com/ascp-install-3.5.4.102989-linux-64.sh > aspera.script.sh
-- sudo sh aspera.script.sh
+- curl -s  https://d3gcli72yxqn2z.cloudfront.net/connect_latest/v4/bin/ibm-aspera-connect-3.11.1.58-linux-g2.12-64.tar.gz| tar xvz
+- su - ubuntu -c "/opt/aspera/ibm-aspera-connect-3.11.1.58-linux-g2.12-64.sh"
 
 users:
 - default
@@ -50,12 +44,19 @@ users:
 mounts:
 - [ "goofys#encode-files", "/s3/encode-files", "fuse", "_netdev,allow_other,--file-mode=0444,--dir-mode=0555,--stat-cache-ttl=0", "0", "0" ]
 - [ "goofys#encoded-files-dev", "/s3/encoded-files-dev", "fuse", "_netdev,allow_other,--file-mode=0444,--dir-mode=0555,--stat-cache-ttl=0", "0", "0" ]
+- [ "goofys#encode-public", "/s3/encode-public", "fuse", "_netdev,allow_other,--file-mode=0444,--dir-mode=0555,--stat-cache-ttl=0", "0", "0" ]
 
 write_files:
 - path: /etc/ssh/users_ca.pub
   content: ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAv/ymOcnN4LhM4NACc3Or116XXJ6KytuOgB/+1qNkOFBqBosrn7cmJ35rsoNHRgYNrCsRE9ch74RKsN6H72FtSJgBhGh/9oUK7Os6Fqt3/ZZXxgxIx6ubs/MTgrxrAnujiBxUXMXQhLKMriNMpo8mt4nGYVtLk9PBjiyfncaS8H9ZKoNio9dhP8bmTuYvioAI35dqKdSlVLyzr/XkZxia8Ki+pQ0N6uuiEwMR3ToM+LSp8wpFOOAiu4PEAujRW7us/+1hlpKWfn0J7/V3826joHE+I967Vg/+ikcVhF77JjK1nib879VgCWfmn1HPQosIpk4yJfVgGvRVI7I2nfBPVw== encoded@demo-l.encodedcc.org
+
 - path: /etc/systemd/system/cloud-final.service.d/override.conf
   content: |
     [Service]
     # See https://bugs.launchpad.net/cloud-init/+bug/1449318
     KillMode=process
+
+- path: /etc/environment
+  append: true
+  content: |
+    PATH=/home/ubuntu/.aspera/connect/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
