@@ -1,0 +1,577 @@
+{
+    "accession": "ENCSR563SHQ",
+    "assay_term_name": "ChIP-seq",
+    "assay_title": "TF ChIP-seq",
+    "assembly": [
+        "GRCh38"
+    ],
+    "biosample_term_name": "HepG2",
+    "biosample_type": "cell line",
+    "date_released": "2020-07-09",
+    "description": "ChIP-Seq on HepG2",
+    "documents": [
+        {
+            "attachment": {
+                "href": "/documents/efac5344-6834-4e12-b971-94994d992e86/@@download/attachment/ChIP-seq_Mapping_Pipeline_Overview.pdf",
+                "md5sum": "cf1ba331ee52245da2ff6caff7033f87"
+            },
+            "document_type": "pipeline protocol",
+            "references": {},
+            "urls": []
+        },
+        {
+            "attachment": {
+                "href": "/documents/d00ffce2-e72c-44d7-a71f-73fd163c2426/@@download/attachment/ChIP-seq_pipeline_overview.pdf",
+                "md5sum": "b608fce6ad8bbf93e70260ad1d1a4efe"
+            },
+            "document_type": "pipeline protocol",
+            "references": {},
+            "urls": []
+        },
+        {
+            "attachment": {
+                "href": "/documents/73c95206-fc02-41ea-93e0-a929a6939aaf/@@download/attachment/ChIP-seq%20protocol%2C%20ENCODE4%2C%20Myers%20Lab.pdf",
+                "md5sum": "7acfa514e1ae1562651473910396154e"
+            },
+            "document_type": "extraction protocol",
+            "references": {},
+            "urls": []
+        }
+    ],
+    "files": [
+        {
+            "accession": "ENCFF037YGA",
+            "alternate_accessions": [],
+            "content_md5sum": "314116193738f81e03be5d67cf941417",
+            "file_format": "fastq",
+            "file_size": 2060203412,
+            "file_type": "fastq",
+            "href": "/files/ENCFF037YGA/@@download/ENCFF037YGA.fastq.gz",
+            "md5sum": "01b4125166185d82d2ebb283f3f82dac",
+            "output_category": "raw data",
+            "output_type": "reads",
+            "platform": {
+                "dbxrefs": [],
+                "term_name": "Illumina NextSeq 500"
+            },
+            "read_length": 75,
+            "read_length_units": "nt",
+            "replicate": {
+                "biological_replicate_number": 1,
+                "technical_replicate_number": 1
+            },
+            "run_type": "single-ended",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF008RIP",
+            "alternate_accessions": [],
+            "content_md5sum": "6e1e242645ef2eb1cf215df5f003b71c",
+            "file_format": "fastq",
+            "file_size": 1684408118,
+            "file_type": "fastq",
+            "href": "/files/ENCFF008RIP/@@download/ENCFF008RIP.fastq.gz",
+            "md5sum": "d3d9631973f2d961a8e41e6650aecf23",
+            "output_category": "raw data",
+            "output_type": "reads",
+            "platform": {
+                "dbxrefs": [],
+                "term_name": "Illumina NextSeq 500"
+            },
+            "read_length": 75,
+            "read_length_units": "nt",
+            "replicate": {
+                "biological_replicate_number": 2,
+                "technical_replicate_number": 1
+            },
+            "run_type": "single-ended",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF908XVC",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "content_md5sum": "eaea0ace68b5d3f23acca1b961246af0",
+            "derived_from": [
+                "/files/ENCFF008RIP/",
+                "/files/ENCFF110MCL/"
+            ],
+            "file_format": "bam",
+            "file_size": 1518689995,
+            "file_type": "bam",
+            "href": "/files/ENCFF908XVC/@@download/ENCFF908XVC.bam",
+            "md5sum": "a20e1ab1cf664db9601244b7a485b759",
+            "output_category": "alignment",
+            "output_type": "alignments",
+            "read_length_units": "nt",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF930CJU",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "derived_from": [
+                "/files/ENCFF908XVC/",
+                "/files/ENCFF723HPB/"
+            ],
+            "file_format": "bigWig",
+            "file_size": 1223594339,
+            "file_type": "bigWig",
+            "href": "/files/ENCFF930CJU/@@download/ENCFF930CJU.bigWig",
+            "md5sum": "914dad52d8371eca64cc7fe66367ddb9",
+            "output_category": "signal",
+            "output_type": "signal p-value",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF782SSQ",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "derived_from": [
+                "/files/ENCFF908XVC/",
+                "/files/ENCFF723HPB/"
+            ],
+            "file_format": "bigWig",
+            "file_size": 875788589,
+            "file_type": "bigWig",
+            "href": "/files/ENCFF782SSQ/@@download/ENCFF782SSQ.bigWig",
+            "md5sum": "eb4871007289d959f78895702d9463ac",
+            "output_category": "signal",
+            "output_type": "fold change over control",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF307ZKF",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "derived_from": [
+                "/files/ENCFF242EQM/"
+            ],
+            "file_format": "bigBed",
+            "file_size": 103528,
+            "file_type": "bigBed narrowPeak",
+            "href": "/files/ENCFF307ZKF/@@download/ENCFF307ZKF.bigBed",
+            "md5sum": "bc4dc9e89969d5604c35dca70624bf68",
+            "output_category": "annotation",
+            "output_type": "IDR thresholded peaks",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF682FFE",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "content_md5sum": "6647f302fba15cf0791ef8789f2ded44",
+            "derived_from": [
+                "/files/ENCFF037YGA/",
+                "/files/ENCFF110MCL/"
+            ],
+            "file_format": "bam",
+            "file_size": 2576211178,
+            "file_type": "bam",
+            "href": "/files/ENCFF682FFE/@@download/ENCFF682FFE.bam",
+            "md5sum": "d982cd36286b0347abbcb1cc18e2b32f",
+            "output_category": "alignment",
+            "output_type": "unfiltered alignments",
+            "read_length_units": "nt",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF852HLQ",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "content_md5sum": "93cc9705ba8742f0ce1a17f64f6e22cd",
+            "derived_from": [
+                "/files/ENCFF008RIP/",
+                "/files/ENCFF110MCL/"
+            ],
+            "file_format": "bam",
+            "file_size": 2102978823,
+            "file_type": "bam",
+            "href": "/files/ENCFF852HLQ/@@download/ENCFF852HLQ.bam",
+            "md5sum": "03622de9d5f8eda88a85e66659355a08",
+            "output_category": "alignment",
+            "output_type": "unfiltered alignments",
+            "read_length_units": "nt",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF893CDC",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "derived_from": [
+                "/files/ENCFF799OUV/",
+                "/files/ENCFF723HPB/"
+            ],
+            "file_format": "bigWig",
+            "file_size": 1269743495,
+            "file_type": "bigWig",
+            "href": "/files/ENCFF893CDC/@@download/ENCFF893CDC.bigWig",
+            "md5sum": "8beb77ab2858b76e50c97b8ac59a5955",
+            "output_category": "signal",
+            "output_type": "signal p-value",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF320EKJ",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "content_md5sum": "2338bedbbf1ec3f55d78b63e92c228dd",
+            "derived_from": [
+                "/files/ENCFF356LFX/",
+                "/files/ENCFF799OUV/",
+                "/files/ENCFF908XVC/",
+                "/files/ENCFF723HPB/"
+            ],
+            "file_format": "bed",
+            "file_size": 58161,
+            "file_type": "bed narrowPeak",
+            "href": "/files/ENCFF320EKJ/@@download/ENCFF320EKJ.bed.gz",
+            "md5sum": "786720d689e8d14f801445bfdcb42b69",
+            "output_category": "annotation",
+            "output_type": "IDR thresholded peaks",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF307FJL",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "derived_from": [
+                "/files/ENCFF581TBL/"
+            ],
+            "file_format": "bigBed",
+            "file_size": 87029,
+            "file_type": "bigBed narrowPeak",
+            "href": "/files/ENCFF307FJL/@@download/ENCFF307FJL.bigBed",
+            "md5sum": "28539cc5d20d24d2080ffc628d1274af",
+            "output_category": "annotation",
+            "output_type": "IDR thresholded peaks",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF594CVK",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "derived_from": [
+                "/files/ENCFF320EKJ/"
+            ],
+            "file_format": "bigBed",
+            "file_size": 170424,
+            "file_type": "bigBed narrowPeak",
+            "href": "/files/ENCFF594CVK/@@download/ENCFF594CVK.bigBed",
+            "md5sum": "80d82ce49b568db0310346f5221d53af",
+            "output_category": "annotation",
+            "output_type": "IDR thresholded peaks",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF728FJU",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "derived_from": [
+                "/files/ENCFF743BHX/"
+            ],
+            "file_format": "bigBed",
+            "file_size": 166345,
+            "file_type": "bigBed narrowPeak",
+            "href": "/files/ENCFF728FJU/@@download/ENCFF728FJU.bigBed",
+            "md5sum": "89553355eb0ddf4308456aef66817438",
+            "output_category": "annotation",
+            "output_type": "conservative IDR thresholded peaks",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF799OUV",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "content_md5sum": "9655e305b3b180a2fa3e145b6dfca0d0",
+            "derived_from": [
+                "/files/ENCFF037YGA/",
+                "/files/ENCFF110MCL/"
+            ],
+            "file_format": "bam",
+            "file_size": 1754212911,
+            "file_type": "bam",
+            "href": "/files/ENCFF799OUV/@@download/ENCFF799OUV.bam",
+            "md5sum": "a87d68a8879b1e80f19bac319b1eb751",
+            "output_category": "alignment",
+            "output_type": "alignments",
+            "read_length_units": "nt",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF491UOU",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "derived_from": [
+                "/files/ENCFF799OUV/",
+                "/files/ENCFF908XVC/",
+                "/files/ENCFF723HPB/"
+            ],
+            "file_format": "bigWig",
+            "file_size": 1491251211,
+            "file_type": "bigWig",
+            "href": "/files/ENCFF491UOU/@@download/ENCFF491UOU.bigWig",
+            "md5sum": "e80fbea22db4bd3ab3c24b9a9063b27a",
+            "output_category": "signal",
+            "output_type": "signal p-value",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF915YDJ",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "derived_from": [
+                "/files/ENCFF799OUV/",
+                "/files/ENCFF908XVC/",
+                "/files/ENCFF723HPB/"
+            ],
+            "file_format": "bigWig",
+            "file_size": 1498015280,
+            "file_type": "bigWig",
+            "href": "/files/ENCFF915YDJ/@@download/ENCFF915YDJ.bigWig",
+            "md5sum": "ac1121622c06af0dec36f97b6abeeb26",
+            "output_category": "signal",
+            "output_type": "fold change over control",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF046JCQ",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "content_md5sum": "ca32846476fd11fa316476afa76ef7e0",
+            "derived_from": [
+                "/files/ENCFF908XVC/",
+                "/files/ENCFF723HPB/"
+            ],
+            "file_format": "bed",
+            "file_size": 2708034,
+            "file_type": "bed idr_ranked_peak",
+            "href": "/files/ENCFF046JCQ/@@download/ENCFF046JCQ.bed.gz",
+            "md5sum": "f0824ab41a4007902449b37ccf4aa6c0",
+            "output_category": "annotation",
+            "output_type": "IDR ranked peaks",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF011OHQ",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "content_md5sum": "d4cbfe55ce7142481e64dbeaf133a34c",
+            "derived_from": [
+                "/files/ENCFF799OUV/",
+                "/files/ENCFF908XVC/",
+                "/files/ENCFF723HPB/"
+            ],
+            "file_format": "bed",
+            "file_size": 3586389,
+            "file_type": "bed idr_ranked_peak",
+            "href": "/files/ENCFF011OHQ/@@download/ENCFF011OHQ.bed.gz",
+            "md5sum": "a7d277cd2ec59ccf45c375c8624eab83",
+            "output_category": "annotation",
+            "output_type": "IDR ranked peaks",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF980BIZ",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "content_md5sum": "7112ed1a26359da2150ea145a4d783d7",
+            "derived_from": [
+                "/files/ENCFF799OUV/",
+                "/files/ENCFF908XVC/",
+                "/files/ENCFF723HPB/"
+            ],
+            "file_format": "bed",
+            "file_size": 3531457,
+            "file_type": "bed idr_ranked_peak",
+            "href": "/files/ENCFF980BIZ/@@download/ENCFF980BIZ.bed.gz",
+            "md5sum": "d8f77238b0479e38305270f8c29e2be7",
+            "output_category": "annotation",
+            "output_type": "IDR ranked peaks",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF858NYZ",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "derived_from": [
+                "/files/ENCFF799OUV/",
+                "/files/ENCFF723HPB/"
+            ],
+            "file_format": "bigWig",
+            "file_size": 976921373,
+            "file_type": "bigWig",
+            "href": "/files/ENCFF858NYZ/@@download/ENCFF858NYZ.bigWig",
+            "md5sum": "c3dbcd7994eb9eb8bb9aefba4d902b98",
+            "output_category": "signal",
+            "output_type": "fold change over control",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF242EQM",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "content_md5sum": "e9d5cb06669149e65092d3066bc318bb",
+            "derived_from": [
+                "/files/ENCFF356LFX/",
+                "/files/ENCFF799OUV/",
+                "/files/ENCFF723HPB/"
+            ],
+            "file_format": "bed",
+            "file_size": 30630,
+            "file_type": "bed narrowPeak",
+            "href": "/files/ENCFF242EQM/@@download/ENCFF242EQM.bed.gz",
+            "md5sum": "cb2a42673c0ab691d24651a93aed9652",
+            "output_category": "annotation",
+            "output_type": "IDR thresholded peaks",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF581TBL",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "content_md5sum": "92d90a5b4048e687ca0e31a6b7a516ea",
+            "derived_from": [
+                "/files/ENCFF356LFX/",
+                "/files/ENCFF908XVC/",
+                "/files/ENCFF723HPB/"
+            ],
+            "file_format": "bed",
+            "file_size": 20506,
+            "file_type": "bed narrowPeak",
+            "href": "/files/ENCFF581TBL/@@download/ENCFF581TBL.bed.gz",
+            "md5sum": "599e0a6984a2994592e2741672fc5e75",
+            "output_category": "annotation",
+            "output_type": "IDR thresholded peaks",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF743BHX",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "content_md5sum": "d26b46d0d2333c14fa6366d7a31c29e9",
+            "derived_from": [
+                "/files/ENCFF356LFX/",
+                "/files/ENCFF799OUV/",
+                "/files/ENCFF908XVC/",
+                "/files/ENCFF723HPB/"
+            ],
+            "file_format": "bed",
+            "file_size": 55960,
+            "file_type": "bed narrowPeak",
+            "href": "/files/ENCFF743BHX/@@download/ENCFF743BHX.bed.gz",
+            "md5sum": "a3bb7cf27fd65ab69f456c02ba529865",
+            "output_category": "annotation",
+            "output_type": "conservative IDR thresholded peaks",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF701EBZ",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "content_md5sum": "7756a29dd997d4ec74f7753e7b4b31a4",
+            "derived_from": [
+                "/files/ENCFF799OUV/",
+                "/files/ENCFF723HPB/"
+            ],
+            "file_format": "bed",
+            "file_size": 2801386,
+            "file_type": "bed idr_ranked_peak",
+            "href": "/files/ENCFF701EBZ/@@download/ENCFF701EBZ.bed.gz",
+            "md5sum": "e1542b4fc1aeeb7c75a719e3c6802454",
+            "output_category": "annotation",
+            "output_type": "IDR ranked peaks",
+            "status": "released"
+        }
+    ],
+    "lab": "Richard Myers, HAIB",
+    "possible_controls": [
+        "ENCSR239QGH"
+    ],
+    "references": [],
+    "replicates": [
+        {
+            "biological_replicate_number": 1,
+            "library": {
+                "accession": "ENCLB333UGF",
+                "biosample": "ENCBS933MZA",
+                "documents": [
+                    {
+                        "attachment": {
+                            "href": "/documents/efac5344-6834-4e12-b971-94994d992e86/@@download/attachment/ChIP-seq_Mapping_Pipeline_Overview.pdf",
+                            "md5sum": "cf1ba331ee52245da2ff6caff7033f87"
+                        },
+                        "document_type": "pipeline protocol",
+                        "references": {},
+                        "urls": []
+                    },
+                    {
+                        "attachment": {
+                            "href": "/documents/d00ffce2-e72c-44d7-a71f-73fd163c2426/@@download/attachment/ChIP-seq_pipeline_overview.pdf",
+                            "md5sum": "b608fce6ad8bbf93e70260ad1d1a4efe"
+                        },
+                        "document_type": "pipeline protocol",
+                        "references": {},
+                        "urls": []
+                    },
+                    {
+                        "attachment": {
+                            "href": "/documents/73c95206-fc02-41ea-93e0-a929a6939aaf/@@download/attachment/ChIP-seq%20protocol%2C%20ENCODE4%2C%20Myers%20Lab.pdf",
+                            "md5sum": "7acfa514e1ae1562651473910396154e"
+                        },
+                        "document_type": "extraction protocol",
+                        "references": {},
+                        "urls": []
+                    }
+                ],
+                "fragmentation_methods": "sonication (generic)",
+                "nucleic_acid_term_name": "DNA",
+                "spikeins_used": []
+            },
+            "technical_replicate_number": 1
+        },
+        {
+            "biological_replicate_number": 2,
+            "library": {
+                "accession": "ENCLB699MCU",
+                "biosample": "ENCBS504IBO",
+                "documents": [
+                    {
+                        "attachment": {
+                            "href": "/documents/efac5344-6834-4e12-b971-94994d992e86/@@download/attachment/ChIP-seq_Mapping_Pipeline_Overview.pdf",
+                            "md5sum": "cf1ba331ee52245da2ff6caff7033f87"
+                        },
+                        "document_type": "pipeline protocol",
+                        "references": {},
+                        "urls": []
+                    },
+                    {
+                        "attachment": {
+                            "href": "/documents/d00ffce2-e72c-44d7-a71f-73fd163c2426/@@download/attachment/ChIP-seq_pipeline_overview.pdf",
+                            "md5sum": "b608fce6ad8bbf93e70260ad1d1a4efe"
+                        },
+                        "document_type": "pipeline protocol",
+                        "references": {},
+                        "urls": []
+                    },
+                    {
+                        "attachment": {
+                            "href": "/documents/73c95206-fc02-41ea-93e0-a929a6939aaf/@@download/attachment/ChIP-seq%20protocol%2C%20ENCODE4%2C%20Myers%20Lab.pdf",
+                            "md5sum": "7acfa514e1ae1562651473910396154e"
+                        },
+                        "document_type": "extraction protocol",
+                        "references": {},
+                        "urls": []
+                    }
+                ],
+                "fragmentation_methods": "sonication (generic)",
+                "nucleic_acid_term_name": "DNA",
+                "spikeins_used": []
+            },
+            "technical_replicate_number": 1
+        }
+    ],
+    "target": [
+        "ZFP36L2"
+    ]
+}
