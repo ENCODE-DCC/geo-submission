@@ -1,0 +1,211 @@
+{
+    "accession": "ENCSR717FVA",
+    "assay_term_name": "single-nucleus ATAC-seq",
+    "assay_title": "snATAC-seq",
+    "assembly": [
+        "GRCh38"
+    ],
+    "biosample_term_name": "right atrium auricular region",
+    "biosample_type": "tissue",
+    "date_released": "2022-03-23",
+    "description": "snATAC-seq of human right atrium auricular region",
+    "documents": [
+        {
+            "attachment": {
+                "href": "/documents/a15e5c89-488d-4f16-a83b-de75f52f2089/@@download/attachment/sci-ATAC%20seq%20library%20generation%20protocol_v1_ENC.pdf",
+                "md5sum": "15ee96b6ad52263b925eab60be0408dc"
+            },
+            "document_type": "general protocol",
+            "references": {},
+            "urls": []
+        },
+        {
+            "attachment": {
+                "href": "/documents/69968b12-5929-4725-b3c9-402a317746cb/@@download/attachment/Nuclei%20isolation_GentleMACS_v1_ENC.pdf",
+                "md5sum": "d278372c467edeedd1a9a1163066d74b"
+            },
+            "document_type": "cell isolation protocol",
+            "references": {},
+            "urls": []
+        }
+    ],
+    "files": [
+        {
+            "accession": "ENCFF708SEY",
+            "alternate_accessions": [],
+            "content_md5sum": "a1065736ec99842d913c0c9c5e09b300",
+            "file_format": "fastq",
+            "file_size": 3411335086,
+            "file_type": "fastq",
+            "href": "/files/ENCFF708SEY/@@download/ENCFF708SEY.fastq.gz",
+            "md5sum": "549ccf9a963dae075d99f9dddd30ef7f",
+            "output_category": "raw data",
+            "output_type": "reads",
+            "paired_end": "1",
+            "paired_with": "/files/ENCFF185UYZ/",
+            "platform": {
+                "dbxrefs": [],
+                "term_name": "Illumina NextSeq 500"
+            },
+            "read_length": 50,
+            "read_length_units": "nt",
+            "replicate": {
+                "biological_replicate_number": 1,
+                "technical_replicate_number": 1
+            },
+            "run_type": "paired-ended",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF185UYZ",
+            "alternate_accessions": [],
+            "content_md5sum": "c07801411d29981c22506be97124e37c",
+            "file_format": "fastq",
+            "file_size": 3721241104,
+            "file_type": "fastq",
+            "href": "/files/ENCFF185UYZ/@@download/ENCFF185UYZ.fastq.gz",
+            "md5sum": "0542bbc1cc70bce43dd668cf82609aee",
+            "output_category": "raw data",
+            "output_type": "reads",
+            "paired_end": "2",
+            "paired_with": "/files/ENCFF708SEY/",
+            "platform": {
+                "dbxrefs": [],
+                "term_name": "Illumina NextSeq 500"
+            },
+            "read_length": 50,
+            "read_length_units": "nt",
+            "replicate": {
+                "biological_replicate_number": 1,
+                "technical_replicate_number": 1
+            },
+            "run_type": "paired-ended",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF672RLZ",
+            "alternate_accessions": [],
+            "content_md5sum": "e27d48ea40f4993fad1858d0d3b7a232",
+            "derived_from": [
+                "/files/ENCFF708SEY/",
+                "/files/ENCFF185UYZ/"
+            ],
+            "file_format": "fastq",
+            "file_size": 3391659920,
+            "file_type": "fastq",
+            "href": "/files/ENCFF672RLZ/@@download/ENCFF672RLZ.fastq.gz",
+            "md5sum": "5fb06f0e89b42d11289f32066df53fcd",
+            "output_category": "raw data",
+            "output_type": "filtered reads",
+            "paired_end": "1",
+            "paired_with": "/files/ENCFF235BSW/",
+            "platform": {
+                "dbxrefs": [],
+                "term_name": "Illumina NextSeq 500"
+            },
+            "read_length": 50,
+            "read_length_units": "nt",
+            "run_type": "paired-ended",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF235BSW",
+            "alternate_accessions": [],
+            "content_md5sum": "4b83212b0c6d0f7fb8d8b2c94298bd6b",
+            "derived_from": [
+                "/files/ENCFF708SEY/",
+                "/files/ENCFF185UYZ/"
+            ],
+            "file_format": "fastq",
+            "file_size": 3726124897,
+            "file_type": "fastq",
+            "href": "/files/ENCFF235BSW/@@download/ENCFF235BSW.fastq.gz",
+            "md5sum": "492fa40168aad2fd0c7b58156ee84392",
+            "output_category": "raw data",
+            "output_type": "filtered reads",
+            "paired_end": "2",
+            "paired_with": "/files/ENCFF672RLZ/",
+            "platform": {
+                "dbxrefs": [],
+                "term_name": "Illumina NextSeq 500"
+            },
+            "read_length": 50,
+            "read_length_units": "nt",
+            "run_type": "paired-ended",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF744VAV",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "content_md5sum": "5be85b9e974fc938da307ffdbfcbe7e0",
+            "derived_from": [
+                "/files/ENCFF672RLZ/",
+                "/files/ENCFF235BSW/"
+            ],
+            "file_format": "bam",
+            "file_size": 11680983593,
+            "file_type": "bam",
+            "href": "/files/ENCFF744VAV/@@download/ENCFF744VAV.bam",
+            "md5sum": "a2bfe5d010abd3c271531b9d1d0c0666",
+            "output_category": "alignment",
+            "output_type": "unfiltered alignments",
+            "read_length_units": "nt",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF033IOI",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "content_md5sum": "1e9c5d560a8979998dea1a5e53d2c8e5",
+            "derived_from": [
+                "/files/ENCFF744VAV/"
+            ],
+            "file_format": "bam",
+            "file_size": 3770560829,
+            "file_type": "bam",
+            "href": "/files/ENCFF033IOI/@@download/ENCFF033IOI.bam",
+            "md5sum": "a8621f9ecb93e5046035ab559e147b25",
+            "output_category": "alignment",
+            "output_type": "alignments",
+            "read_length_units": "nt",
+            "status": "released"
+        },
+        {
+            "accession": "ENCFF455CCH",
+            "alternate_accessions": [],
+            "assembly": "GRCh38",
+            "content_md5sum": "a88db8c93ce14c9c59bd810dd0cc99be",
+            "derived_from": [
+                "/files/ENCFF033IOI/"
+            ],
+            "file_format": "tar",
+            "file_size": 417749936,
+            "file_type": "tar",
+            "href": "/files/ENCFF455CCH/@@download/ENCFF455CCH.tar.gz",
+            "md5sum": "22ef9399db6d3e3e991c8024304490ca",
+            "output_category": "quantification",
+            "output_type": "fragments",
+            "status": "released"
+        }
+    ],
+    "lab": "Bing Ren, UCSD",
+    "possible_controls": [],
+    "references": [],
+    "replicates": [
+        {
+            "biological_replicate_number": 1,
+            "library": {
+                "accession": "ENCLB479CUF",
+                "biosample": "ENCBS832NLG",
+                "documents": [],
+                "library_size_selection_method": "SPRI beads",
+                "nucleic_acid_term_name": "DNA",
+                "size_range": "200-750",
+                "spikeins_used": []
+            },
+            "technical_replicate_number": 1
+        }
+    ],
+    "target": []
+}
