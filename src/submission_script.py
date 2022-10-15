@@ -251,7 +251,6 @@ def main():
     experiment_objs = build_experiments(output_lists, experiment_fields_dict, experiment_fields_conversion, 
                                                experiment_objs_by_type, experiment_objs_by_id)
 
-    # exclude undesired file types
     exclude_undesired_file_output_types(excluded_file_output_types, experiment_objs, output_lists) 
 
     # Write to jsons
@@ -1143,23 +1142,17 @@ def get_args():
     args = parser.parse_args()
     return args
 
-# exclude undesired file types
 def exclude_undesired_file_output_types(excluded_file_output_types, experiment_objs, output_lists):
     file_accessions_being_removed = set()
-    # loop through experiments
     for current_experiment in experiment_objs:
         # set up temporary list of files to keep
         files_to_keep = []
-        # loop through files
         for current_file in current_experiment['files']:
-            # check if file output type is not allowed
             current_file_output_type = current_file['output_type']
             if current_file_output_type in excluded_file_output_types:
-                # the current file output type is not allowed
                 current_file_accession = current_file['accession']
                 file_accessions_being_removed.add(current_file_accession)
             else:
-                # save the file to keep
                 files_to_keep.append(current_file)
         # update the files to keep with the experiment
         current_experiment['files'] = files_to_keep   
@@ -1167,12 +1160,8 @@ def exclude_undesired_file_output_types(excluded_file_output_types, experiment_o
     new_file_list = []
     old_file_set = set(output_lists['files'])
     for current_file_accession in old_file_set:
-        # check if file accession is being removed
         if current_file_accession not in file_accessions_being_removed:
-            # the current file is not one being removed
-            # append the file to the list as one to keep
             new_file_list.append(current_file_accession)
-    # update output lists
     output_lists['files'] = new_file_list
 
 # Globals
