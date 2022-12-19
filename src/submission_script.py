@@ -7,11 +7,12 @@ import pandas as pd
 import time
 import ast
 import argparse
+import os
 from os.path import splitext
 
 
 def main():
-    t0 = time.clock()
+    t0 = time.process_time()
     args = get_args()
     # phase 1 - collect all experiments submitted so far.
     submitted_experiments = set()
@@ -190,7 +191,9 @@ def main():
                    'genome_annotation', 'accession', 'md5sum', 'output_type','file_format', 'file_type', 'href',
                    'content_md5sum', 'read_length', 'read_length_units', 'file_size', 'run_type', 'output_category',
                    'replicate.biological_replicate_number', 'replicate.technical_replicate_number', 'platform.dbxrefs',
-                   'platform.term_name', '@id', 'platform', 'replicate']
+                   'platform.term_name', '@id', 'platform', 'replicate', 'index_of']
+
+    excluded_file_output_types = ['filtered reads']
 
     replicate_fields = ['biological_replicate_number','technical_replicate_number', 'status', '@id']
 
@@ -226,7 +229,7 @@ def main():
                               'replicate.biological_replicate_number': 'biological_replicate_number', 
                               'replicate.technical_replicate_number': 'technical_replicate_number',
                               'platform.dbxrefs': 'dbxrefs', 'platform.term_name': 'term_name',
-                              'ID': '@id', 'Platform': 'platform', 'Replicate': 'replicate'}
+                              'ID': '@id', 'Platform': 'platform', 'Replicate': 'replicate', 'Index of': 'index_of'}
                               
     replicate_fields_conversion = {'Biological replicate': 'biological_replicate_number', 
                                    'Technical replicate': 'technical_replicate_number', 'ID': '@id',
@@ -248,6 +251,8 @@ def main():
     experiment_objs = build_experiments(output_lists, experiment_fields_dict, experiment_fields_conversion, 
                                                experiment_objs_by_type, experiment_objs_by_id)
 
+    exclude_undesired_file_output_types(excluded_file_output_types, experiment_objs, output_lists) 
+
     # Write to jsons
     write_to_json('donor', donor_objs)
     write_to_json('biosample', biosample_objs)
@@ -256,8 +261,8 @@ def main():
     # Obtain s3 file paths
     write_files_file(output_lists['files'], splitext(args.infile)[0] + '_FILES_TO_UPLOAD.txt')
 
-    t1 = time.clock()
-    print('elapsed time: ', t1 - t0)
+    t1 = time.process_time()
+    print('elapsed time (seconds): ', t1 - t0)
 
 
 def encoded_get(url, keypair=None, frame='object', return_response=False):
@@ -852,6 +857,9 @@ def minimize_files(file_df, fields_conversion, objs_by_type, objs_by_id):
             elif column == 'Derived from':
                 values_list = make_list_from_str(value)
                 file_dict[file_fields_conversion[column]] = values_list
+            elif column == 'Index of':
+                values_list = make_list_from_str(value)
+                file_dict[file_fields_conversion[column]] = values_list
             elif column == 'platform.term_name':
                 platform[file_fields_conversion[column]] = value
             elif column in ('replicate.biological_replicate_number', 'replicate.technical_replicate_number'):
@@ -1134,6 +1142,27 @@ def get_args():
     args = parser.parse_args()
     return args
 
+def exclude_undesired_file_output_types(excluded_file_output_types, experiment_objs, output_lists):
+    file_accessions_being_removed = set()
+    for current_experiment in experiment_objs:
+        # set up temporary list of files to keep
+        files_to_keep = []
+        for current_file in current_experiment['files']:
+            current_file_output_type = current_file['output_type']
+            if current_file_output_type in excluded_file_output_types:
+                current_file_accession = current_file['accession']
+                file_accessions_being_removed.add(current_file_accession)
+            else:
+                files_to_keep.append(current_file)
+        # update the files to keep with the experiment
+        current_experiment['files'] = files_to_keep   
+    # loop through files and exclude files being removed
+    new_file_list = []
+    old_file_set = set(output_lists['files'])
+    for current_file_accession in old_file_set:
+        if current_file_accession not in file_accessions_being_removed:
+            new_file_list.append(current_file_accession)
+    output_lists['files'] = new_file_list
 
 # Globals
 HEADERS = {'accept': 'application/json'}
