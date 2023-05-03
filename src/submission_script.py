@@ -11,6 +11,7 @@ import os
 from os.path import splitext
 from io import StringIO
 
+
 def main():
     t0 = time.process_time()
     args = get_args()
