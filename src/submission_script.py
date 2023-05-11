@@ -213,7 +213,7 @@ def main():
                                              'Target of assay': 'target', 'Genome assembly': 'assembly'}
                                              
     experiment_fields_direct_conversion = {'Date released': 'date_released', 'Accession': 'accession', 
-                                           'biosample_ontology.classification': 'biosample_type', 'Assay title': 'assay_title',
+                                           'Biosample classification': 'biosample_type', 'Assay title': 'assay_title',
                                            'Assay name': 'assay_term_name',  'Description': 'description', 
                                            'Biosample term name': 'biosample_term_name', 'Lab': 'lab'}
                                            
