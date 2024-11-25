@@ -1091,7 +1091,7 @@ def get_report_tsv_from_fields(object_type, accession, fields_list):
             url_part_1 = url_part_0 + object_type + search_key + search_key.join(chunk)
             URL = SERVER + url_part_1 + url_part_2
             response = requests.get(URL, auth=(AUTHID, AUTHPW))
-            res_df = pd.read_csv(pd.compat.StringIO(response.text), sep = '\t', header=1)
+            res_df = pd.read_csv(StringIO(response.text), sep = '\t', header=1)
             dfs.append(res_df)
         # Combine all of the df, ignoring index to avoid conflicting indices
         all_dfs = pd.concat(dfs, ignore_index=True, sort=True)
@@ -1101,7 +1101,7 @@ def get_report_tsv_from_fields(object_type, accession, fields_list):
 
     URL = SERVER + url_part_1 + url_part_2
     response = requests.get(URL, auth=(AUTHID, AUTHPW))
-    res_df = pd.read_csv(pd.compat.StringIO(response.text), sep = '\t', header=1)
+    res_df = pd.read_csv(StringIO(response.text), sep = '\t', header=1)
     return res_df
 
 
