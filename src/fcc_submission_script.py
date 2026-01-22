@@ -281,25 +281,28 @@ def encoded_get(url, keypair=None, frame='object', return_response=False):
     if new_url_list[3].startswith('&'):
         new_url_list[3] = new_url_list[3].replace('&', '', 1)
     get_url = urlunsplit(new_url_list)
-    max_retries = 10
-    max_sleep = 10
-    while max_retries:
+    
+    timeout = 10
+    backoffs=(10,30,60,300,300)
+    n=1
+    for sleeptime in backoffs:
+        n+=1
         try:
             if keypair:
                 response = requests.get(get_url, auth=keypair, headers=GET_HEADERS)
             else:
                 response = requests.get(get_url, headers=GET_HEADERS)
         except (requests.exceptions.ConnectionError,
-                requests.exceptions.SSLError) as e:
-            print >> sys.stderr, e
-            sleep(max_sleep - max_retries)
-            max_retries -= 1
-            continue
+                requests.exceptions.SSLError, requests.exceptions.ReadTimeout) as e:
+            if n == len(backoffs) + 1:
+                raise
+            sleep(sleeptime)
         else:
             if return_response:
                 return response
             else:
                 return response.json()
+        
 
 
 def getKeyPair(path_to_key_pair_file, server_name):
@@ -1017,9 +1020,14 @@ def search(object_type, accession):
         # available_url -= len(file_format_key)
         experiment_id = '/functional-characterization-experiments/{}/'.format(accession)
         url = SERVER + url_part_0 + object_type + dataset_key + experiment_id + file_format_key + url_part_2
-        response = requests.get(url, auth=(AUTHID, AUTHPW))
-        res = response.json()
+        response = encoded_get(url, keypair=keypair, return_response=True)
+        if response.status_code == 200:
+            res = response.json()
+        else:
+            print("Response Code: {} for {} : no fastq files".format(response.status_code, experiment_id))
+            return []
         return res['@graph']
+    
     elif object_type in ('Experiment', 'FunctionalCharacterizationExperiment', 'Biosample'):
         search_key = accession_key
     else:
